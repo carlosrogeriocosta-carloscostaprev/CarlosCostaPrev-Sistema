@@ -105,6 +105,10 @@ const MIGRATIONS_QUE_NAO_RODAM: Record<string, string> = {
     "cannot drop column needs_google_push of table calendar_appointments because other objects depend on it",
   "20260914170000_0243_chamada_de_api_tem_prazo_de_trava.sql":
     'role "authenticator" does not exist',
+  // CAMADA CarlosCostaPrev (17/11/2026): o ciclo de convites do modelo ANTIGO. Sobre o baseline, que já
+  // traz `team_invites` no modelo da matriz (0238), a coluna `declined_at` não existe. A 8017 converte.
+  "20260821170000_8012_team_invites_lifecycle.sql":
+    'column "declined_at" does not exist',
 };
 
 /**
@@ -511,7 +515,7 @@ function formata(lista: { linha: string; lado: "cadeia" | "espelho" }[]): string
 }
 
 describe("baseline e cadeia de migrations chegam ao mesmo schema", () => {
-  it("a cadeia inteira aplica sobre o estado de instalação, menos as 8 declaradas", () => {
+  it("a cadeia inteira aplica sobre o estado de instalação, menos as 9 declaradas", () => {
     const medidas = resultado.falhas.map((f) => f.arquivo).sort();
     const declaradas = Object.keys(MIGRATIONS_QUE_NAO_RODAM).sort();
 
