@@ -18,7 +18,14 @@ import type { CapacidadeDaOrganizacao } from "@/lib/organizacao/capacidades";
  * Doutrina: docs/doctrine/sistema-vivo.md — "por qual porta se chega até mim?"
  */
 
-export type NavGroupId = "atendimento" | "crm" | "ia" | "canais" | "analise" | "organizacao";
+export type NavGroupId =
+  | "atendimento"
+  | "crm"
+  | "previdenciario"
+  | "ia"
+  | "canais"
+  | "analise"
+  | "organizacao";
 
 export interface NavGroup {
   id: NavGroupId;
@@ -92,6 +99,9 @@ export interface NavMetadata {
 export const NAV_GROUPS: NavGroup[] = [
   { id: "atendimento", label: "Atendimento" },
   { id: "crm", label: "CRM", hub: { href: "/app/crm", label: "Ver tudo em CRM" } },
+  // Camada CarlosCostaPrev: o grupo do módulo previdenciário. Sem hub — são só
+  // duas portas, e as duas moram no sidebar.
+  { id: "previdenciario", label: "Previdenciário" },
   { id: "ia", label: "Agente de IA", hub: { href: "/app/ai", label: "Ver tudo em IA" } },
   { id: "canais", label: "Canais" },
   { id: "analise", label: "Análise", hub: { href: "/app/analise", label: "Ver tudo em Análise" } },
@@ -1282,6 +1292,27 @@ export const NAV_CATALOG = [
     // Módulo opcional da instalação, desligado por padrão (doc 37): a porta só
     // existe onde quem administra o servidor o ligou, em `/admin/sistema`.
     modulo: "banco_externo",
+  },
+  {
+    // Camada CarlosCostaPrev: as duas portas do módulo previdenciário. Existiam
+    // no registro antigo (`registry.ts`) e se perderam quando a matriz moveu o
+    // menu para este catálogo — as telas continuaram de pé, sem por onde serem
+    // achadas (item 14 da Definition of Done; o gate `navegacao-completude`
+    // acusou). `sidebar: true`: casos são uso diário.
+    href: "/app/previdenciario",
+    label: "Casos previdenciários",
+    description: "Casos, pendências, prazos e documentos do atendimento previdenciário.",
+    icon: "ScalesSimple",
+    group: "previdenciario",
+    sidebar: true,
+  },
+  {
+    href: "/app/previdenciario/conhecimento",
+    label: "Base de conhecimento",
+    description: "Patologias, CIF, IFBrA e fontes legislativas para apoiar a revisão profissional.",
+    icon: "BookOpen",
+    group: "previdenciario",
+    sidebar: true,
   },
   {
     // A porta da ajuda dentro do produto (issue #3567, fatia F1). Fica por

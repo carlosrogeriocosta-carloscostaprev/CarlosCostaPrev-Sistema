@@ -1553,6 +1553,42 @@ export const AUDIT_ACTIONS = [
   // "quem moveu" no painel. Mover roteador em silêncio não existe: as duas
   // camadas são gravadas na mesma operação.
   "ai.router_channel_moved",
+  // ─── Camada CarlosCostaPrev (previdenciário + Centro SOS) ───────────────────
+  // Estes códigos já existiam na `main` do CarlosCostaPrev antes da atualização
+  // para a matriz v1.109.0 e voltam aqui no fim, como pede a regra do arquivo
+  // ("acrescente no fim; nunca renomeie"): a matriz não os conhece, então o
+  // merge os perdeu e o typecheck acusou 14 deles em uso. Os dois de convite
+  // (`member.invite_declined`, `member.invites_listed`) NÃO voltam: pertenciam
+  // ao modelo de convites antigo, trocado pelo da matriz na decisão de 13/11/2026.
+  // Cancelar o cadastro do segundo fator (enrollment) antes de concluí-lo.
+  "auth.mfa_enrollment_cancelled",
+  // Centro SOS foi removido em 14/11/2026 (decisão do dono). Os 6 códigos
+  // `security.sos_*` ficam: linhas antigas de `api_audit_log` ainda os carregam
+  // e o painel de auditoria precisa continuar legendando-as (regra: nunca remover).
+  "security.sos_viewed",
+  "security.sos_diagnostic_started",
+  "security.sos_module_manifest_viewed",
+  "security.sos_reconcile_viewed",
+  "security.sos_executed",
+  "security.sos_execution_completed",
+  "previdenciario.catalog_override_updated",
+  "previdenciario.case_created",
+  "previdenciario.case_updated",
+  "previdenciario.case_stage_changed",
+  "previdenciario.case_pendency_updated",
+  "previdenciario.case_deadline_updated",
+  "previdenciario.case_document_updated",
+  "previdenciario.knowledge_reviewed",
+  "previdenciario.knowledge_imported",
+  "previdenciario.knowledge_batch_reviewed",
+  "previdenciario.knowledge_editorial_updated",
+  "previdenciario.cross_module_sugestao_ajuizamento_criada",
+  "previdenciario.cross_module_laudo_vinculado_judicial",
+  "previdenciario.cross_module_cumprimento_iniciado_admin",
+  "previdenciario.cross_module_caso_admin_baixado_acordo",
+  "previdenciario.cross_module_caso_admin_arquivado_transito",
+  "previdenciario.cross_module_rpv_liberada_notificada",
+  "previdenciario.cross_module_movimentacao_processual_nova",
 ] as const;
 
 /** Um código de auditoria. Derivado de `AUDIT_ACTIONS` — não redigite a lista. */

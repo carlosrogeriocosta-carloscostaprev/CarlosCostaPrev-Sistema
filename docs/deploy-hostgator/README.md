@@ -12,7 +12,7 @@ algum passo, o assistente do Claude Code faz por você (veja o [Caminho fácil](
 ## Visão geral (o que vamos montar)
 
 ```
-Seu domínio  →  Servidor VPS (HostGator)  →  DeskcommCRM rodando
+Seu domínio  →  Servidor VPS (HostGator)  →  CarlosCostaPrev rodando
                         │
                         ├─ o CRM (site + painel)
                         ├─ o WhatsApp (conectado por QR)
@@ -37,7 +37,7 @@ contrata no passo 1.
 
 ## Passo 1 — Contrate o servidor (VPS) na HostGator
 
-O DeskcommCRM roda num **VPS com Docker**. A opção mais fácil é um VPS que **já vem
+O CarlosCostaPrev roda num **VPS com Docker**. A opção mais fácil é um VPS que **já vem
 com Docker instalado**:
 
 - 👉 **[VPS com GatorClaw](https://www.hostgator.com.br/52708-142-3-53.html)** — recomendado, Docker pronto
@@ -145,7 +145,7 @@ Agora escolha um dos dois caminhos:
 1. Conecte no servidor por SSH e **abra o Claude Code lá dentro** (na VPS, não no seu PC).
 2. Escreva pra ele exatamente isto:
 
-   > *"Clone https://github.com/melgarafael/DeskcommCRM e me instale o DeskcommCRM
+   > *"Clone https://github.com/prevprocesso-maker/CarlosCostaPrev e me instale o CarlosCostaPrev
    > seguindo o `hostgator-setup-kit/install.sh`. Me pergunte as chaves uma por uma e
    > resolva os erros você mesmo."*
 
@@ -161,8 +161,8 @@ Agora escolha um dos dois caminhos:
 No servidor, baixe o projeto e rode o instalador:
 
 ```bash
-git clone https://github.com/melgarafael/DeskcommCRM.git
-cd DeskcommCRM
+git clone https://github.com/prevprocesso-maker/CarlosCostaPrev.git
+cd CarlosCostaPrev
 bash hostgator-setup-kit/install.sh
 ```
 

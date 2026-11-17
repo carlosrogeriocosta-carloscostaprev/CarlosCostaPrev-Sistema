@@ -88,6 +88,10 @@ function callAs(userId: string, select: string): { ok: boolean; stderr: string }
 
 beforeAll(() => {
   seedGov();
+  // Ensure clean state for VIZINHA_ORG (no members)
+  sql(`
+    delete from public.user_organizations where organization_id = '${VIZINHA_ORG}';
+  `);
   seedKb();
 });
 

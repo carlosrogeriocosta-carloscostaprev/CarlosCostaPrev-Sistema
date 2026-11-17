@@ -65,6 +65,9 @@ const PLACEHOLDERS: Record<string, string> = {
   NEXT_PUBLIC_SUPABASE_URL: URL_DO_PLACEHOLDER,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: "test-placeholder-anon-key",
   SUPABASE_SERVICE_ROLE_KEY: "test-placeholder-service-role-key",
+  // O runtime falha fechado sem segredo de convite; este valor existe somente
+  // para os testes unitários que exercitam a assinatura de convites.
+  INVITE_TOKEN_SECRET: "vitest-only-invite-token-secret",
 };
 for (const [chave, valor] of Object.entries(PLACEHOLDERS)) {
   process.env[chave] ??= valor;

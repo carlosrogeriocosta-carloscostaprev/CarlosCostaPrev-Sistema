@@ -56,3 +56,21 @@ describe("invite-token", () => {
     const p = { ...base(), invited_by: "33333333-3333-4333-8333-333333333333", iat: Math.floor(Date.now()/1000) };
     expect(verifyInviteToken(signInviteToken(p))).toEqual(p);
   });
+
+  it("falha fechado quando nenhum segredo de convite está configurado", () => {
+    const inviteSecret = process.env.INVITE_TOKEN_SECRET;
+    const internalSecret = process.env.INTERNAL_SECRET;
+    delete process.env.INVITE_TOKEN_SECRET;
+    delete process.env.INTERNAL_SECRET;
+
+    try {
+      expect(() => signInviteToken(base())).toThrow(
+        "INVITE_TOKEN_SECRET ou INTERNAL_SECRET é obrigatório",
+      );
+    } finally {
+      if (inviteSecret === undefined) delete process.env.INVITE_TOKEN_SECRET;
+      else process.env.INVITE_TOKEN_SECRET = inviteSecret;
+      if (internalSecret === undefined) delete process.env.INTERNAL_SECRET;
+      else process.env.INTERNAL_SECRET = internalSecret;
+    }
+  });

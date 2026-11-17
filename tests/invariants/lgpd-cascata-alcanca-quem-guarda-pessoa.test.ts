@@ -51,6 +51,12 @@ const PADRAO_PII =
  * razão precisa dizer QUANDO sai, não só por que está.
  */
 const DIVIDA_LGPD_CONHECIDA: Record<string, string> = {
+  previdenciario_cases:
+    "Guarda do dossiê do cliente por dever do escritório (decisão do dono em 16/11/2026, camada CarlosCostaPrev). O caso previdenciário e seus documentos são o registro do atendimento e do que se pediu ao INSS ou em juízo; apagá-los na anonimização destruiria prova do serviço prestado e a defesa do escritório. Base LGPD: art. 7º VI (exercício regular de direitos em processo) e art. 16, I (obrigação legal ou regulatória) — a confirmar com o advogado responsável, que também fixa o prazo de guarda. O contato em `contacts` É anonimizado pela cascata (vira 'Cliente Anonimizado #N'); a resposta ao titular deve dizer que o dossiê do caso foi mantido e por quê. " +
+    "Não é esquecimento: é retenção deliberada, a mesma de lgpd-redact-unificado-alcanca-pelo-catalogo.test.ts. Sai desta lista quando o prazo de guarda fixado pelo advogado vencer e a política de retenção passar a apagar o conteúdo, ou se o dono mudar a decisão.",
+  previdenciario_case_documents:
+    "Documentos do caso (CNIS, laudos, PPP etc.): mesma decisão e mesma base de previdenciario_cases — guarda do dossiê por dever do escritório (16/11/2026). O arquivo mora no Storage e a linha guarda só nome, caminho e hash; quando o prazo de guarda vencer, a política de retenção deve apagar linha e arquivo juntos, e a decisão volta a ser `redigir`. " +
+    "Retenção deliberada junto com o caso. Sai desta lista no mesmo dia e pelo mesmo motivo de previdenciario_cases.",
   calendar_appointments:
     "Achado do levantamento 13 §2 (QAVivo/maestro). Guarda title e notes do compromisso. " +
     "Conserto DESPACHADO ao Arquiteto — sai desta lista no mesmo commit que acrescentar a tabela à cascata.",

@@ -1,6 +1,6 @@
 # Doutrina de Packaging e Distribuição
 
-> Lei de arquitetura para tudo que roda no disco de quem instalou o DeskcommCRM: imagens,
+> Lei de arquitetura para tudo que roda no disco de quem instalou o CarlosCostaPrev: imagens,
 > composes, tags e o kit de instalação. Complementa [`sistema-vivo.md`](./sistema-vivo.md) —
 > não é aspiração, é critério de aceite. Amarrada ao item 15 do Definition of Done
 > (`CLAUDE.md`).
@@ -112,7 +112,7 @@ OCI — no mínimo `source`, `revision`, `version`, `licenses` — e é constru�
   > **Ativado.** `imagens-ok` **é** required check da `main`. Medido em 2026-08-14:
   >
   > ```console
-  > $ gh api repos/melgarafael/DeskcommCRM/branches/main/protection \
+  > $ gh api repos/prevprocesso-maker/CarlosCostaPrev/branches/main/protection \
   >     --jq '.required_status_checks.contexts|join(", ")'
   > verify, build-and-size, invariants, e2e, imagens-ok
   > ```
@@ -491,7 +491,7 @@ parque instalado** percorre, e é o único que a suíte de CI não exercita.
 
 | Camada | Artefato | Garante |
 |---|---|---|
-| CI (mecânico) | `imagens-ok` em `publish-image.yml` | imagem quebrada **reprova o merge** — é required check da `main`. Meça antes de confiar: `gh api repos/melgarafael/DeskcommCRM/branches/main/protection --jq '.required_status_checks.contexts'` |
+| CI (mecânico) | `imagens-ok` em `publish-image.yml` | imagem quebrada **reprova o merge** — é required check da `main`. Meça antes de confiar: `gh api repos/prevprocesso-maker/CarlosCostaPrev/branches/main/protection --jq '.required_status_checks.contexts'` |
 | CI (mecânico) | `tests/unit/packaging-artefato-do-cliente.test.ts` | serviço `build:`-only, pin upstream solto, `pull_policy` trocado e versão que mente reprovam |
 | CI (mecânico) | `tests/shell/update-guard.test.sh` | atualização que não pina as quatro imagens reprova |
 | CI (mecânico) | `hostgator-setup-kit/test-validators.sh` | instalação que nasce em tag móvel reprova |

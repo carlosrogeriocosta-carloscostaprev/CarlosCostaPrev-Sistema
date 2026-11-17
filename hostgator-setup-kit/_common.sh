@@ -2254,6 +2254,7 @@ load_env() {
 # Vai pro diretório do projeto (onde está o compose) e carrega o .env.
 enter_project() {
   if [ -f "$COMPOSE" ]; then :;
+  elif [ -f "carloscostaprev/$COMPOSE" ]; then cd carloscostaprev;
   elif [ -f "deskcommcrm/$COMPOSE" ]; then cd deskcommcrm;
   else die "$(t "Não achei {1}. Rode a partir da pasta do projeto." "$COMPOSE")"; fi
   [ -f .env ] || die "$(t "Falta o .env (rode install.sh primeiro).")"
@@ -2554,7 +2555,7 @@ IMG_VOICE_AGENT="${IMG_NS}/deskcomm-voice-agent"
 # alguém porque não deu para resolver um número de versão seria trocar um
 # problema de previsibilidade por um de disponibilidade.
 ultima_versao_publicada() {
-  local url="${1:-https://github.com/melgarafael/DeskcommCRM.git}" ref
+  local url="${1:-https://github.com/prevprocesso-maker/CarlosCostaPrev.git}" ref
   command -v git >/dev/null 2>&1 || return 0
   # `grep -v -- -` descarta PRERELEASE (v1.11.0-rc1, v1.1.1-jmpo.1 — esta última
   # existe de verdade neste repo). O `--sort=-v:refname` do git põe o prerelease

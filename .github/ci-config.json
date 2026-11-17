@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "cercas": false,
+    "typecheck": true,
+    "lint": true,
+    "lint:channels": true,
+    "lint:role-rank": true,
+    "checar:colisao-de-migration": false,
+    "release:acervo-cabe": false,
+    "test:unit": true,
+    "test:shell": true,
+    "test:db": true,
+    "test:db:update": true
+  },
+  "hasPatchesDir": false,
+  "hasSupabaseMigrations": true,
+  "hasChangesDir": true
+}

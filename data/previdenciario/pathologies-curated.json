@@ -1,0 +1,6043 @@
+{
+  "schemaVersion": "prev007-pathology-knowledge-v1",
+  "sourceRepo": "sistemaprev",
+  "sourceCommit": "009b98f",
+  "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+  "recordCount": 80,
+  "disclaimer": "Conteúdo de referência clínica não revisado; não é diagnóstico, aconselhamento médico ou decisão jurídica.",
+  "records": [
+    {
+      "stableKey": "depressao_major",
+      "displayName": "Depressão Major",
+      "category": "mental",
+      "aliases": [
+        "Depressão Unipolar",
+        "Depressão Clínica",
+        "Depressão Endógena",
+        "Melancolia"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F32",
+          "F32.1",
+          "F32.2",
+          "F33"
+        ],
+        "cid11": [
+          "6A70",
+          "6A71"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b134",
+            "b152",
+            "b160"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico",
+          "Relatório Psicológico",
+          "Receituário Médico",
+          "Atestado de Internação"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtorno_bipolar",
+      "displayName": "Transtorno Bipolar",
+      "category": "mental",
+      "aliases": [
+        "Psicose Maníaco-Depressiva",
+        "Doença Maníaco-Depressiva",
+        "Ciclotimia (forma atenuada)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F31",
+          "F31.1",
+          "F31.2",
+          "F31.3",
+          "F31.4",
+          "F31.5"
+        ],
+        "cid11": [
+          "6A60",
+          "6A61"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L142",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b122",
+            "b130",
+            "b152",
+            "b164"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d710",
+            "d845",
+            "d850",
+            "d855"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico",
+          "Relatório de Internações",
+          "Receituário com Estabilizadores"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 142,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "esquizofrenia",
+      "displayName": "Esquizofrenia",
+      "category": "mental",
+      "aliases": [
+        "Psicose Esquizofrênica",
+        "Dementia Praecox (histórico)",
+        "Esquizofrenia Paranoide / Hebefrênica / Catatônica (subtipos históricos)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F20",
+          "F20.0",
+          "F20.1",
+          "F20.5"
+        ],
+        "cid11": [
+          "6A20"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L277",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b110",
+            "b117",
+            "b122",
+            "b130",
+            "b144",
+            "b152",
+            "b164"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d110",
+            "d175",
+            "d230",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e325",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico Detalhado",
+          "Relatório CAPS/RAPS",
+          "Avaliação Neuropsicológica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 277,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtorno_de_ansiedade_generalizada",
+      "displayName": "Transtorno de Ansiedade Generalizada",
+      "category": "mental",
+      "aliases": [
+        "Ansiedade Generalizada",
+        "Neurose de Ansiedade (classificação histórica)",
+        "Síndrome da Preocupação Patológica"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F41.1"
+        ],
+        "cid11": [
+          "6B00"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L413",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b134",
+            "b152",
+            "b160",
+            "b455"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico",
+          "Relatório Psicológico",
+          "Receituário Médico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 413,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtorno_de_estresse_pos_traumatico",
+      "displayName": "Transtorno de Estresse Pós-Traumático",
+      "category": "mental",
+      "aliases": [
+        "PTSD (Post-Traumatic Stress Disorder)",
+        "Neurose de Guerra (histórico)",
+        "Fadiga de Combate (histórico militar)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F43.1"
+        ],
+        "cid11": [
+          "6B40"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L547",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b134",
+            "b144",
+            "b152",
+            "b160"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e325",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico",
+          "Relatório Psicológico",
+          "Documentação do Evento Traumático"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 547,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtorno_do_espectro_autista",
+      "displayName": "Transtorno do Espectro Autista",
+      "category": "mental",
+      "aliases": [
+        "Autismo",
+        "Síndrome de Asperger (Nível 1",
+        "termo histórico)",
+        "Autismo de Alto Funcionamento",
+        "Transtorno Global do Desenvolvimento (classificação anterior)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F84",
+          "F84.0",
+          "F84.1",
+          "F84.5"
+        ],
+        "cid11": [
+          "6A02"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L684",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b117",
+            "b122",
+            "b130",
+            "b144",
+            "b152",
+            "b164",
+            "b167"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d110",
+            "d160",
+            "d175",
+            "d310",
+            "d710",
+            "d720",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e325",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Neuropsiquiátrico",
+          "Avaliação Neuropsicológica",
+          "Relatório Multidisciplinar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 684,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtornos_mentais_por_uso_de_multiplas_substancias",
+      "displayName": "Transtornos Mentais por Uso de Múltiplas Substâncias",
+      "category": "mental",
+      "aliases": [
+        "Politoxicomania",
+        "Polidependência",
+        "Transtorno por uso de múltiplas substâncias",
+        "Dependência química múltipla"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F19",
+          "F19.0",
+          "F19.1",
+          "F19.2",
+          "F19.3",
+          "F19.4",
+          "F19.5",
+          "F19.6",
+          "F19.7"
+        ],
+        "cid11": [
+          "6C6Z"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L825",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b110",
+            "b114",
+            "b117",
+            "b122",
+            "b126",
+            "b130",
+            "b134",
+            "b140",
+            "b144",
+            "b152",
+            "b160",
+            "b164"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d175",
+            "d230",
+            "d240",
+            "d350",
+            "d570",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e325",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico",
+          "Relatório de CAPS-AD",
+          "Relatório Psicológico",
+          "Exames Laboratoriais",
+          "Relatório de Internação"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 825,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hernia_de_disco",
+      "displayName": "Hérnia de Disco",
+      "category": "ortopedica",
+      "aliases": [
+        "Hérnia de Núcleo Pulposo (HNP)",
+        "Protrusão Discal",
+        "Extrusão Discal",
+        "Prolapso Discal"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M51",
+          "M51.1",
+          "M51.2"
+        ],
+        "cid11": [
+          "FA81"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1015",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730"
+          ],
+          "bodyStructures": [
+            "s760",
+            "s770"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética",
+          "Laudo Ortopédico/Neurocirúrgico",
+          "Eletroneuromiografia"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1015,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "artrose_de_joelho",
+      "displayName": "Artrose de Joelho",
+      "category": "ortopedica",
+      "aliases": [
+        "Artrose de Joelho",
+        "Osteoartrose do Joelho",
+        "Gonartrose",
+        "OA de Joelho"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M17",
+          "M17.0",
+          "M17.1"
+        ],
+        "cid11": [
+          "FA00"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1151",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Raio-X com Carga",
+          "Laudo Ortopédico",
+          "RM do Joelho"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1151,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "lombalgia_cronica",
+      "displayName": "Lombalgia Crônica",
+      "category": "ortopedica",
+      "aliases": [
+        "Dor Lombar Crônica",
+        "Lombociatalgia (com irradiação)",
+        "Low Back Pain (LBP)",
+        "Lumbago"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M54",
+          "M54.4",
+          "M54.5"
+        ],
+        "cid11": [
+          "ME84"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1288",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730"
+          ],
+          "bodyStructures": [
+            "s760"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "RM da Coluna Lombar",
+          "Laudo com Avaliação Funcional"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1288,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "lesao_do_manguito_rotador",
+      "displayName": "Lesão do Manguito Rotador",
+      "category": "ortopedica",
+      "aliases": [
+        "Síndrome do Manguito Rotador",
+        "Rotura do Supraespinal",
+        "Tendinopatia do Manguito Rotador",
+        "Rotator Cuff Tear"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M75.1",
+          "M75.0"
+        ],
+        "cid11": [
+          "FB40"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1423",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730"
+          ],
+          "bodyStructures": [
+            "s720"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d440",
+            "d445",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "RM do Ombro",
+          "Laudo Ortopédico",
+          "Ultrassom do Ombro"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1423,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fratura_com_sequela",
+      "displayName": "Fratura com Sequela",
+      "category": "ortopedica",
+      "aliases": [
+        "Sequela Traumática Ortopédica",
+        "Pseudoartrose (falha de consolidação)",
+        "Malunião (consolidação em posição incorreta)",
+        "Vicioso Calo Ósseo"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "T92",
+          "T93",
+          "T94"
+        ],
+        "cid11": [
+          "NB90"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1552",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s720",
+            "s730",
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d445",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Raio-X Atual",
+          "Laudo Ortopédico",
+          "Relatório de Fisioterapia"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1552,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "epilepsia",
+      "displayName": "Epilepsia",
+      "category": "neurologica",
+      "aliases": [
+        "Epilepsia Focal (antiga Parcial)",
+        "Epilepsia Generalizada",
+        "Epilepsia Idiopática / Criptogênica / Sintomática",
+        "Mal Epiléptico (Status Epilepticus)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G40",
+          "G40.0",
+          "G40.1",
+          "G40.2",
+          "G40.3"
+        ],
+        "cid11": [
+          "8A60",
+          "8A61",
+          "8A62"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1684",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b110",
+            "b114",
+            "b144",
+            "b164"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d470",
+            "d475",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Neurológico",
+          "EEG",
+          "Diário de Crises"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1684,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "avc_sequelas",
+      "displayName": "AVC — Sequelas",
+      "category": "neurologica",
+      "aliases": [
+        "Sequelas de Derrame Cerebral",
+        "Hemiplegia / Hemiparesia Pós-AVC",
+        "Afasia Pós-AVC",
+        "Sequelas de AVCI / AVCH"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "I69",
+          "I69.3",
+          "I69.4"
+        ],
+        "cid11": [
+          "8B20"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L1875",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b110",
+            "b167",
+            "b176",
+            "b310",
+            "b710",
+            "b730",
+            "b735"
+          ],
+          "bodyStructures": [
+            "s110",
+            "s720",
+            "s730",
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d330",
+            "d410",
+            "d430",
+            "d450",
+            "d510",
+            "d530",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e120",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "TC ou RM de Crânio",
+          "Laudo Neurológico",
+          "Relatório de Reabilitação"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 1875,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "esclerose_multipla",
+      "displayName": "Esclerose Múltipla",
+      "category": "neurologica",
+      "aliases": [
+        "Esclerose em Placas",
+        "Multiple Sclerosis (MS)",
+        "Doença Desmielinizante do SNC"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G35"
+        ],
+        "cid11": [
+          "8A40"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2011",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b110",
+            "b210",
+            "b235",
+            "b620",
+            "b710",
+            "b730",
+            "b735",
+            "b760"
+          ],
+          "bodyStructures": [
+            "s110",
+            "s120"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d510",
+            "d530",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e115",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "RM de Crânio e Medula",
+          "Laudo Neurológico com EDSS",
+          "Potenciais Evocados"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2011,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_de_parkinson",
+      "displayName": "Doença de Parkinson",
+      "category": "neurologica",
+      "aliases": [
+        "Paralisia Agitante (histórico — James Parkinson",
+        "1817)",
+        "Parkinsonismo Idiopático",
+        "Síndrome Parkinsoniana"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G20"
+        ],
+        "cid11": [
+          "8A00.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2147",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b147",
+            "b176",
+            "b710",
+            "b730",
+            "b735",
+            "b755",
+            "b760"
+          ],
+          "bodyStructures": [
+            "s110"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d440",
+            "d450",
+            "d510",
+            "d530",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e115",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Neurológico",
+          "DaTSCAN ou SPECT",
+          "Avaliação de Atividades Diárias"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2147,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "paralisia_cerebral",
+      "displayName": "Paralisia Cerebral",
+      "category": "neurologica",
+      "aliases": [
+        "PC Espástica",
+        "PC Discinética / Distônica",
+        "PC Atáxica",
+        "Diplegia Espástica (Little\\'s Disease — histórico)",
+        "Infant Cerebral Palsy (CP)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G80",
+          "G80.0",
+          "G80.1",
+          "G80.2",
+          "G80.8"
+        ],
+        "cid11": [
+          "8D20"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2284",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b117",
+            "b147",
+            "b176",
+            "b310",
+            "b710",
+            "b730",
+            "b735",
+            "b760"
+          ],
+          "bodyStructures": [
+            "s110",
+            "s720",
+            "s730",
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d330",
+            "d410",
+            "d430",
+            "d440",
+            "d450",
+            "d510",
+            "d530"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e120",
+            "e125",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Neurológico",
+          "RM de Crânio",
+          "Avaliação Multidisciplinar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2284,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "insuficiencia_cardiaca",
+      "displayName": "Insuficiência Cardíaca",
+      "category": "cardiologica",
+      "aliases": [
+        "Insuficiência Cardíaca Congestiva",
+        "Cardiomiopatia Dilatada (quando causa)",
+        "Disfunção Sistólica do VE",
+        "IC com FE Reduzida (ICFEr)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "I50",
+          "I50.0",
+          "I50.1",
+          "I50.9"
+        ],
+        "cid11": [
+          "BD10"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2424",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b410",
+            "b415",
+            "b420",
+            "b440",
+            "b455"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d430",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ecocardiograma",
+          "Laudo Cardiológico",
+          "Teste Ergométrico ou Ergoespirométrico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2424,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "cardiopatia_isquemica",
+      "displayName": "Cardiopatia Isquêmica",
+      "category": "cardiologica",
+      "aliases": [
+        "DAC",
+        "Coronariopatia",
+        "Angina do Peito",
+        "Doença Coronariana",
+        "Insuficiência Coronariana"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "I25",
+          "I25.1",
+          "I25.5"
+        ],
+        "cid11": [
+          "BA80"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2560",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b410",
+            "b415",
+            "b455"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d430",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Cateterismo Cardíaco",
+          "Eco com Estresse",
+          "Laudo Cardiológico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2560,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "valvopatia_cardiaca",
+      "displayName": "Valvopatia Cardíaca",
+      "category": "cardiologica",
+      "aliases": [
+        "Doença Valvar",
+        "Estenose / Insuficiência Valvar",
+        "Valvulopatia",
+        "Cardiopatia Reumática (quando de origem reumática)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "I05",
+          "I06",
+          "I08",
+          "I34",
+          "I35"
+        ],
+        "cid11": [
+          "BB60",
+          "BB61",
+          "BB62"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2695",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b410",
+            "b415",
+            "b440",
+            "b455"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d430",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ecocardiograma",
+          "Laudo Cardiológico",
+          "Teste de Esforço"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2695,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "dpoc_doenca_pulmonar_obstrutiva_cronica",
+      "displayName": "DPOC — Doença Pulmonar Obstrutiva Crônica",
+      "category": "respiratoria",
+      "aliases": [
+        "DPOC",
+        "Enfisema Pulmonar",
+        "Bronquite Crônica Obstrutiva",
+        "COPD (Chronic Obstructive Pulmonary Disease)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "J44",
+          "J44.0",
+          "J44.1"
+        ],
+        "cid11": [
+          "CA22"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2834",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b440",
+            "b445",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s430"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d430",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e225",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Espirometria",
+          "Laudo Pneumológico",
+          "TC de Tórax",
+          "Gasometria Arterial"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2834,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "asma_grave",
+      "displayName": "Asma Grave",
+      "category": "respiratoria",
+      "aliases": [
+        "Asma Brônquica",
+        "Asma Alérgica (extrínseca)",
+        "Asma Intrínseca (não alérgica)",
+        "Status Asthmaticus (crise grave prolongada)",
+        "Broncoespasmo"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "J45",
+          "J45.1",
+          "J46"
+        ],
+        "cid11": [
+          "CA23"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L2970",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b440",
+            "b445",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s430"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e225",
+            "e260",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Espirometria Seriada",
+          "Laudo Pneumológico",
+          "Relatório de Internações"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 2970,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fibrose_pulmonar",
+      "displayName": "Fibrose Pulmonar",
+      "category": "respiratoria",
+      "aliases": [
+        "FPI",
+        "Alveolite Fibrosante Criptogênica (histórico)",
+        "Fibrose Pulmonar Idiopática",
+        "IPF (Idiopathic Pulmonary Fibrosis)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "J84",
+          "J84.1"
+        ],
+        "cid11": [
+          "CB03"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3107",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b440",
+            "b445",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s430"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e225",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "TC de Tórax de Alta Resolução",
+          "Prova de Função Pulmonar Completa",
+          "Teste de Caminhada de 6 Minutos"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3107,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "artrite_reumatoide",
+      "displayName": "Artrite Reumatoide",
+      "category": "reumatologica",
+      "aliases": [
+        "Artrite Reumatoide Soropositiva (FR ou anti-CCP positivo)",
+        "Artrite Reumatoide Soronegativa",
+        "Poliartrite Reumatoide",
+        "Rheumatoid Arthritis (RA)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M05",
+          "M06",
+          "M06.0"
+        ],
+        "cid11": [
+          "FA20"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3249",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s720",
+            "s730"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d440",
+            "d445",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Reumatológico",
+          "Exames Laboratoriais",
+          "Raio-X de Mãos e Pés"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3249,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "lupus_eritematoso_sistemico",
+      "displayName": "Lúpus Eritematoso Sistêmico",
+      "category": "reumatologica",
+      "aliases": [
+        "LES",
+        "Lúpus Sistêmico",
+        "SLE (Systemic Lupus Erythematosus)",
+        "Lúpus Eritematoso Disseminado"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M32",
+          "M32.1",
+          "M32.8"
+        ],
+        "cid11": [
+          "4A40"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3385",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b430",
+            "b435",
+            "b455",
+            "b610",
+            "b710"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e225",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Reumatológico",
+          "Exames Laboratoriais",
+          "Biópsia Renal"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3385,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "espondilite_anquilosante",
+      "displayName": "Espondilite Anquilosante",
+      "category": "reumatologica",
+      "aliases": [
+        "EA",
+        "Doença de Bechterew",
+        "Espondiloartrite Axial (nr-axSpA — antes das alterações radiológicas)",
+        "Coluna em Bambu (aspecto radiológico avançado)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M45"
+        ],
+        "cid11": [
+          "FA92"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3520",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b730",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s760",
+            "s770"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d430",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "RM de Sacroilíacas",
+          "Laudo Reumatológico",
+          "HLA-B27"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3520,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "neoplasia_maligna_tumores_solidos",
+      "displayName": "Neoplasia Maligna — Tumores Sólidos",
+      "category": "oncologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "C80",
+          "C34",
+          "C50",
+          "C61",
+          "C18"
+        ],
+        "cid11": [
+          "2D4Z"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3660",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b430",
+            "b435",
+            "b455",
+            "b530",
+            "b640"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e355",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Anatomopatológico",
+          "Laudo Oncológico",
+          "Exames de Estadiamento"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3660,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "leucemia_e_linfoma",
+      "displayName": "Leucemia e Linfoma",
+      "category": "oncologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "C95",
+          "C91",
+          "C92",
+          "C81",
+          "C82",
+          "C83",
+          "C85"
+        ],
+        "cid11": [
+          "2B33",
+          "2B30",
+          "2B80",
+          "2B81"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3799",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b430",
+            "b435",
+            "b455",
+            "b530",
+            "b640"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e355",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Mielograma/Biópsia",
+          "Laudo Hematológico/Oncológico",
+          "Hemograma Seriado"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3799,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "cancer_de_cabeca_e_pescoco",
+      "displayName": "Câncer de Cabeça e Pescoço",
+      "category": "oncologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "C00",
+          "C01",
+          "C02",
+          "C10",
+          "C13",
+          "C32"
+        ],
+        "cid11": [
+          "2B60",
+          "2B68",
+          "2B6B"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L3930",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b310",
+            "b320",
+            "b510",
+            "b530"
+          ],
+          "bodyStructures": [
+            "s320",
+            "s330",
+            "s340"
+          ],
+          "activitiesParticipation": [
+            "d310",
+            "d330",
+            "d550",
+            "d560",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e355",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Anatomopatológico",
+          "Laudo Oncológico/Cirúrgico",
+          "Avaliação Fonoaudiológica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 3930,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "diabetes_mellitus_com_complicacoes",
+      "displayName": "Diabetes Mellitus com Complicações",
+      "category": "endocrina",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "E10",
+          "E11",
+          "E10.4",
+          "E10.5",
+          "E11.4",
+          "E11.5"
+        ],
+        "cid11": [
+          "5A10",
+          "5A11"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4066",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b210",
+            "b280",
+            "b540",
+            "b620",
+            "b710"
+          ],
+          "bodyStructures": [
+            "s220",
+            "s580",
+            "s610"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d450",
+            "d510",
+            "d570",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Endocrinológico",
+          "Exames Laboratoriais Seriados",
+          "Laudos de Complicações"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4066,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hipotireoidismo_grave",
+      "displayName": "Hipotireoidismo Grave",
+      "category": "endocrina",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "E03",
+          "E03.9"
+        ],
+        "cid11": [
+          "5A00.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4205",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b134",
+            "b280",
+            "b455",
+            "b530"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Endocrinológico",
+          "Exames Laboratoriais Seriados",
+          "Avaliação Cardiológica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4205,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_de_addison",
+      "displayName": "Doença de Addison",
+      "category": "endocrina",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "E27.1",
+          "E27.2"
+        ],
+        "cid11": [
+          "5A74.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4327",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b455",
+            "b540",
+            "b545"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Endocrinológico",
+          "Exames Laboratoriais",
+          "Relatório de Crises Adrenais"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4327,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "cegueira_e_baixa_visao",
+      "displayName": "Cegueira e Baixa Visão",
+      "category": "visual",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "H54",
+          "H54.0",
+          "H54.1",
+          "H54.2"
+        ],
+        "cid11": [
+          "9D90"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4461",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b210",
+            "b215",
+            "b220"
+          ],
+          "bodyStructures": [
+            "s220"
+          ],
+          "activitiesParticipation": [
+            "d110",
+            "d155",
+            "d450",
+            "d460",
+            "d470",
+            "d475",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e120",
+            "e125",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Oftalmológico",
+          "Campimetria",
+          "OCT"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4461,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "glaucoma_avancado",
+      "displayName": "Glaucoma Avançado",
+      "category": "visual",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "H40",
+          "H40.1",
+          "H40.2",
+          "H42"
+        ],
+        "cid11": [
+          "9C61"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4584",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b210",
+            "b215",
+            "b220"
+          ],
+          "bodyStructures": [
+            "s220"
+          ],
+          "activitiesParticipation": [
+            "d110",
+            "d450",
+            "d460",
+            "d470",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e125",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Oftalmológico",
+          "Campimetria Computadorizada",
+          "OCT de Nervo Óptico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4584,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "surdez_e_deficiencia_auditiva",
+      "displayName": "Surdez e Deficiência Auditiva",
+      "category": "auditiva",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "H90",
+          "H91",
+          "H90.3",
+          "H90.5"
+        ],
+        "cid11": [
+          "AB50",
+          "AB51"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4719",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b230",
+            "b235",
+            "b240"
+          ],
+          "bodyStructures": [
+            "s240",
+            "s250",
+            "s260"
+          ],
+          "activitiesParticipation": [
+            "d115",
+            "d310",
+            "d330",
+            "d350",
+            "d710",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e125",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Audiometria Tonal e Vocal",
+          "Laudo Otorrinolaringológico",
+          "BERA/PEATE"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4719,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "zumbido_incapacitante_tinnitus",
+      "displayName": "Zumbido Incapacitante (Tinnitus)",
+      "category": "auditiva",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "H93.1"
+        ],
+        "cid11": [
+          "AB5A"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4844",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b230",
+            "b134",
+            "b152",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d160",
+            "d230",
+            "d710",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e250",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Otorrinolaringológico",
+          "Audiometria Completa",
+          "Avaliação Psiquiátrica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4844,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "insuficiencia_renal_cronica",
+      "displayName": "Insuficiência Renal Crônica",
+      "category": "renal",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "N18",
+          "N18.3",
+          "N18.4",
+          "N18.5"
+        ],
+        "cid11": [
+          "GB61"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L4979",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b610",
+            "b620",
+            "b455",
+            "b530"
+          ],
+          "bodyStructures": [
+            "s610"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d430",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Nefrologista",
+          "Exames Laboratoriais Seriados",
+          "Relatório de Diálise"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 4979,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transplante_renal",
+      "displayName": "Transplante Renal",
+      "category": "renal",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "Z94.0",
+          "T86.1"
+        ],
+        "cid11": [
+          "QB21"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5111",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b610",
+            "b620",
+            "b435",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s610"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Relatório de Transplante",
+          "Exames de Função Renal",
+          "Protocolo de Imunossupressão"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5111,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "cirrose_hepatica",
+      "displayName": "Cirrose Hepática",
+      "category": "hepatica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "K74",
+          "K74.6",
+          "K70.3"
+        ],
+        "cid11": [
+          "DB93"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5247",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b515",
+            "b525",
+            "b530",
+            "b540",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s560"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Hepatológico/Gastro",
+          "Exames Laboratoriais",
+          "Ultrassom/TC de Abdome",
+          "Endoscopia Digestiva Alta"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5247,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hepatite_viral_cronica",
+      "displayName": "Hepatite Viral Crônica",
+      "category": "hepatica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "B18",
+          "B18.1",
+          "B18.2"
+        ],
+        "cid11": [
+          "1E51.0",
+          "1E51.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5387",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b455",
+            "b515",
+            "b525",
+            "b530"
+          ],
+          "bodyStructures": [
+            "s560"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Hepatológico",
+          "Elastografia Hepática",
+          "Exames Laboratoriais"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5387,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "anemia_falciforme",
+      "displayName": "Anemia Falciforme",
+      "category": "hematologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "D57",
+          "D57.0",
+          "D57.1"
+        ],
+        "cid11": [
+          "3A51"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5523",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b430",
+            "b435",
+            "b455"
+          ],
+          "bodyStructures": [
+            "s410"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e225",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Hematológico",
+          "Eletroforese de Hemoglobina",
+          "Hemograma Seriado"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5523,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hemofilia",
+      "displayName": "Hemofilia",
+      "category": "hematologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "D66",
+          "D67"
+        ],
+        "cid11": [
+          "3B10",
+          "3B11"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5655",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b430",
+            "b710",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s410",
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d920"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Hematológico",
+          "Dosagem de Fator",
+          "Avaliação Ortopédica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5655,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "psoriase_grave",
+      "displayName": "Psoríase Grave",
+      "category": "dermatologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "L40",
+          "L40.0",
+          "L40.5"
+        ],
+        "cid11": [
+          "EA90"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5791",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b810",
+            "b820",
+            "b830"
+          ],
+          "bodyStructures": [
+            "s810"
+          ],
+          "activitiesParticipation": [
+            "d510",
+            "d540",
+            "d710",
+            "d720",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Dermatológico",
+          "Fotos Clínicas",
+          "Avaliação Reumatológica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5791,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "dermatite_atopica_grave",
+      "displayName": "Dermatite Atópica Grave",
+      "category": "dermatologica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "L20",
+          "L20.8",
+          "L20.9"
+        ],
+        "cid11": [
+          "EA80"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L5923",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b810",
+            "b820",
+            "b840"
+          ],
+          "bodyStructures": [
+            "s810"
+          ],
+          "activitiesParticipation": [
+            "d510",
+            "d540",
+            "d640",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e225",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Dermatológico",
+          "Fotos Clínicas",
+          "Avaliação Alérgica"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 5923,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "sindrome_de_down",
+      "displayName": "Síndrome de Down",
+      "category": "genetica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "Q90",
+          "Q90.0",
+          "Q90.9"
+        ],
+        "cid11": [
+          "LD40"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6053",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b117",
+            "b122",
+            "b144",
+            "b164",
+            "b167"
+          ],
+          "bodyStructures": [
+            "s110"
+          ],
+          "activitiesParticipation": [
+            "d110",
+            "d155",
+            "d175",
+            "d310",
+            "d710",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e325",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Cariótipo",
+          "Avaliação Neuropsicológica",
+          "Relatório Multidisciplinar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6053,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fibrose_cistica",
+      "displayName": "Fibrose Cística",
+      "category": "genetica",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "E84",
+          "E84.0",
+          "E84.1"
+        ],
+        "cid11": [
+          "CA25"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6184",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b440",
+            "b445",
+            "b515",
+            "b525",
+            "b530"
+          ],
+          "bodyStructures": [
+            "s430",
+            "s560"
+          ],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e110",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Teste do Suor",
+          "Teste Genético",
+          "Prova de Função Pulmonar",
+          "Laudo Multidisciplinar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6184,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hiv_aids_com_complicacoes",
+      "displayName": "HIV/AIDS com Complicações",
+      "category": "outra",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "B20",
+          "B21",
+          "B22",
+          "B23",
+          "B24"
+        ],
+        "cid11": [
+          "1C62"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6321",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b430",
+            "b435",
+            "b455",
+            "b530"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Infectológico",
+          "Exames Laboratoriais Seriados",
+          "Relatórios de Doenças Oportunistas"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6321,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "amputacao_de_membro",
+      "displayName": "Amputação de Membro",
+      "category": "outra",
+      "aliases": [],
+      "medicalClassification": {
+        "cid10": [
+          "Z89",
+          "Z89.4",
+          "Z89.5",
+          "Z89.6",
+          "Z89.7"
+        ],
+        "cid11": [
+          "QB80"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6451",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710",
+            "b770"
+          ],
+          "bodyStructures": [
+            "s720",
+            "s730",
+            "s750"
+          ],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d440",
+            "d445",
+            "d450",
+            "d455",
+            "d845"
+          ],
+          "environmentalFactors": [
+            "e115",
+            "e120",
+            "e125",
+            "e310"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Cirúrgico",
+          "Avaliação Funcional",
+          "Laudo de Protetização"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6451,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "tuberculose_ativa",
+      "displayName": "Tuberculose Ativa",
+      "category": "infectologia",
+      "aliases": [
+        "TB",
+        "Tísica",
+        "Peste branca",
+        "Doença de Koch"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "A15",
+          "A15.0",
+          "A15.3",
+          "A16",
+          "A19"
+        ],
+        "cid11": [
+          "1B10",
+          "1B11",
+          "1B12"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6579",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b440",
+            "b455",
+            "b530",
+            "b730"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Baciloscopia ou Cultura de Escarro",
+          "Radiografia de Tórax",
+          "Laudo Pneumológico",
+          "Notificação Compulsória (SINAN)"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6579,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "hanseniase",
+      "displayName": "Hanseníase",
+      "category": "infectologia",
+      "aliases": [
+        "Lepra",
+        "Mal de Hansen",
+        "Mal de Lázaro"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "A30",
+          "A30.0",
+          "A30.1",
+          "A30.2",
+          "A30.3",
+          "A30.5"
+        ],
+        "cid11": [
+          "1B20"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6712",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b265",
+            "b270",
+            "b710",
+            "b730",
+            "b810"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580",
+            "e590"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Baciloscopia de Linfa",
+          "Laudo Dermatológico/Neurológico",
+          "Avaliação de Incapacidade Física",
+          "Eletroneuromiografia"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6712,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "contaminacao_por_radiacao",
+      "displayName": "Contaminação por Radiação",
+      "category": "outra",
+      "aliases": [
+        "Doença da radiação",
+        "Mal da radiação"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "T66",
+          "W88",
+          "W90"
+        ],
+        "cid11": [
+          "NE81"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6844",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b430",
+            "b435",
+            "b530",
+            "b810"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e160",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo de Dosimetria",
+          "Hemograma Seriado",
+          "Laudo Hematológico/Oncológico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6844,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_de_paget_ossea",
+      "displayName": "Doença de Paget Óssea",
+      "category": "ortopedica",
+      "aliases": [
+        "Osteíte deformante"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M88",
+          "M88.0",
+          "M88.8",
+          "M88.9"
+        ],
+        "cid11": [
+          "FB83.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L6951",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b770",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Cintilografia Óssea",
+          "Radiografia das áreas afetadas",
+          "Fosfatase Alcalina Sérica",
+          "Laudo Ortopédico/Reumatológico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 6951,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "abdome_agudo_cirurgico",
+      "displayName": "Abdome Agudo Cirúrgico",
+      "category": "outra",
+      "aliases": [
+        "Emergência abdominal cirúrgica",
+        "Ventre agudo"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "K35",
+          "K35.8",
+          "K56",
+          "K80.0",
+          "K25.1",
+          "R10.0"
+        ],
+        "cid11": [
+          "DB10",
+          "DB30",
+          "DC11"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7065",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b515",
+            "b525",
+            "b530",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d430",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Relatório Cirúrgico",
+          "Laudo de Exame de Imagem",
+          "Relatório de Alta Hospitalar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7065,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "escoliose_grave",
+      "displayName": "Escoliose Grave",
+      "category": "ortopedica",
+      "aliases": [
+        "Curvatura lateral da coluna",
+        "Desvio lateral"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M41",
+          "M41.0",
+          "M41.1",
+          "M41.2",
+          "M41.4"
+        ],
+        "cid11": [
+          "FA70"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7176",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b440",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d430",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia Panorâmica de Coluna",
+          "Laudo Ortopédico",
+          "Prova de Função Pulmonar"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7176,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "estenose_espinhal",
+      "displayName": "Estenose Espinhal",
+      "category": "ortopedica",
+      "aliases": [
+        "Canal estreito",
+        "Estenose lombar/cervical"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M48.0",
+          "M48.00",
+          "M48.06",
+          "M48.07"
+        ],
+        "cid11": [
+          "FA81.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7287",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b620"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética de Coluna",
+          "Eletroneuromiografia",
+          "Laudo Ortopédico/Neurocirúrgico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7287,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "espondilolistese",
+      "displayName": "Espondilolistese",
+      "category": "ortopedica",
+      "aliases": [
+        "Escorregamento vertebral",
+        "Listese"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M43.1",
+          "M43.10",
+          "M43.16",
+          "M43.17"
+        ],
+        "cid11": [
+          "FA82.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7394",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b735"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d430",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia com Incidências Dinâmicas",
+          "Ressonância Magnética",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7394,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_degenerativa_do_disco",
+      "displayName": "Doença Degenerativa do Disco",
+      "category": "ortopedica",
+      "aliases": [
+        "Discopatia",
+        "Degeneração discal",
+        "Disco negro"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M51.3",
+          "M51.1",
+          "M51.8",
+          "M51.9"
+        ],
+        "cid11": [
+          "FA80.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7498",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b735"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d430",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética de Coluna",
+          "Laudo Ortopédico/Neurocirúrgico",
+          "Relatório de Fisioterapia"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7498,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fraturas_vertebrais_com_sequelas",
+      "displayName": "Fraturas Vertebrais com Sequelas",
+      "category": "ortopedica",
+      "aliases": [
+        "Fratura de coluna com sequela"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "S22",
+          "S22.0",
+          "S22.1",
+          "S32",
+          "S32.0",
+          "S32.1",
+          "T91.1"
+        ],
+        "cid11": [
+          "NA10",
+          "NA11"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7606",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b620",
+            "b735"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d430",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Tomografia da Coluna",
+          "Ressonância Magnética",
+          "Laudo Ortopédico/Neurocirúrgico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7606,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "espondilose_cervical_e_lombar",
+      "displayName": "Espondilose Cervical e Lombar",
+      "category": "ortopedica",
+      "aliases": [
+        "Artrose da coluna",
+        "Bico de papagaio"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M47",
+          "M47.1",
+          "M47.2",
+          "M47.8"
+        ],
+        "cid11": [
+          "FA92"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7713",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b735"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia de Coluna",
+          "Ressonância Magnética",
+          "Laudo Ortopédico/Neurocirúrgico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7713,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "tumores_da_coluna_vertebral",
+      "displayName": "Tumores da Coluna Vertebral",
+      "category": "ortopedica",
+      "aliases": [
+        "Tumor na coluna",
+        "Câncer de coluna"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "C41.2",
+          "C79.5",
+          "D16.6",
+          "D48.0"
+        ],
+        "cid11": [
+          "2B54",
+          "2D00"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7822",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b620",
+            "b735"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética de Coluna",
+          "Biópsia / Anatomopatológico",
+          "Laudo Oncológico/Neurocirúrgico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7822,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_de_scheuermann",
+      "displayName": "Doença de Scheuermann",
+      "category": "ortopedica",
+      "aliases": [
+        "Dorso curvo de Scheuermann",
+        "Cifose juvenil",
+        "Epifisite vertebral"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M42",
+          "M42.0",
+          "M42.1"
+        ],
+        "cid11": [
+          "FA71"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L7930",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b440"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia de Coluna Torácica (Perfil)",
+          "Laudo Ortopédico",
+          "Ressonância Magnética"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 7930,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "sindrome_facetaria",
+      "displayName": "Síndrome Facetária",
+      "category": "ortopedica",
+      "aliases": [
+        "Artropatia facetária",
+        "Artrose facetária",
+        "Dor zigapofisária"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M47.8",
+          "M53.3",
+          "M54.5"
+        ],
+        "cid11": [
+          "FA92.Y"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8029",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância ou TC de Coluna",
+          "Bloqueio Facetário Diagnóstico",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8029,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "cifose_e_lordose_patologica",
+      "displayName": "Cifose e Lordose Patológica",
+      "category": "ortopedica",
+      "aliases": [
+        "Hipercifose",
+        "Hiperlordose",
+        "Dorso curvo",
+        "Retificação da lordose"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M40",
+          "M40.0",
+          "M40.1",
+          "M40.2",
+          "M40.4",
+          "M40.5"
+        ],
+        "cid11": [
+          "FA70.1",
+          "FA70.2"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8134",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b440"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia de Coluna (Perfil em Pé)",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8134,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "sindrome_do_tunel_do_carpo",
+      "displayName": "Síndrome do Túnel do Carpo",
+      "category": "ortopedica",
+      "aliases": [
+        "Síndrome do canal carpiano",
+        "Neuropatia do mediano no punho"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G56.0"
+        ],
+        "cid11": [
+          "8C10.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8226",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b265",
+            "b730",
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Eletroneuromiografia (ENMG)",
+          "Laudo Ortopédico / Neurológico",
+          "Ultrassonografia do Punho"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8226,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "tendinite_de_mao_e_punho",
+      "displayName": "Tendinite de Mão e Punho",
+      "category": "ortopedica",
+      "aliases": [
+        "Inflamação do tendão",
+        "Tendinopatia"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M65.8",
+          "M65.3",
+          "M65.4",
+          "M77.0"
+        ],
+        "cid11": [
+          "FB40.3"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8335",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ultrassonografia de Mão/Punho",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8335,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "doenca_de_dupuytren",
+      "displayName": "Doença de Dupuytren",
+      "category": "ortopedica",
+      "aliases": [
+        "Contratura de Dupuytren",
+        "Moléstia de Dupuytren"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M72.0"
+        ],
+        "cid11": [
+          "FB56.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8433",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b710"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Ortopédico / Cirurgião de Mão",
+          "Fotografias das Mãos"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8433,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "dedo_em_gatilho",
+      "displayName": "Dedo em Gatilho",
+      "category": "ortopedica",
+      "aliases": [
+        "Trigger finger",
+        "Dedo em mola"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M65.3"
+        ],
+        "cid11": [
+          "FB40.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8525",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Ortopédico / Cirurgião de Mão",
+          "Ultrassonografia de Mão"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8525,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "tenossinovite_de_de_quervain",
+      "displayName": "Tenossinovite de De Quervain",
+      "category": "ortopedica",
+      "aliases": [
+        "Doença de De Quervain",
+        "Tendinite do polegar"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M65.4"
+        ],
+        "cid11": [
+          "FB40.2"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8614",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Ortopédico",
+          "Ultrassonografia do Punho"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8614,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "bursite_do_ombro",
+      "displayName": "Bursite do Ombro",
+      "category": "ortopedica",
+      "aliases": [
+        "Bursite do ombro",
+        "Impingement subacromial",
+        "Ombro doloroso"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M75.5",
+          "M75.1"
+        ],
+        "cid11": [
+          "FB50.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8717",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d430",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ultrassonografia do Ombro",
+          "Ressonância Magnética do Ombro",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8717,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "capsulite_adesiva_ombro_congelado",
+      "displayName": "Capsulite Adesiva (Ombro Congelado)",
+      "category": "ortopedica",
+      "aliases": [
+        "Ombro congelado",
+        "Frozen shoulder",
+        "Periartrite escápulo-umeral"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M75.0"
+        ],
+        "cid11": [
+          "FB52.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8826",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d430",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética do Ombro",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8826,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "epicondilite_cotovelo_de_tenista_golfista",
+      "displayName": "Epicondilite (Cotovelo de Tenista / Golfista)",
+      "category": "ortopedica",
+      "aliases": [
+        "Cotovelo de tenista (lateral)",
+        "Cotovelo de golfista (medial)",
+        "Tendinopatia dos epicôndilos"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M77.0",
+          "M77.1"
+        ],
+        "cid11": [
+          "FB41.0",
+          "FB41.1"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L8931",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d440",
+            "d445",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ultrassonografia do Cotovelo",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 8931,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "artrose_do_quadril_coxartrose",
+      "displayName": "Artrose do Quadril (Coxartrose)",
+      "category": "ortopedica",
+      "aliases": [
+        "Osteoartrose do quadril",
+        "Artrose coxofemoral",
+        "Desgaste do quadril"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M16",
+          "M16.0",
+          "M16.1",
+          "M16.9"
+        ],
+        "cid11": [
+          "FA01"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9028",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b770"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580",
+            "e120"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Radiografia de Bacia AP e Quadris",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9028,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "bursite_trocanterica",
+      "displayName": "Bursite Trocantérica",
+      "category": "ortopedica",
+      "aliases": [
+        "Bursite do quadril",
+        "Trocanterite"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M70.6"
+        ],
+        "cid11": [
+          "FB50.4"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9128",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ultrassonografia do Quadril",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9128,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "osteonecrose_da_cabeca_femoral",
+      "displayName": "Osteonecrose da Cabeça Femoral",
+      "category": "ortopedica",
+      "aliases": [
+        "Necrose avascular",
+        "Necrose asséptica",
+        "Infarto ósseo do quadril"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M87.0",
+          "M87.1",
+          "M87.3",
+          "M87.9"
+        ],
+        "cid11": [
+          "FB82"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9224",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b770"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580",
+            "e120"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética dos Quadris",
+          "Radiografia de Bacia",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9224,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "lesoes_de_menisco_e_ligamentos_do_joelho",
+      "displayName": "Lesões de Menisco e Ligamentos do Joelho",
+      "category": "ortopedica",
+      "aliases": [
+        "Ruptura de menisco",
+        "Ruptura de ligamento cruzado",
+        "Entorse grave do joelho"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M23.2",
+          "M23.3",
+          "M23.5",
+          "S83.1",
+          "S83.5"
+        ],
+        "cid11": [
+          "FB70",
+          "NA6C"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9324",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b730",
+            "b280",
+            "b770"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética do Joelho",
+          "Laudo Ortopédico",
+          "Relatório Artroscópico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9324,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "condromalacia_patelar",
+      "displayName": "Condromalácia Patelar",
+      "category": "ortopedica",
+      "aliases": [
+        "Joelho de corredor",
+        "Síndrome femoropatelar",
+        "Dor anterior do joelho"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M22.4"
+        ],
+        "cid11": [
+          "FB73.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9420",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b710",
+            "b280"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d455",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ressonância Magnética do Joelho",
+          "Laudo Ortopédico"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9420,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fascite_plantar",
+      "displayName": "Fascite Plantar",
+      "category": "ortopedica",
+      "aliases": [
+        "Esporão de calcâneo (popular",
+        "mas impreciso)",
+        "Dor no calcanhar",
+        "Talalgia plantar"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M72.2"
+        ],
+        "cid11": [
+          "FB57.4"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9512",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b710"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Ultrassonografia dos Pés",
+          "Laudo Ortopédico",
+          "Radiografia dos Pés"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9512,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "fibromialgia",
+      "displayName": "Fibromialgia",
+      "category": "reumatologica",
+      "aliases": [
+        "Fibromiosite (obsoleto)",
+        "Síndrome de dor crônica generalizada"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "M79.7"
+        ],
+        "cid11": [
+          "MG30.0"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9611",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b280",
+            "b134",
+            "b130",
+            "b730"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d410",
+            "d450",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Reumatológico",
+          "Exames Laboratoriais Normais",
+          "Laudos de Saúde Mental"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9611,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "transtorno_mental_grave_com_incapacidade",
+      "displayName": "Transtorno Mental Grave com Incapacidade",
+      "category": "mental",
+      "aliases": [
+        "Doença mental grave",
+        "Psicose",
+        "Alienação mental (termo legal/previdenciário)"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "F20",
+          "F25",
+          "F31",
+          "F32.2",
+          "F32.3",
+          "F33.2",
+          "F33.3"
+        ],
+        "cid11": [
+          "6A20",
+          "6A21",
+          "6A60",
+          "6A70",
+          "6A71"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9729",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b130",
+            "b134",
+            "b140",
+            "b152",
+            "b164"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d230",
+            "d710",
+            "d720",
+            "d845",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e310",
+            "e580",
+            "e590"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Psiquiátrico Detalhado",
+          "Relatório de Internações",
+          "Receituário Controlado"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9729,
+        "importedAt": null
+      }
+    },
+    {
+      "stableKey": "paralisia_irreversivel_e_incapacitante",
+      "displayName": "Paralisia Irreversível e Incapacitante",
+      "category": "neurologica",
+      "aliases": [
+        "Plegia",
+        "Paralisia motora",
+        "Déficit motor permanente"
+      ],
+      "medicalClassification": {
+        "cid10": [
+          "G80",
+          "G81",
+          "G82",
+          "G83"
+        ],
+        "cid11": [
+          "8D20",
+          "8D21",
+          "8D22"
+        ],
+        "sourceKind": "legacy_import",
+        "sourceRef": "sistemaprev@009b98f:backend/src/modules/medical-case/seed/pathologies.seed.ts#L9847",
+        "sourceVersion": "009b98f",
+        "reviewStatus": "needs_review"
+      },
+      "functionalFramework": {
+        "cif": {
+          "bodyFunctions": [
+            "b730",
+            "b735",
+            "b710",
+            "b620",
+            "b640"
+          ],
+          "bodyStructures": [],
+          "activitiesParticipation": [
+            "d410",
+            "d415",
+            "d450",
+            "d455",
+            "d520",
+            "d850"
+          ],
+          "environmentalFactors": [
+            "e120",
+            "e310",
+            "e580"
+          ]
+        },
+        "ifbra": {
+          "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+          "domains": [],
+          "activities": [],
+          "sourceRef": "sistemaprev@009b98f:frontend/src/lib/ifbra-items.ts",
+          "reviewStatus": "needs_review"
+        }
+      },
+      "clinicalContent": {
+        "educationalSummary": null,
+        "documentHints": [
+          "Laudo Neurológico",
+          "Ressonância Magnética",
+          "Eletroneuromiografia"
+        ],
+        "hasMedicationContent": true,
+        "hasPrognosisContent": true,
+        "hasDiagnosticContent": true,
+        "hasRedFlagContent": true,
+        "reviewStatus": "needs_review"
+      },
+      "benefitHypotheses": [],
+      "serviceLinks": [],
+      "provenance": {
+        "sourceRepo": "sistemaprev",
+        "sourcePath": "backend/src/modules/medical-case/seed/pathologies.seed.ts",
+        "sourceLine": 9847,
+        "importedAt": null
+      }
+    }
+  ]
+}

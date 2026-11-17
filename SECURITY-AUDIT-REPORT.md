@@ -1,0 +1,213 @@
+# Relatório consolidado de segurança, bugs, implementação e produção — CarlosCostaPrev
+
+**Projeto:** CarlosCostaPrev<br>
+**Repositório do CRM:** [prevprocesso-maker/CarlosCostaPrev-Sistema][24]<br>
+**Site institucional:** [prevprocesso-maker/CarlosCostaPrev][23]
+
+**Ambiente permanente:** [carloscostaprev-carloscostaprev.vercel.app][25]<br>
+**Alias legado:** [deskcomm-crm-five.vercel.app][2] *(mantido para não interromper acessos existentes)*
+
+**Projeto Vercel:** `CarlosCostaPrev`
+
+**Marca na interface:** CarlosCostaPrev – Sistema Integrado de Gestão
+
+**Data da validação final:** 20 de agosto de 2026
+
+**Responsável:** Manus AI
+
+## 1. Sumário executivo
+
+O CarlosCostaPrev foi executado, publicado e auditado sobre o código-fonte, os handlers de API, os fluxos de autenticação, o isolamento multi-tenant, os scripts de instalação, as dependências, os testes automatizados e o ambiente público. A metodologia de segurança seguiu a abordagem de reconhecimento, análise de superfície, reprodução, correção e verificação independente inspirada na [Cloudflare Security Audit Skill][3].
+
+A versão atual foi publicada na branch `main` e chegou à produção Vercel no deployment `dpl_DVJ48yzhFNGxaTv7dBFM3KXtpygs`, associado ao commit [`373c667c`][26]. O projeto Vercel se chama `carloscostaprev` e está conectado ao repositório privado `prevprocesso-maker/CarlosCostaPrev-Sistema`; o repositório público `prevprocesso-maker/CarlosCostaPrev` permanece reservado ao site institucional. O alias permanente `carloscostaprev-carloscostaprev.vercel.app` está READY, e `deskcomm-crm-five.vercel.app` permanece ativo como alias legado. A página `/login` respondeu corretamente, a rota autenticada `/app/settings/api-tokens` exibiu a seção **Conexão MCP** e `/onboarding` encaminha contas sem organização para `/get-started`.
+
+O núcleo Supabase permanece saudável. O healthcheck público respondeu HTTP 503 porque o Redis está configurado com valor inválido e o WhatsApp/WAHA ainda não está configurado; essa resposta é **intencional e correta** para uma dependência real configurada, mas indisponível. A resposta não expõe URL, header, token, corpo de exceção ou mensagem bruta do upstream: o Redis aparece somente como `error: "invalid_configuration"` e `reason: "configuracao_invalida"`, enquanto o WAHA aparece como `not_configured`.
+
+> **Conclusão operacional:** não restaram erros reproduzíveis nas verificações automatizadas ou no deployment Vercel. Permanecem pendências operacionais de credenciais e serviços externos, especialmente a substituição do token Redis malformado, a instalação de WAHA, a configuração da IA e a definição do segredo de impersonação. A organização `CarlosCostaPrev` foi criada e está ativa; o CRM está acessível para a conta validada.
+
+## 2. Escopo e metodologia
+
+A auditoria cobriu as rotas `/api/v1/health`, autenticação, handlers de leads, schema Zod, cliente Redis REST, rate limiter, debounce RAG, cliente WAHA, validações de configuração, emissão de eventos, auditoria, atividades de timeline, conexão MCP, rebranding e isolamento por `organization_id`. Também foram verificadas as políticas e decisões arquiteturais documentadas no repositório, incluindo a regra de que o trigger `fn_crm_lead_close_on_stage` é a fonte única de `status` e `closed_at` para transições terminais.
+
+A análise combinou revisão estática, testes unitários e de API, testes de invariantes, testes shell, auditoria de dependências e verificação pública pós-deploy. Os achados de produção foram comparados com os logs de runtime da Vercel. Erros históricos de deployments antigos sem variáveis de ambiente foram separados dos resultados atuais: na janela recente de dez minutos após a publicação final, não houve clusters de erro de runtime.
+
+## 3. Inventário de bugs e vulnerabilidades
+
+| ID | Severidade | Achado | Reprodução ou evidência | Correção | Estado |
+|---|---:|---|---|---|---|
+| BUG-01 | Baixa | O teste de alcance do resolver de modelos era sensível a códigos ANSI produzidos pelo `git grep`. | A comparação de caminhos falhava quando a coloração do Git estava habilitada. | Adicionado `--color=never` ao `git grep` controlado. | Corrigido no commit [`0d9e2097`][4]. |
+| BUG-02 | Baixa | O teste do instalador interativo respondia à posição errada da pergunta de cor da marca. | A fila de respostas ficava desalinhada na validação de `APP_ACCENT_HEX`. | Corrigida a posição da pergunta e os comentários da fila. | Corrigido no commit [`0d9e2097`][4]. |
+| BUG-03 | Média | O healthcheck classificava placeholders e endpoints locais de serviços opcionais como indisponibilidade real. | Redis/WAHA sem configuração geravam 503 mesmo com Supabase saudável. | Criada classificação explícita `degraded`/`nao_configurado`; indisponibilidade de serviço real continua sendo `down`/503. | Corrigido no commit [`59dfd10b`][5]. |
+| SEC-01 | Alta | O healthcheck podia incluir a mensagem bruta de uma exceção Redis no JSON público. Uma credencial malformada havia sido refletida parcialmente na resposta. | A tentativa de ativar Upstash usou valor contendo aspas, nome da variável e quebras de linha; o upstream rejeitou o header e a exceção carregou parte do valor. | O healthcheck passou a responder apenas `request_failed` para exceções de upstream; não há mais exposição de URL, header, token ou corpo de resposta. | Corrigido e publicado no commit [`2207354f`][6]. |
+| SEC-02 | Alta | A configuração Redis podia ser passada ao cliente mesmo contendo formato de bloco `.env`, aspas ou quebras de linha. | Valores como `UPSTASH_REDIS_REST_TOKEN=...`, token entre aspas e token com newline chegavam à construção do request. | Criado `lib/redis-config.ts`, validador puro que rejeita URL inválida, token com aspas, newline, prefixo de variável e credenciais incompletas. O healthcheck e o rate limiter usam o mesmo validador. | Corrigido no commit [`0f802a92`][7]. |
+| BUG-04 | Média | O encerramento win/lose podia escolher stage terminal arquivado e colocar o lead fora do quadro ativo. | A consulta terminal não filtrava `is_archived=false`. | Stage terminal agora é filtrado por organização, pipeline, flag terminal, não arquivado e posição. | Corrigido no commit [`0f802a92`][7]. |
+| BUG-05 | Média | Win/lose não aplicava a regra de posicionamento `max(position_in_stage) + 1000`. | Leads encerrados poderiam entrar em posição indefinida ou não ocupar o fim lógico da coluna terminal. | O encerramento calcula a maior posição dentro da organização e stage destino e grava a próxima posição. | Corrigido no commit [`0f802a92`][7]. |
+| BUG-06 | Média | O endpoint REST de perda devolvia `validation_error` genérico quando `lost_reason` estava ausente. | `POST /api/v1/leads/[id]/lose` com `{}` não atendia o contrato `lost_reason_required` do épico. | A rota mapeia erro de campo Zod para HTTP 422 com `error.code="lost_reason_required"`, mantendo `validation_failed` no contrato interno/MCP para compatibilidade. | Corrigido no commit [`0f802a92`][7]. |
+| BUG-07 | Média | A capacidade compartilhada de encerramento emitia manualmente `lead.won`/`lead.lost` enquanto o trigger de banco já era a fonte de eventos para mudança de status. | O `event_log` não possui chave idempotente que impedisse duas linhas semanticamente iguais. | Removida a emissão manual; o trigger `fn_crm_lead_close_on_stage` permanece como fonte única para status, fechamento e evento. | Corrigido no commit [`0f802a92`][7]. |
+| BUG-08 | Baixa | O lint de restrição de canais classificou a nova prosa de `lib/health/status.ts` como menção a provider. | `pnpm lint:channels` reprovou o arquivo por uma menção textual a um provider em comentário. | A documentação foi reescrita de modo neutro, sem alterar o comportamento. | Corrigido no commit [`c85efe46`][8]. |
+| BUG-09 | Média | A tela de Conexão MCP devolvia 403 para uma conta autenticada sem organização ativa, embora o endpoint e as instruções fossem úteis antes do convite/onboarding. | A sessão de produção mostrava “Você não tem nenhuma organização ativa” na Inbox e recebia 403 ao abrir a rota de tokens. | A página passou a exibir endpoint e instruções para qualquer conta autenticada, sem permitir criação de token fora de uma organização. A Inbox também ganhou um link direto para essa orientação. | Corrigido nos commits [`0eb3a74c`][17] e [`f0f07778`][19]. |
+| BUG-10 | Alta para conclusão do produto | Uma conta self-signup sem membership ativa ficava presa: `/app/onboarding` redirecionava para `/login`, e a Inbox só informava que não havia organização, sem caminho de recuperação. | A sessão autenticada em produção não tinha organização; abrir `/onboarding` não permitia criar a primeira organização nem avançar ao wizard. | Criado `/get-started` com nome validado, autenticação server-side, verificação fechada de convite, limite anti-abuso e provisionamento idempotente; `/onboarding`, Inbox e MCP agora apontam para esse caminho. | Corrigido e publicado no commit [`765abc60`][20]. |
+| BUG-11 | Baixa | O novo formulário de recuperação inicialmente não declarava `method="post"`; com o JavaScript indisponível, o submit nativo poderia refletir o nome da empresa na URL. | A guarda `credencial-nunca-na-url` detectou o formulário no teste completo antes da publicação final. | Adicionado `method="post"` e o teste completo voltou a passar. | Corrigido no commit [`268326c7`][21]. |
+
+Não foi encontrado segredo persistido no repositório. A chave anon pública do Supabase aparece no HTML de login como configuração pública esperada; ela não é a `service_role` key. As credenciais privadas continuam pertencendo exclusivamente às variáveis de ambiente do servidor. A conexão MCP não exibe token em texto claro: a interface mostra apenas o endpoint e os escopos necessários; os tokens são gerenciados somente por administradores de uma organização.
+
+## 4. Implementações entregues
+
+### 4.1 Configuração segura do Redis
+
+O módulo `lib/redis-config.ts` centraliza a validação de URL e token REST do Redis. Ele diferencia três situações: configuração válida, ausência de configuração e configuração inválida. A decisão é pura e testável, permitindo que o healthcheck recuse valores malformados antes de construir headers e que o rate limiter use fallback local sem tentar iniciar um cliente Redis inválido.
+
+O healthcheck agora preserva a diferença operacional entre serviço opcional ausente e serviço real indisponível. O fallback de rate limit continua explicitamente sinalizado como inadequado para múltiplas instâncias; ele não é apresentado como rate limit distribuído enquanto o Upstash não estiver configurado corretamente.
+
+### 4.2 Fluxo win/lose de leads
+
+A capacidade existente `lib/leads/encerramento.ts` foi endurecida e testada. A mutação filtra o lead por `organization_id`, busca o stage terminal no pipeline correto, exclui stages arquivados, calcula a posição final e atualiza apenas `stage_id`, `position_in_stage`, `lost_reason` quando aplicável e `updated_at`. A fonte de verdade para `status`, `closed_at` e eventos continua sendo o trigger de banco.
+
+O endpoint win permanece idempotente: se o lead já está ganho, retorna o registro atual sem nova mutação. O endpoint lose exige motivo não vazio. A validação REST devolve o código canônico `lost_reason_required`, enquanto a capacidade interna mantém `validation_failed` para não quebrar consumidores MCP que já dependiam desse contrato.
+
+As mutações continuam registrando `demand_closed` na timeline e auditando o fechamento. Falhas de timeline são tratadas como falha de baixa prioridade: não desfazem o fechamento, mas são registradas para observabilidade.
+
+### 4.3 Custom fields de Customer 360
+
+A implementação anterior de Customer 360 adicionou `contacts.custom_fields` como JSONB obrigatório com default `{}`, constraint de objeto JSON e validação Zod com limites de tamanho. O backend e a tela de detalhe foram integrados, e a migration foi registrada no baseline e no manifesto de migrações. Essa entrega foi publicada nos commits [`35726fee`][9], [`4ed0abeb`][10] e [`7203b3b9`][11].
+
+### 4.4 Hardening de WAHA e debounce RAG
+
+O cliente WAHA agora usa timeout de 10 segundos, não devolve corpo bruto de erro e trata parada de sessão inexistente de forma idempotente. O debounce Redis usa `retry:false`, fallback fail-fast e chaves com escopo por organização, agente e tipo de evento. Essas entregas foram publicadas nos commits [`0f684930`][12], [`c4add78f`][13] e [`53038e0f`][14].
+
+### 4.5 Rebranding institucional
+
+A marca padrão foi alterada para **CarlosCostaPrev – Sistema Integrado de Gestão**. Templates de e-mail, showcase, testes E2E, superfícies principais da interface, documentação pública e o kit de instalação foram atualizados. Nesta onda, o repositório canônico passou a ser `prevprocesso-maker/CarlosCostaPrev`, o projeto Vercel passou a se chamar `carloscostaprev` e o pacote local passou a usar `carloscostaprev`. Tabelas, rotas, contratos de API, cookies de sessão, headers de webhook, nomes MCP e imagens GHCR publicados foram preservados quando a troca poderia quebrar instalações ou integrações existentes. O alias de produção `deskcomm-crm-five.vercel.app` continua ativo por compatibilidade.
+
+### 4.6 Conexão MCP segura
+
+Foi criada uma seção de conexão MCP reutilizável com endpoint derivado da origem atual, validação que rejeita protocolos inseguros e instruções sem token em texto claro. O acesso de leitura da orientação foi ampliado para usuários autenticados, enquanto a administração de tokens continua restrita por papel e por organização. O endpoint é `/api/mcp`, a autenticação usa Bearer token e os escopos documentados são `mcp:read` e `mcp:write`. A entrega inicial está no commit [`19a631c1`][18], com a correção de visibilidade por papel em [`0eb3a74c`][17].
+
+### 4.7 Diagnóstico de onboarding e organização
+
+A investigação da sessão do usuário confirmou que a conta autenticada não tem associação em nenhuma organização ativa. Isso explica a Inbox sem dados de CRM e o bloqueio de operações tenant-scoped; não é evidência de perda de dados nem falha do Supabase. O código agora orienta a pessoa a concluir `/onboarding` ou aceitar um convite, sem criar uma organização ou conceder privilégios automaticamente. Essa distinção preserva o isolamento multi-tenant.
+
+### 4.8 Recuperação segura do primeiro acesso
+
+O novo caminho `/get-started` é uma recuperação de provisionamento, não um atalho administrativo. O servidor resolve o usuário da sessão, ignora `organization_id` e `role` enviados pelo cliente, recusa tokens de convite válidos ou inválidos, limita tentativas por IP e usuário e chama o provisionamento idempotente com o nome validado. Em caso de sucesso, a pessoa é encaminhada a `/onboarding/welcome`, onde os templates de funil por nicho já existentes podem ser escolhidos. A interface publicada foi validada na sessão autenticada sem submeter dados reais. A revisão também confirmou que o formulário usa `method="post"`, evitando exposição em URL caso o JavaScript não carregue.
+
+## 5. Validações realizadas
+
+| Verificação | Resultado | Evidência final |
+|---|---:|---|
+| TypeScript | PASS | `pnpm typecheck`, código de saída 0. |
+| Vitest completo | PASS | 429 arquivos e 4.751 testes aprovados. |
+| Testes de regressão desta sessão | PASS | 21 testes direcionados de auth, convite e rate limit passaram; os arquivos alterados também passaram no lint. |
+| Testes shell | PASS | `pnpm test:shell`, incluindo scheduler, update guard e validadores do instalador. |
+| ESLint | PASS | 0 erros e 247 avisos não bloqueantes no lint completo. Arquivos alterados também passaram no lint direcionado. |
+| Lint de canais | PASS | `pnpm lint:channels`: 60 arquivos de dívida conhecida, nenhum arquivo novo infrator. |
+| Auditoria de dependências | PASS | `pnpm audit --audit-level=high`: “No known vulnerabilities found”. |
+| `git diff --check` | PASS | Nenhum whitespace problemático. |
+| Build Vercel | PASS | Build remoto concluiu e o deployment de produção `dpl_DVJ48yzhFNGxaTv7dBFM3KXtpygs` ficou READY. |
+| Build local | LIMITAÇÃO DO SANDBOX | Turbopack/Webpack locais foram encerrados por pressão de memória (`SIGTERM`/`SIGKILL`), sem erro de TypeScript ou rota; o build remoto da Vercel concluiu com a lista de rotas. |
+| Login em produção | PASS | `/login` respondeu HTTP 200 e exibiu o formulário. |
+| Conexão MCP em produção | PASS | A sessão autenticada exibiu `Conexão MCP`, `/api/mcp` e as instruções sem exigir organização ativa; a emissão de token permaneceu protegida. |
+| Recuperação do primeiro acesso em produção | PASS | `/get-started` e o redirecionamento de `/onboarding` foram confirmados; a organização `CarlosCostaPrev` foi criada e a sessão autenticada acessa o CRM. |
+| Healthcheck em produção | PASS COM DEGRADAÇÃO ESPERADA | Supabase `ok`; Redis `down`/`configuracao_invalida`; WAHA `degraded`/`nao_configurado`. |
+| Runtime Vercel recente | PASS | Nenhum erro agregado na janela de dez minutos após o deployment final. |
+
+Os 247 avisos do ESLint são dívida de qualidade distribuída no repositório e não falhas bloqueantes. Recomenda-se corrigi-los em ondas pequenas, sem `--fix` global sem revisão.
+
+## 6. Estado de produção
+
+O deployment final é o `dpl_DVJ48yzhFNGxaTv7dBFM3KXtpygs`, associado ao commit `373c667c`, com estado `READY`. O projeto Vercel tem nome `carloscostaprev`, o Project ID permanece `prj_evNKfWlHZhoUUnCcuC9WydjVeLJo` e os aliases de produção confirmados são `carloscostaprev-carloscostaprev.vercel.app`, `carloscostaprev-git-main-carloscostaprev.vercel.app` e `deskcomm-crm-five.vercel.app`. O Supabase usado pela aplicação pública é `nzhfwgfpprjhlseutxhy.supabase.co`, conforme a configuração pública entregue pelo HTML de login.
+
+A resposta observada em 20/08/2026 às 18:23 GMT-3 foi equivalente a:
+
+```json
+{
+  "data": {
+    "status": "unhealthy",
+    "checks": {
+      "supabase": { "status": "ok" },
+      "redis": { "status": "down", "error": "invalid_configuration", "reason": "configuracao_invalida" },
+      "waha": { "status": "degraded", "error": "not_configured", "reason": "nao_configurado" }
+    }
+  }
+}
+```
+
+Esse 503 não representa falha do login ou do Supabase. Ele comunica corretamente que existe uma dependência Redis configurada, porém inválida. Depois da substituição do token por um valor limpo, o healthcheck deverá mudar para `redis: ok`; se o Redis for removido ou deixado vazio, a expectativa é `degraded`/`nao_configurado`, não 503.
+
+## 7. Pendências operacionais
+
+| Item | Situação | Próxima ação |
+|---|---|---|
+| Token Upstash Redis | Pendente e bloqueante para rate limit distribuído. O healthcheck atual identifica `configuracao_invalida`. | No console Upstash, abrir o banco configurado, copiar somente o valor do REST token e substituir `UPSTASH_REDIS_REST_TOKEN` na Vercel sem aspas, nome da variável, espaços ou quebras de linha. Salvar e redeployar. |
+| URL Redis | Deve corresponder ao mesmo banco do token. | Conferir `UPSTASH_REDIS_REST_URL` no formato `https://...upstash.io`, sem aspas e sem bloco `.env`. |
+| WhatsApp/WAHA | Não configurado no Vercel. | Hospedar WAHA em ambiente persistente, configurar URL, chave, webhook e HMAC e executar teste de sessão, QR, envio, recebimento e assinatura. |
+| IA | Chaves de gateway ausentes na validação local; o sistema degrada com `ai_gateway_key_missing`. | Escolher provedor, cadastrar chave no ambiente server-side e testar geração, fallback, timeout, custo e redaction de dados sensíveis. |
+| `IMPERSONATE_COOKIE_SECRET` | Ausente ou menor que 32 caracteres; o fluxo retorna 503 até ser configurado. | Criar segredo aleatório com pelo menos 32 caracteres, cadastrar na Vercel e testar autorização, expiração e auditoria. |
+| ESLint | 247 avisos não bloqueantes. | Corrigir por grupos, priorizando imports não usados e tipos inconsistentes. |
+| Organização ativa da conta de teste | PASS | A organização `CarlosCostaPrev` foi criada durante a recuperação do primeiro acesso e permanece ativa. |
+| E2E com dados reais | Não foi realizado cadastro com dados pessoais nem criação de lead em organização real nesta sessão. | Após o onboarding, criar um lead de teste e confirmar com segundo usuário que o isolamento por organização impede leitura cruzada. |
+| Build local no sandbox | Limitado pela memória disponível; o build remoto Vercel passou. | Para validação local completa, usar máquina com mais memória ou configurar um runner CI com memória suficiente. |
+
+## 8. Histórico de commits relevantes
+
+| Commit | Entrega |
+|---|---|
+| [`0d9e2097`][4] | Correções dos testes ANSI e da fila interativa do instalador. |
+| [`59dfd10b`][5] | Classificação correta do healthcheck com serviços opcionais ausentes. |
+| [`35726fee`][9] | Persistência de custom fields em contatos. |
+| [`4ed0abeb`][10] | Registro da migration de custom fields. |
+| [`7203b3b9`][11] | Integração da interface de custom fields. |
+| [`0f684930`][12] | Timeout e redaction do cliente WAHA. |
+| [`c4add78f`][13] | Teste de parada idempotente de sessão WAHA. |
+| [`53038e0f`][14] | Hardening do debounce Redis. |
+| [`2207354f`][6] | Redaction de exceções no healthcheck público. |
+| [`0e5754db`][15] | Documentação do redaction do healthcheck. |
+| [`0f802a92`][7] | Validador Redis, correções win/lose, testes de regressão e remoção de evento duplicado. |
+| [`c85efe46`][8] | Correção da menção textual detectada pelo lint de canais. |
+| [`4b8f9516`][16] | Rebranding para CarlosCostaPrev – Sistema Integrado de Gestão. |
+| [`19a631c1`][18] | Seção de conexão MCP com endpoint seguro e instruções. |
+| [`0eb3a74c`][17] | Acesso da orientação MCP para membros não administradores. |
+| [`f0f07778`][19] | Orientação MCP e link direto para contas sem organização ativa. |
+| [`765abc60`][20] | Recuperação segura da primeira organização e encaminhamento do onboarding. |
+| [`268326c7`][21] | Proteção do submit da recuperação com `method="post"`. |
+
+## 9. Separação de repositórios e publicação
+
+O repositório público [`CarlosCostaPrev`][23] permanece reservado ao site institucional estático. O CRM foi preservado em histórico próprio e publicado no repositório privado [`CarlosCostaPrev-Sistema`][24]. O projeto Vercel `carloscostaprev` mantém o mesmo Project ID e está conectado ao repositório privado, sem alterar as variáveis de ambiente ou a configuração do Supabase. O preview rebranded compilou em `dpl_B9ndNarZErJb8QbicpquwEWa8gnZ`; depois, o commit técnico [`373c667c`][26], com email GitHub verificável, eliminou o bloqueio de autoria e chegou à produção no deployment `dpl_DVJ48yzhFNGxaTv7dBFM3KXtpygs`, que terminou `READY`.
+
+Essa separação evita que commits do site estático substituam o CRM ou que alterações da aplicação multi-tenant afetem o site institucional. O alias legado `deskcomm-crm-five.vercel.app` permanece documentado como compatibilidade, enquanto o alias principal `carloscostaprev-carloscostaprev.vercel.app` serve a produção do repositório privado.
+
+## 10. Parecer final
+
+O sistema está **publicado e funcional em produção no repositório privado separado**, com autenticação, núcleo Supabase, recuperação do primeiro acesso, onboarding, orientação MCP e correções de segurança implantadas. A marca CarlosCostaPrev está ativa na interface, na documentação, no repositório e no projeto Vercel. O alias principal está READY e o alias legado permanece ativo para não interromper acessos existentes. O fluxo de fechamento de leads respeita isolamento organizacional, stages ativos, posicionamento terminal, idempotência e contratos de erro. A conta validada possui a organização `CarlosCostaPrev` ativa e pode usar o CRM; o healthcheck não deve ser alterado para esconder a falha atual do Redis: o próximo passo operacional correto é corrigir a variável de ambiente com valor limpo e conferir a transição para `redis: ok`.
+
+A plataforma pode continuar recebendo desenvolvimento incremental. Não é correto declarar WhatsApp, rate limit distribuído, IA ou impersonação como prontos enquanto suas dependências operacionais permanecerem sem configuração válida. Com exceção dessas pendências externas e dos avisos de qualidade não bloqueantes, as verificações reproduzíveis executadas nesta sessão terminaram verdes.
+
+## Referências
+
+[1]: https://github.com/prevprocesso-maker/CarlosCostaPrev "Repositório GitHub do CarlosCostaPrev"
+[2]: https://deskcomm-crm-five.vercel.app "Ambiente público permanente do CarlosCostaPrev"
+[3]: https://github.com/cloudflare/security-audit-skill "Cloudflare Security Audit Skill"
+[4]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/0d9e2097651487d02ee4be107edbe1dcc3ff1c33 "Commit 0d9e2097"
+[5]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/59dfd10be57a5e9e12b1d856ff5afd152274fe98 "Commit 59dfd10b"
+[6]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/2207354f3bfcf9139e25ee8b97423f42ecfbb575 "Commit 2207354f"
+[7]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/0f802a92939341a80a499f161859f703589e5495 "Commit 0f802a92"
+[8]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/c85efe4601164f7b25a9937f5fcad54781c9022c "Commit c85efe46"
+[9]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/35726feea7b57bab05f1fad3a056091f6d20be75 "Commit 35726fee"
+[10]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/4ed0abeb680f166c5ab413fcae34d726b4f8ce12 "Commit 4ed0abeb"
+[11]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/7203b3b968fa4b8c6bc650cf6a973f8fcfde4d11 "Commit 7203b3b9"
+[12]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/0f6849302d9bbdb2ec3e0a4700189ad9935845c3 "Commit 0f684930"
+[13]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/c4add78fe0d82388f5634bf1e576c7de6e89e818 "Commit c4add78f"
+[14]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/53038e0f8a3c297bd5424382fdb79827cae499a1 "Commit 53038e0f"
+[15]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/0e5754dbc9e59a79384e6d3f074436be6707de97 "Commit 0e5754db"
+[16]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/4b8f95168c86ce8533ebab7001e79170469ad2c1 "Commit 4b8f9516"
+[17]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/0eb3a74cf4ee14d6be16284b7a6da4cc2f207c31 "Commit 0eb3a74c"
+[18]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/19a631c106673d45304fa6e3e3e58958f831591b "Commit 19a631c1"
+[19]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/f0f07778529be97681fab0d8e981287b788aa641 "Commit f0f07778"
+[20]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/765abc604c4867798d2a7dcda2a20693f1bf5276 "Commit 765abc60"
+[21]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/268326c781b32648b5648f4513b0e87f34540ad6 "Commit 268326c7"
+[22]: https://github.com/prevprocesso-maker/CarlosCostaPrev/commit/98725dad81cb20553313a029ff637e2a636b823e "Commit 98725dad"
+[23]: https://github.com/prevprocesso-maker/CarlosCostaPrev "Repositório público do site institucional CarlosCostaPrev"
+[24]: https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema "Repositório privado do CRM CarlosCostaPrev"
+[25]: https://carloscostaprev-carloscostaprev.vercel.app "Ambiente permanente do CRM CarlosCostaPrev"
+[26]: https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema/commit/373c667c36886217ce225e6a5af546d68f4bdc4c "Commit técnico de autoria Git verificável"

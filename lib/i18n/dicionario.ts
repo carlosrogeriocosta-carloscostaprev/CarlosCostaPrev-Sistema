@@ -2062,6 +2062,16 @@ export const DICIONARIO: Traducoes = {
   Atendimento: { es: "Atención" },
   CRM: { es: "CRM" },
   "Agente de IA": { es: "Agente de IA" },
+  // Camada CarlosCostaPrev (previdenciário): rótulos e descrições do
+  // menu. A chave é o texto pt-BR do catálogo de navegação.
+  Previdenciário: { es: "Previsional" },
+  "Casos previdenciários": { es: "Casos previsionales" },
+  "Casos, pendências, prazos e documentos do atendimento previdenciário.": {
+    es: "Casos, pendientes, plazos y documentos de la atención previsional.",
+  },
+  "Patologias, CIF, IFBrA e fontes legislativas para apoiar a revisão profissional.": {
+    es: "Patologías, CIF, IFBrA y fuentes legislativas para apoyar la revisión profesional.",
+  },
   Canais: { es: "Canales" },
   Análise: { es: "Análisis" },
   Organização: { es: "Organización" },

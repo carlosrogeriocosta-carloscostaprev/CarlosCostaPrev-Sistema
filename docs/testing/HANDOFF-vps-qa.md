@@ -79,7 +79,7 @@ os bugs achados na causa raiz.
 - **M2/M10** — trilha manual do `docs/deploy-selfhost/README.md` não configura o
   cron do drain → automações morrem em silêncio numa VPS que não usou o kit.
 - **M3** — README self-host aponta repo/imagem `deskcommcrm/*`; kit usa `melgarafael/*`.
-- **M4** — `INVITE_TOKEN_SECRET` ausente → fallback `"dev-fallback"` → convite forjável.
+- **M4** — ~~`INVITE_TOKEN_SECRET` ausente → fallback `"dev-fallback"` → convite forjável~~ **CORRIGIDO 2026-08-22**: emissão/verificação falham fechado sem `INVITE_TOKEN_SECRET` ou `INTERNAL_SECRET`; sem fallback público. Ausência de segredo agora deixa convites indisponíveis até a configuração ser corrigida.
 - **M5** — AI Gateway key ausente → bot mudo sem feedback na UI.
 - **M6** — Knowledge sources: upload de FAQ/política é stub "Em breve".
 - Rate limit do GoTrue morde sob carga de muitos logins (artefato de suíte em lote,

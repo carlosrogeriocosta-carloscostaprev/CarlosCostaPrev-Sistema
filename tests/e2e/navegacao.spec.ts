@@ -93,6 +93,7 @@ test.describe("navegação agrupada", () => {
     await expect(titulos).toHaveText([
       "Atendimento",
       "CRM",
+      "Previdenciário",
       "Agente de IA",
       "Canais",
       "Análise",
@@ -201,7 +202,10 @@ test.describe("navegação agrupada", () => {
     const busca = page.getByRole("combobox");
     await expect(busca).toBeVisible();
 
-    await busca.fill("conhec");
+    // Há duas bases válidas no produto: a previdenciária e a que o agente usa.
+    // A descrição "materiais" desambigua a segunda sem depender da ordem do
+    // registro quando o usuário confirma com Enter.
+    await busca.fill("materiais");
     await expect(page.getByRole("option", { name: /Conhecimento/ })).toBeVisible();
 
     await page.screenshot({ path: path.join(EVIDENCE, "nav-command-palette.png") });
