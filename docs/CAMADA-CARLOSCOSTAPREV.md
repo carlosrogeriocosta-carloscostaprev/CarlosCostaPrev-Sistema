@@ -73,6 +73,16 @@ o motivo de cada uma **não foi revisado linha a linha** nesta etapa. Lista: `.e
 | Policies do previdenciário no baseline | Só a versão final (8019) fica no arquivo; as intermediárias saíram (a cerca `baseline-nao-constroi-o-que-derruba` exige). O bloco `0159` de `contacts.custom_fields` que sobrava no dump também saiu |
 | Linha do `0204` no MANIFEST | Carimbo mudou para `20260901120001`, igual ao nome do arquivo (o `20260901120000` é da nossa 8016) |
 
+**Decidido depois do primeiro CI do repositório novo (17/11/2026):**
+
+| Tema | Decisão |
+|---|---|
+| README | Reescrito com a marca CarlosCostaPrev, sem logo, curso, parceria com afiliado nem lista de contribuidores da matriz. Diz que instala em VPS HostGator, Hostinger ou outra com Docker, e avisa que o `update.sh` ainda aponta para a matriz. `LICENSE` mantém o copyright original (a MIT exige). `README.en.md` e `README.es.md` **ainda têm a marca da matriz** |
+| Migration `8012` (convites, modelo antigo) | Declarada em `MIGRATIONS_QUE_NAO_RODAM` de `baseline-e-cadeia-chegam-ao-mesmo-schema.test.ts` (**teste da matriz editado**): sobre o baseline falha com `column "declined_at" does not exist`; a `8017` converte |
+| Migration `8020` | Refaz a varredura C7 (policies `TO authenticated`) no fim da cadeia: as migrations da matriz posteriores à `8015` recriam policies sem `TO`, e baseline e cadeia divergiam em 324 objetos |
+| Menu lateral | `interface-por-empresa.test.ts` (**da matriz, editado**) passou de 15 para 17 itens: o grupo Previdenciário traz 2 portas. Aceita-se a rolagem do menu no preset completo |
+| `lint-channels.ts` | `health/route.ts` volta à dívida conhecida (rota da matriz); sai a entrada do manifesto do SOS |
+
 ## D. Órfãos (ninguém importa; **apagar só com ok explícito**)
 
 `lib/health/status.ts`, `lib/health/integration-checks.ts` (+ `tests/unit/health-status.test.ts`),
