@@ -34,7 +34,7 @@ Sem dono claro, a investigar: `src/app/agentes/EditorTopBar.tsx`, `src/mock/demo
 |---|---|
 | `lib/navigation/catalogo.ts` | Grupo "Previdenciário" e as duas portas (`/app/previdenciario`, `/app/previdenciario/conhecimento`); sem porta, o gate `navegacao-completude` reprova |
 | `lib/i18n/dicionario.ts` | Textos em espanhol dessas duas portas; o gate `i18n-catalogo-do-menu` exige |
-| `lib/audit/actions.ts` | 25 códigos de auditoria nossos acrescentados no fim (incluindo 6 `security.sos_*` mantidos só para ler linhas históricas) |
+| `lib/audit/actions.ts` | 19 códigos de auditoria nossos acrescentados no fim (os 6 `security.sos_*` do Centro SOS saíram em 17/11/2026: linhas antigas do log com esses códigos seguem no banco, sem rótulo no filtro) |
 | `lib/auth/rate-limit.ts` + `app/actions/auth/useRecoveryCode.ts` | Teto de tentativas do código de recuperação (3/hora por e-mail, 10/hora por IP): auditoria B2/C4 |
 | `lib/auth/invite-token.ts` + teste | Token de convite exige segredo (`INVITE_TOKEN_SECRET`/`INTERNAL_SECRET`), sem fallback público: commit `0c5fe7f49` |
 | `lib/database.types.ts` | Tabelas `previdenciario_*` e 2 funções, **copiadas** da nossa versão. Precisa ser **regenerado de um banco real** (passo 4) |
@@ -61,7 +61,7 @@ o motivo de cada uma **não foi revisado linha a linha** nesta etapa. Lista: `.e
 | Conexão MCP para quem não é admin | Não reaplicada: a matriz leva o não-admin a `/403` |
 | Cadastro de novas organizações | Desligado (decisão de 13/11); fica a versão da matriz |
 | Anonimização LGPD do dossiê previdenciário | **Mantido** (decisão do dono, 16/11/2026): casos e documentos ficam; só o contato é anonimizado. Prazo de guarda e base legal a fixar com o advogado |
-| Centro SOS | **Removido** por decisão do dono em 14/11/2026 (tela, 2 rotas, catálogo, 9 manifestos, hook, spec, porta do menu, `platformAdminOnly`) |
+| Centro SOS | **Removido** por decisão do dono em 14/11/2026 (tela, 2 rotas, catálogo, 9 manifestos, hook, spec, porta do menu, `platformAdminOnly`). Em 17/11/2026 o dono mandou apagar também o resto: os 6 códigos `security.sos_*` e o SOS da cópia antiga em `C:/Users/NIKE/CarlosCostaPrev-Sistema` (alterações lá sem commit). A tag `pre-atualizacao` é o que ainda guarda o módulo. Sobra só um comentário "reconcile SOS" no índice de `event_log` (migration 8016 e baseline), deixado de propósito |
 
 ## D. Órfãos (ninguém importa; **apagar só com ok explícito**)
 
