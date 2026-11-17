@@ -105,7 +105,6 @@ export const TEXTOS_PREVIDENCIARIO: Traducoes = {
   },
   "Rejeitado": { es: "Rechazado" },
   "Resolver": { es: "Resolver" },
-  "Responsável:": { es: "Responsable:" },
   "Resumo do caso": { es: "Resumen del caso" },
   "Revisão de": { es: "Revisión de" },
   "Salvar prazo": { es: "Guardar plazo" },
