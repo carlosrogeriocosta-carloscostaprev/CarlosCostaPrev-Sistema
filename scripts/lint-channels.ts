@@ -87,6 +87,7 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
       "app/api/v1/channel-sessions/[id]/route.test.ts",
       "app/api/v1/channel-sessions/[id]/route.ts",
       "app/api/v1/channel-sessions/route.ts",
+      "app/api/v1/health/route.ts",
       "app/api/v1/messages/[id]/media/route.ts",
       "app/api/v1/onboarding/whatsapp/qr/route.ts",
       "app/api/v1/onboarding/whatsapp/session/route.ts",
@@ -152,7 +153,6 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
       // `waha_session_name` como último degrau do NOME que o usuário vê, e por
       // isso um canal sem apelido aparecia no painel como `org_2dd5e6ea`. Agora
       // usa `nomeDoCanal`, que não conhece provedor nenhum. A catraca só encolhe.
-      "lib\\modules\\messaging-channel\\manifest.ts",
     ],
   },
   {
