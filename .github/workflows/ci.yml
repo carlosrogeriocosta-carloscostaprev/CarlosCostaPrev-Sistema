@@ -725,6 +725,11 @@ jobs:
         # consultas/hora por IP — o executor próprio é um IP só.
         env:
           GH_TOKEN: ${{ github.token }}
+          # TEMPORÁRIO (atualização para a matriz v1.109.0): este repositório ainda não tem release
+          # própria, e sem ela a conferência do update.sh aborta antes dos invariantes. A tag
+          # v1.109.0 da matriz está no nosso origin (publicação de imagem barrada por
+          # `a-tag-veio-da-main`). Tirar esta linha quando houver release nossa (passo 6).
+          CONFERENCIA_KIT_RELEASE: v1.109.0
         run: pnpm test:db
 
       # O `update.sh` do cliente roda sobre um banco COM DADOS, e nenhum gate
