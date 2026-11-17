@@ -1553,7 +1553,7 @@ export const AUDIT_ACTIONS = [
   // "quem moveu" no painel. Mover roteador em silêncio não existe: as duas
   // camadas são gravadas na mesma operação.
   "ai.router_channel_moved",
-  // ─── Camada CarlosCostaPrev (previdenciário + Centro SOS) ───────────────────
+  // ─── Camada CarlosCostaPrev (previdenciário) ───────────────────
   // Estes códigos já existiam na `main` do CarlosCostaPrev antes da atualização
   // para a matriz v1.109.0 e voltam aqui no fim, como pede a regra do arquivo
   // ("acrescente no fim; nunca renomeie"): a matriz não os conhece, então o
@@ -1563,14 +1563,8 @@ export const AUDIT_ACTIONS = [
   // Cancelar o cadastro do segundo fator (enrollment) antes de concluí-lo.
   "auth.mfa_enrollment_cancelled",
   // Centro SOS foi removido em 14/11/2026 (decisão do dono). Os 6 códigos
-  // `security.sos_*` ficam: linhas antigas de `api_audit_log` ainda os carregam
-  // e o painel de auditoria precisa continuar legendando-as (regra: nunca remover).
-  "security.sos_viewed",
-  "security.sos_diagnostic_started",
-  "security.sos_module_manifest_viewed",
-  "security.sos_reconcile_viewed",
-  "security.sos_executed",
-  "security.sos_execution_completed",
+  // `security.sos_*` saíram junto em 17/11/2026 (decisão do dono): linhas antigas de
+  // `api_audit_log` com esses códigos continuam no banco, só sem rótulo no filtro.
   "previdenciario.catalog_override_updated",
   "previdenciario.case_created",
   "previdenciario.case_updated",

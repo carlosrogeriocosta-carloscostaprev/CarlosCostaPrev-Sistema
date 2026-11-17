@@ -1,6 +1,7 @@
 # PRD 24 — Comunicação Real entre Módulos (Cross-Module de Verdade)
 
 **Status:** Proposta — nenhuma linha implementada ainda.
+> **17/11/2026:** o Centro SOS foi removido do sistema (decisão do dono). O que aqui trata de SOS, catálogo SOS ou reconcile ficou sem objeto; a parte de eventos entre módulos (`event_log`) segue valendo.
 **Autor:** sessão 2026-09-01 (após auditoria de honestidade do Centro SOS)
 **Depende de:** spec 23 (Centro SOS), `lib/previdenciario/compartilhado/*`
 **Princípio norteador:** todo número exibido na UI precisa ser medido, não declarado. "Declarado à mão" é provisório e deve aparecer rotulado como tal.
