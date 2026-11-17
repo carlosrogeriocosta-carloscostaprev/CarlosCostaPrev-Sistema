@@ -4,6 +4,7 @@ import { type NextRequest } from 'next/server';
 
 import { fail, ok } from '@/lib/api/wrappers';
 import { requireRole } from '@/lib/auth/require-role';
+import { requireSupportWrite } from '@/lib/impersonate/support';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import {
@@ -40,6 +41,8 @@ export async function GET(req: NextRequest): Promise<Response> {
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const supportDenied = await requireSupportWrite();
+  if (supportDenied) return supportDenied;
   const requestId = randomUUID();
   const authz = await requireRole('agent', { requestId, resource: 'previdenciario_cases' });
   if (!authz.ok) return authz.response;

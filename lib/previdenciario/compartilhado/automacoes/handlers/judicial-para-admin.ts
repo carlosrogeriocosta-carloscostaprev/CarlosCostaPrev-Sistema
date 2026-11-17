@@ -8,6 +8,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import type { EventoJudicialParaAdmin } from '../../dominio/eventos'
 import { audit } from '@/lib/audit'
 import { logger } from '@/lib/logger'
+import { randomId } from '@/lib/random-id'
 
 type Extrair<T extends EventoJudicialParaAdmin['tipo']> = Extract<EventoJudicialParaAdmin, { tipo: T }>
 type EventoComJud<T extends EventoJudicialParaAdmin['tipo']> = Extrair<T> & { caso_jud_id: string }
@@ -53,7 +54,7 @@ interface ConfigArquivarCaso {
 // ============================================
 
 async function criarRequerimentoCumprimentoAdmin(params: Record<string, unknown>): Promise<{ id: string }> {
-  return { id: crypto.randomUUID(), ...params } as { id: string }
+  return { id: randomId(), ...params } as { id: string }
 }
 
 async function criarRequerimentoCumprimentoAvulso(_evento: object, _config: Record<string, unknown>): Promise<ResultadoHandler> {
@@ -61,7 +62,7 @@ async function criarRequerimentoCumprimentoAvulso(_evento: object, _config: Reco
 }
 
 async function criarRPVPrecatorioAdmin(params: Record<string, unknown>): Promise<{ id: string }> {
-  return { id: crypto.randomUUID(), ...params } as { id: string }
+  return { id: randomId(), ...params } as { id: string }
 }
 
 async function anexarDocumentoCasoAdmin(_params: Record<string, unknown>): Promise<void> {}

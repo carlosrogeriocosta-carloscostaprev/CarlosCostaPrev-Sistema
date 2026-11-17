@@ -7,6 +7,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import type { EventoBidirecional } from '../../dominio/eventos'
 import { logger } from '@/lib/logger'
+import { randomId } from '@/lib/random-id'
 
 type Extrair<T extends EventoBidirecional['tipo']> = Extract<EventoBidirecional, { tipo: T }>
 type EventoComAdmin<T extends EventoBidirecional['tipo']> = Extrair<T> & { caso_admin_id: string }
@@ -111,13 +112,13 @@ async function processarVinculoJudicialParaAdmin(
 }
 
 async function copiarDocumentoEntreModulos(params: Record<string, unknown>): Promise<{ id: string }> {
-  return { id: crypto.randomUUID(), ...params } as { id: string }
+  return { id: randomId(), ...params } as { id: string }
 }
 
 async function notificarProprietarioDocumento(_params: Record<string, unknown>): Promise<void> {}
 
 async function criarAlertaPrazoCritico(params: Record<string, unknown>): Promise<{ id: string }> {
-  return { id: crypto.randomUUID(), ...params } as { id: string }
+  return { id: randomId(), ...params } as { id: string }
 }
 
 async function buscarDestinatariosAlerta(_casoId: string, _modulo: string): Promise<string[]> {

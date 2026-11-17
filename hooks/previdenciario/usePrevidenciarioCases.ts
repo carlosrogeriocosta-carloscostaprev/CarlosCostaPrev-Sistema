@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { showApiError } from "@/components/feedback/ApiErrorToast";
 import { apiClient } from "@/lib/api/client";
 import { ApiError } from "@/lib/api/types";
+import { randomId } from "@/lib/random-id";
 
 export type PrevidenciarioStage = {
   id: string;
@@ -197,7 +198,7 @@ export function useCreatePrevidenciarioDocument() {
       form.set("metadata", JSON.stringify({}));
       form.set("file", file);
 
-      const requestId = crypto.randomUUID();
+      const requestId = randomId();
       const response = await fetch(`/api/v1/previdenciario/cases/${caseId}/documentos`, {
         method: "POST",
         body: form,

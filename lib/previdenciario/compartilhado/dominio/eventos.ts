@@ -8,6 +8,8 @@
  * - correlation_id: rastreia cadeia de eventos (saga)
  * - causado_por: 'sistema' | 'usuario' | 'ia' | 'webhook' | 'automacao'
  */
+import { randomId } from '@/lib/random-id'
+
 
 // ============================================
 // TIPOS BASE
@@ -329,7 +331,7 @@ function baseEvento(
   opcoes?: OpcoesEvento
 ): EventoCrossModuleBase {
   return {
-    id: crypto.randomUUID(),
+    id: randomId(),
     tipo: '',
     modulo_origem,
     modulo_destino,
@@ -337,7 +339,7 @@ function baseEvento(
     modulo_origem_id,
     modulo_destino_id: opcoes?.modulo_destino_id,
     timestamp: new Date(),
-    correlation_id: opcoes?.correlation_id ?? crypto.randomUUID(),
+    correlation_id: opcoes?.correlation_id ?? randomId(),
     causado_por: opcoes?.causado_por ?? 'sistema',
     usuario_id: opcoes?.usuario_id,
     metadados: opcoes?.metadados ?? {},

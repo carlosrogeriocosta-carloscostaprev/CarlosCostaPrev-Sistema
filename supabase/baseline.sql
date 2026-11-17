@@ -1388,21 +1388,8 @@ CREATE TABLE IF NOT EXISTS "public"."contacts" (
 ALTER TABLE "public"."contacts" OWNER TO "postgres";
 COMMENT ON TABLE "public"."contacts" IS 'Pessoa fisica no escopo de um tenant. CPF criptografado at-rest. is_anonymized irreversivel (L-04).';
 
--- -----------------------------------------------------------------------------
--- Forward migration 0159 — custom_fields em contacts (EPIC-05 S-05.06)
--- -----------------------------------------------------------------------------
-alter table public.contacts
-  add column if not exists custom_fields jsonb not null default '{}'::jsonb;
-
-comment on column public.contacts.custom_fields is
-  'Valores de campos personalizados do contato. As definições são declaradas no settings.fields do pipeline e valores legados são preservados.';
-
-alter table public.contacts
-  drop constraint if exists contacts_custom_fields_object;
-
-alter table public.contacts
-  add constraint contacts_custom_fields_object
-  check (jsonb_typeof(custom_fields) = 'object');
+-- custom_fields em contacts (migration 0159): a coluna, a limpeza de dados e a constraint
+-- ficam num bloco só, no apêndice (procure `contacts_custom_fields_object`). Não repetir aqui.
 
 
 
@@ -13616,24 +13603,6 @@ create policy previdenciario_catalog_overrides_select
     public.fn_is_platform_admin()
     or organization_id in (select public.fn_user_org_ids())
   );
-drop policy if exists previdenciario_catalog_overrides_manager_write on public.previdenciario_catalog_overrides;
-create policy previdenciario_catalog_overrides_manager_write
-  on public.previdenciario_catalog_overrides
-  for all to authenticated
-  using (
-    public.fn_is_platform_admin()
-    or (
-      organization_id in (select public.fn_user_org_ids())
-      and public.fn_role_at_least(organization_id, 'manager')
-    )
-  )
-  with check (
-    public.fn_is_platform_admin()
-    or (
-      organization_id in (select public.fn_user_org_ids())
-      and public.fn_role_at_least(organization_id, 'manager')
-    )
-  );
 
 drop trigger if exists trg_previdenciario_catalog_overrides_audit on public.previdenciario_catalog_overrides;
 create trigger trg_previdenciario_catalog_overrides_audit
@@ -13702,8 +13671,6 @@ revoke all on table public.previdenciario_pathology_knowledge from anon;
 grant select, insert, update, delete on table public.previdenciario_pathology_knowledge to authenticated;
 drop policy if exists previdenciario_pathology_knowledge_read_authenticated on public.previdenciario_pathology_knowledge;
 create policy previdenciario_pathology_knowledge_read_authenticated on public.previdenciario_pathology_knowledge for select to authenticated using (true);
-drop policy if exists previdenciario_pathology_knowledge_platform_admin_write on public.previdenciario_pathology_knowledge;
-create policy previdenciario_pathology_knowledge_platform_admin_write on public.previdenciario_pathology_knowledge for all to authenticated using (public.fn_is_platform_admin()) with check (public.fn_is_platform_admin());
 drop trigger if exists trg_previdenciario_pathology_knowledge_updated_at on public.previdenciario_pathology_knowledge;
 create trigger trg_previdenciario_pathology_knowledge_updated_at before update on public.previdenciario_pathology_knowledge for each row execute function public.fn_touch_updated_at();
 
@@ -13712,8 +13679,6 @@ revoke all on table public.previdenciario_ifbra_items from anon;
 grant select, insert, update, delete on table public.previdenciario_ifbra_items to authenticated;
 drop policy if exists previdenciario_ifbra_items_read_authenticated on public.previdenciario_ifbra_items;
 create policy previdenciario_ifbra_items_read_authenticated on public.previdenciario_ifbra_items for select to authenticated using (true);
-drop policy if exists previdenciario_ifbra_items_platform_admin_write on public.previdenciario_ifbra_items;
-create policy previdenciario_ifbra_items_platform_admin_write on public.previdenciario_ifbra_items for all to authenticated using (public.fn_is_platform_admin()) with check (public.fn_is_platform_admin());
 drop trigger if exists trg_previdenciario_ifbra_items_updated_at on public.previdenciario_ifbra_items;
 create trigger trg_previdenciario_ifbra_items_updated_at before update on public.previdenciario_ifbra_items for each row execute function public.fn_touch_updated_at();
 
@@ -13722,8 +13687,6 @@ revoke all on table public.previdenciario_ifbra_qualifiers from anon;
 grant select, insert, update, delete on table public.previdenciario_ifbra_qualifiers to authenticated;
 drop policy if exists previdenciario_ifbra_qualifiers_read_authenticated on public.previdenciario_ifbra_qualifiers;
 create policy previdenciario_ifbra_qualifiers_read_authenticated on public.previdenciario_ifbra_qualifiers for select to authenticated using (true);
-drop policy if exists previdenciario_ifbra_qualifiers_platform_admin_write on public.previdenciario_ifbra_qualifiers;
-create policy previdenciario_ifbra_qualifiers_platform_admin_write on public.previdenciario_ifbra_qualifiers for all to authenticated using (public.fn_is_platform_admin()) with check (public.fn_is_platform_admin());
 drop trigger if exists trg_previdenciario_ifbra_qualifiers_updated_at on public.previdenciario_ifbra_qualifiers;
 create trigger trg_previdenciario_ifbra_qualifiers_updated_at before update on public.previdenciario_ifbra_qualifiers for each row execute function public.fn_touch_updated_at();
 
@@ -13732,8 +13695,6 @@ revoke all on table public.previdenciario_legal_sources from anon;
 grant select, insert, update, delete on table public.previdenciario_legal_sources to authenticated;
 drop policy if exists previdenciario_legal_sources_read_authenticated on public.previdenciario_legal_sources;
 create policy previdenciario_legal_sources_read_authenticated on public.previdenciario_legal_sources for select to authenticated using (true);
-drop policy if exists previdenciario_legal_sources_platform_admin_write on public.previdenciario_legal_sources;
-create policy previdenciario_legal_sources_platform_admin_write on public.previdenciario_legal_sources for all to authenticated using (public.fn_is_platform_admin()) with check (public.fn_is_platform_admin());
 drop trigger if exists trg_previdenciario_legal_sources_updated_at on public.previdenciario_legal_sources;
 create trigger trg_previdenciario_legal_sources_updated_at before update on public.previdenciario_legal_sources for each row execute function public.fn_touch_updated_at();
 
@@ -13742,8 +13703,6 @@ revoke all on table public.previdenciario_legal_crosswalk from anon;
 grant select, insert, update, delete on table public.previdenciario_legal_crosswalk to authenticated;
 drop policy if exists previdenciario_legal_crosswalk_read_authenticated on public.previdenciario_legal_crosswalk;
 create policy previdenciario_legal_crosswalk_read_authenticated on public.previdenciario_legal_crosswalk for select to authenticated using (true);
-drop policy if exists previdenciario_legal_crosswalk_platform_admin_write on public.previdenciario_legal_crosswalk;
-create policy previdenciario_legal_crosswalk_platform_admin_write on public.previdenciario_legal_crosswalk for all to authenticated using (public.fn_is_platform_admin()) with check (public.fn_is_platform_admin());
 drop trigger if exists trg_previdenciario_legal_crosswalk_updated_at on public.previdenciario_legal_crosswalk;
 create trigger trg_previdenciario_legal_crosswalk_updated_at before update on public.previdenciario_legal_crosswalk for each row execute function public.fn_touch_updated_at();
 
@@ -14019,14 +13978,6 @@ create index if not exists previdenciario_pathology_review_history_pathology_idx
 alter table public.previdenciario_pathology_review_history enable row level security;
 revoke all on table public.previdenciario_pathology_review_history from anon;
 grant select, insert on table public.previdenciario_pathology_review_history to authenticated;
-drop policy if exists previdenciario_pathology_review_history_read_authenticated on public.previdenciario_pathology_review_history;
-create policy previdenciario_pathology_review_history_read_authenticated
-  on public.previdenciario_pathology_review_history
-  for select to authenticated using (true);
-drop policy if exists previdenciario_pathology_review_history_platform_admin_insert on public.previdenciario_pathology_review_history;
-create policy previdenciario_pathology_review_history_platform_admin_insert
-  on public.previdenciario_pathology_review_history
-  for insert to authenticated with check (public.fn_is_platform_admin());
 -- END migration 0167: PREV-008 knowledge review history
 
 -- BEGIN migration 0168: PREV-008 knowledge review RPC
@@ -14113,35 +14064,73 @@ create or replace function public.fn_previdenciario_review_pathology(
 language plpgsql
 security invoker
 set search_path = public, pg_temp
-as $rpc$
+as $$
 declare
   v_row record;
   v_result jsonb;
   v_editor uuid := auth.uid();
   v_history_id uuid;
 begin
-  if not public.fn_is_platform_admin() then raise exception 'platform_admin_required' using errcode = '42501'; end if;
-  if p_stable_key is null or p_stable_key !~ '^[a-z0-9][a-z0-9_]{2,119}$' then raise exception 'invalid_stable_key' using errcode = '22023'; end if;
-  if p_next_status not in ('draft','needs_review','approved','rejected','archived') then raise exception 'invalid_review_status' using errcode = '22023'; end if;
-  if p_editorial_summary is not null and char_length(p_editorial_summary) > 20000 then raise exception 'editorial_summary_too_long' using errcode = '22023'; end if;
-  if p_review_note is not null and char_length(p_review_note) > 4000 then raise exception 'review_note_too_long' using errcode = '22023'; end if;
-  if jsonb_typeof(coalesce(p_benefit_hypotheses, '[]'::jsonb)) <> 'array' then raise exception 'invalid_benefit_hypotheses' using errcode = '22023'; end if;
-  select id, stable_key, review_status into v_row from public.previdenciario_pathology_knowledge where stable_key = p_stable_key for update;
-  if not found then raise exception 'pathology_not_found' using errcode = 'P0002'; end if;
+  if not public.fn_is_platform_admin() then
+    raise exception 'platform_admin_required' using errcode = '42501';
+  end if;
+  if p_stable_key is null or p_stable_key !~ '^[a-z0-9][a-z0-9_]{2,119}$' then
+    raise exception 'invalid_stable_key' using errcode = '22023';
+  end if;
+  if p_next_status not in ('draft','needs_review','approved','rejected','archived') then
+    raise exception 'invalid_review_status' using errcode = '22023';
+  end if;
+  if p_editorial_summary is not null and char_length(p_editorial_summary) > 20000 then
+    raise exception 'editorial_summary_too_long' using errcode = '22023';
+  end if;
+  if p_review_note is not null and char_length(p_review_note) > 4000 then
+    raise exception 'review_note_too_long' using errcode = '22023';
+  end if;
+  if jsonb_typeof(coalesce(p_benefit_hypotheses, '[]'::jsonb)) <> 'array' then
+    raise exception 'invalid_benefit_hypotheses' using errcode = '22023';
+  end if;
+
+  select id, stable_key, review_status
+    into v_row
+    from public.previdenciario_pathology_knowledge
+   where stable_key = p_stable_key
+   for update;
+  if not found then
+    raise exception 'pathology_not_found' using errcode = 'P0002';
+  end if;
+
   update public.previdenciario_pathology_knowledge
      set review_status = p_next_status,
          reviewer_user_id = v_editor,
          reviewed_at = case when p_next_status in ('approved','rejected') then now() else null end,
          review_note = p_review_note,
-         clinical_content = jsonb_set(coalesce((select clinical_content from public.previdenciario_pathology_knowledge where id = v_row.id), '{}'::jsonb), '{educationalSummary}', coalesce(to_jsonb(p_editorial_summary), 'null'::jsonb), true),
+         clinical_content = jsonb_set(
+           coalesce((select clinical_content from public.previdenciario_pathology_knowledge where id = v_row.id), '{}'::jsonb),
+           '{educationalSummary}',
+           coalesce(to_jsonb(p_editorial_summary), 'null'::jsonb),
+           true
+         ),
          benefit_hypotheses = coalesce(p_benefit_hypotheses, '[]'::jsonb)
    where id = v_row.id;
-  insert into public.previdenciario_pathology_review_history(pathology_knowledge_id, previous_status, next_status, editorial_summary, benefit_hypotheses, review_note, reviewer_user_id, request_id)
-  values (v_row.id, v_row.review_status, p_next_status, p_editorial_summary, coalesce(p_benefit_hypotheses, '[]'::jsonb), p_review_note, v_editor, p_request_id)
+
+  insert into public.previdenciario_pathology_review_history
+    (pathology_knowledge_id, previous_status, next_status, editorial_summary,
+     benefit_hypotheses, review_note, reviewer_user_id, request_id)
+  values
+    (v_row.id, v_row.review_status, p_next_status, p_editorial_summary,
+     coalesce(p_benefit_hypotheses, '[]'::jsonb), p_review_note, v_editor, p_request_id)
   returning id into v_history_id;
-  return jsonb_build_object('pathology_id', v_row.id, 'history_id', v_history_id, 'stable_key', v_row.stable_key, 'previous_status', v_row.review_status, 'next_status', p_next_status);
+
+  v_result := jsonb_build_object(
+    'pathology_id', v_row.id,
+    'history_id', v_history_id,
+    'stable_key', v_row.stable_key,
+    'previous_status', v_row.review_status,
+    'next_status', p_next_status
+  );
+  return v_result;
 end;
-$rpc$;
+$$;
 revoke execute on function public.fn_previdenciario_review_pathology(text, text, text, jsonb, text, uuid) from public, anon;
 grant execute on function public.fn_previdenciario_review_pathology(text, text, text, jsonb, text, uuid) to authenticated;
 -- END migration 0169: PREV-008 single review RPC
@@ -82388,28 +82377,10 @@ begin
   end loop;
 end $$;
 
-drop policy if exists previdenciario_case_stages_select on public.previdenciario_case_stages;
-create policy previdenciario_case_stages_select on public.previdenciario_case_stages
-for select to authenticated
-using (organization_id in (select public.fn_user_org_ids()));
 revoke insert, update, delete on public.previdenciario_case_stages from authenticated;
 grant insert, update on public.previdenciario_case_stages to authenticated;
-drop policy if exists previdenciario_case_stages_manager_write on public.previdenciario_case_stages;
-create policy previdenciario_case_stages_manager_write on public.previdenciario_case_stages
-for all to authenticated
-using (public.fn_is_platform_admin() or (organization_id in (select public.fn_user_org_ids()) and public.fn_role_at_least(organization_id, 'manager')))
-with check (public.fn_is_platform_admin() or (organization_id in (select public.fn_user_org_ids()) and public.fn_role_at_least(organization_id, 'manager')));
 
-drop policy if exists previdenciario_cases_select on public.previdenciario_cases;
-create policy previdenciario_cases_select on public.previdenciario_cases
-for select to authenticated
-using (organization_id in (select public.fn_user_org_ids()));
 grant insert, update on public.previdenciario_cases to authenticated;
-drop policy if exists previdenciario_cases_agent_write on public.previdenciario_cases;
-create policy previdenciario_cases_agent_write on public.previdenciario_cases
-for all to authenticated
-using (public.fn_is_platform_admin() or (organization_id in (select public.fn_user_org_ids()) and public.fn_role_at_least(organization_id, 'agent')))
-with check (public.fn_is_platform_admin() or (organization_id in (select public.fn_user_org_ids()) and public.fn_role_at_least(organization_id, 'agent')));
 
 -- Itens dependentes: leitura por membro e escrita operacional por agent.
 do $$

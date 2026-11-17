@@ -8,6 +8,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import type { EventoAdminParaJudicial } from '../../dominio/eventos'
 import { audit } from '@/lib/audit'
 import { logger } from '@/lib/logger'
+import { randomId } from '@/lib/random-id'
 
 type Extrair<T extends EventoAdminParaJudicial['tipo']> = Extract<EventoAdminParaJudicial, { tipo: T }>
 
@@ -40,7 +41,7 @@ interface ConfigAlertaPrazo {
 // ============================================
 
 async function criarSugestaoAjuizamentoCompleta(params: Record<string, unknown>): Promise<{ id: string; advogado_responsavel_id?: string }> {
-  return { id: crypto.randomUUID(), ...params } as { id: string; advogado_responsavel_id?: string }
+  return { id: randomId(), ...params } as { id: string; advogado_responsavel_id?: string }
 }
 
 async function criarTarefaAjuizamento(_params: Record<string, unknown>): Promise<void> {}
