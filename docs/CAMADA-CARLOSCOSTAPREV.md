@@ -63,6 +63,16 @@ o motivo de cada uma **não foi revisado linha a linha** nesta etapa. Lista: `.e
 | Anonimização LGPD do dossiê previdenciário | **Mantido** (decisão do dono, 16/11/2026): casos e documentos ficam; só o contato é anonimizado. Prazo de guarda e base legal a fixar com o advogado |
 | Centro SOS | **Removido** por decisão do dono em 14/11/2026 (tela, 2 rotas, catálogo, 9 manifestos, hook, spec, porta do menu, `platformAdminOnly`). Em 17/11/2026 o dono mandou apagar também o resto: os 6 códigos `security.sos_*` e o SOS da cópia antiga em `C:/Users/NIKE/CarlosCostaPrev-Sistema` (alterações lá sem commit). A tag `pre-atualizacao` é o que ainda guarda o módulo. Sobra só um comentário "reconcile SOS" no índice de `event_log` (migration 8016 e baseline), deixado de propósito |
 
+**Decidido na correção de 17/11/2026, depois do primeiro CI no GitHub (PR #26):**
+
+| Tema | Decisão |
+|---|---|
+| `import "server-only"` em `lib/supabase/admin.ts` (C6, auditoria B2 do `main` antigo) | **Removido; o arquivo voltou a ser o da matriz.** O worker do `event_log` roda sob `tsx`, que não resolve `server-only` (o pacote nem é dependência), e `tests/unit/drain-loop-carrega-deps-sob-tsx.test.ts` reprovou. Perde-se a trava de build contra a service role cair no bundle do navegador; se quiser de volta, o caminho é uma regra de lint (`no-restricted-imports`), não este import |
+| Espanhol das telas previdenciárias | `lib/i18n/previdenciario.ts` (nosso), espalhado em `DICIONARIO` por uma linha. Tradução sem revisão de falante nativo |
+| Rótulo de benefício/serviço | `lib/previdenciario/primeiro-preenchido.ts`, para não mexer na lista de leituras legítimas de `rotulo-do-contato.test.ts` (da matriz) |
+| Policies do previdenciário no baseline | Só a versão final (8019) fica no arquivo; as intermediárias saíram (a cerca `baseline-nao-constroi-o-que-derruba` exige). O bloco `0159` de `contacts.custom_fields` que sobrava no dump também saiu |
+| Linha do `0204` no MANIFEST | Carimbo mudou para `20260901120001`, igual ao nome do arquivo (o `20260901120000` é da nossa 8016) |
+
 ## D. Órfãos (ninguém importa; **apagar só com ok explícito**)
 
 `lib/health/status.ts`, `lib/health/integration-checks.ts` (+ `tests/unit/health-status.test.ts`),

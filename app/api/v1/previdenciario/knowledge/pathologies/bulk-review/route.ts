@@ -6,6 +6,8 @@ import { z } from 'zod';
 import { fail, ok } from '@/lib/api/wrappers';
 import { audit } from '@/lib/audit';
 import { requireRole } from '@/lib/auth/require-role';
+import { falhaDaEscritaDePlatformAdmin, requirePlatformAdminEscrita } from '@/lib/auth/requirePlatformAdmin';
+import { requireSupportWrite } from '@/lib/impersonate/support';
 import { pathologyBulkReviewSchema } from '@/lib/previdenciario/knowledge-schema';
 import { createClient } from '@/lib/supabase/server';
 
@@ -26,6 +28,8 @@ const rpcResultSchema = z.object({
 });
 
 export async function PATCH(request: NextRequest): Promise<Response> {
+  const supportDenied = await requireSupportWrite();
+  if (supportDenied) return supportDenied;
   const requestId = randomUUID();
   const authz = await requireRole('admin', {
     requestId,
@@ -40,6 +44,11 @@ export async function PATCH(request: NextRequest): Promise<Response> {
       403,
       { requestId },
     );
+  }
+  try {
+    await requirePlatformAdminEscrita();
+  } catch (err) {
+    return falhaDaEscritaDePlatformAdmin(err, requestId);
   }
 
   const parsed = pathologyBulkReviewSchema.safeParse(await request.json().catch(() => null));

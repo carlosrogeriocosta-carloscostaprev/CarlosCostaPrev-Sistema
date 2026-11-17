@@ -4,6 +4,7 @@ import { type NextRequest } from 'next/server';
 
 import { fail, ok } from '@/lib/api/wrappers';
 import { requireRole } from '@/lib/auth/require-role';
+import { requireSupportWrite } from '@/lib/impersonate/support';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { asJsonObject, createPrevidenciarioDeadlineSchema } from '@/lib/previdenciario/case-workflow';
@@ -13,6 +14,8 @@ type RouteContext = { params: Promise<{ id: string }> };
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest, ctx: RouteContext): Promise<Response> {
+  const supportDenied = await requireSupportWrite();
+  if (supportDenied) return supportDenied;
   const requestId = randomUUID();
   const authz = await requireRole('agent', { requestId, resource: 'previdenciario_case_deadline' });
   if (!authz.ok) return authz.response;

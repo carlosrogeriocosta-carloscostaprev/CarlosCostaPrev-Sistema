@@ -1,4 +1,5 @@
 import type { Database, Json } from '@/lib/database.types';
+import { primeiroPreenchido } from '@/lib/previdenciario/primeiro-preenchido';
 
 export type CatalogItemRow = Database['public']['Tables']['previdenciario_catalog_items']['Row'];
 export type CatalogOverrideRow = Database['public']['Tables']['previdenciario_catalog_overrides']['Row'];
@@ -39,7 +40,7 @@ export function effectiveCatalogItem(
   return {
     stable_key: item.stable_key,
     kind: item.kind,
-    display_name: override?.display_name ?? item.display_name,
+    display_name: primeiroPreenchido(override?.display_name, item.display_name),
     official_codes: item.official_codes,
     source_kind: item.source_kind,
     source_ref: item.source_ref,

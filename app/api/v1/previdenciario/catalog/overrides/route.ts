@@ -11,6 +11,7 @@ import {
 import { fail, ok } from '@/lib/api/wrappers';
 import { audit } from '@/lib/audit';
 import { requireRole } from '@/lib/auth/require-role';
+import { requireSupportWrite } from '@/lib/impersonate/support';
 import { createClient } from '@/lib/supabase/server';
 import type { Json } from '@/lib/database.types';
 
@@ -29,6 +30,8 @@ const overridePatchSchema = z
   );
 
 export async function PATCH(request: Request): Promise<Response> {
+  const supportDenied = await requireSupportWrite();
+  if (supportDenied) return supportDenied;
   const requestId = randomUUID();
   const authz = await requireRole('manager', { requestId, resource: 'previdenciario_catalog_override' });
   if (!authz.ok) return authz.response;
@@ -76,7 +79,7 @@ export async function PATCH(request: Request): Promise<Response> {
   const nextOverride = {
     organization_id: authz.org.orgId,
     catalog_item_id: item.id,
-    display_name: display_name !== undefined ? display_name : current?.display_name ?? null,
+    display_name: display_name !== undefined ? display_name : current ? current.display_name : null,
     metadata: (metadata !== undefined ? metadata : current?.metadata ?? {}) as Json,
     is_active: is_active !== undefined ? is_active : current?.is_active ?? true,
   };

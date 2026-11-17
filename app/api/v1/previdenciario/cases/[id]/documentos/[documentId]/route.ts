@@ -4,6 +4,7 @@ import { type NextRequest } from 'next/server';
 
 import { fail, ok } from '@/lib/api/wrappers';
 import { requireRole } from '@/lib/auth/require-role';
+import { requireSupportWrite } from '@/lib/impersonate/support';
 import { createClient } from '@/lib/supabase/server';
 import { updatePrevidenciarioDocumentSchema } from '@/lib/previdenciario/case-workflow';
 import { emitCaseAudit, getCaseRow, insertCaseEvent } from '@/lib/previdenciario/case-api';
@@ -12,6 +13,8 @@ type RouteContext = { params: Promise<{ id: string; documentId: string }> };
 export const dynamic = 'force-dynamic';
 
 export async function PATCH(req: NextRequest, ctx: RouteContext): Promise<Response> {
+  const supportDenied = await requireSupportWrite();
+  if (supportDenied) return supportDenied;
   const requestId = randomUUID();
   const authz = await requireRole('agent', { requestId, resource: 'previdenciario_case_document' });
   if (!authz.ok) return authz.response;

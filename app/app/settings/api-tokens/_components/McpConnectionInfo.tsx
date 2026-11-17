@@ -3,10 +3,12 @@
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { useT } from "@/hooks/i18n/useT";
 import { copyToClipboard } from "@/lib/clipboard";
 import { mcpConnectionInstructions, mcpEndpointFromOrigin } from "@/lib/mcp/connection";
 
 export function McpConnectionInfo() {
+  const t = useT();
   const endpoint =
     typeof window === "undefined" ? "/api/mcp" : mcpEndpointFromOrigin(window.location.origin);
 
@@ -14,11 +16,11 @@ export function McpConnectionInfo() {
     <section className="rounded-md border bg-muted/20 p-4" aria-labelledby="mcp-connection-title">
       <div className="space-y-1">
         <h2 id="mcp-connection-title" className="font-medium">
-          Conectar um agente ao CRM via MCP
+          {t("Conectar um agente ao CRM via MCP")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          Use um token com <code>mcp:read</code> para leitura ou <code>mcp:write</code> para ações.
-          O token nunca é exibido novamente depois da criação.
+          {t("Use um token com")} <code>mcp:read</code> {t("para leitura ou")} <code>mcp:write</code> {t("para ações.")}{" "}
+          {t("O token nunca é exibido novamente depois da criação.")}
         </p>
       </div>
       <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -30,12 +32,12 @@ export function McpConnectionInfo() {
           variant="secondary"
           onClick={() => {
             void copyToClipboard(mcpConnectionInstructions(endpoint)).then((ok) => {
-              if (ok) toast.success("Instruções MCP copiadas.");
-              else toast.error("Não foi possível copiar as instruções.");
+              if (ok) toast.success(t("Instruções MCP copiadas."));
+              else toast.error(t("Não foi possível copiar as instruções."));
             });
           }}
         >
-          Copiar instruções
+          {t("Copiar instruções")}
         </Button>
       </div>
     </section>
