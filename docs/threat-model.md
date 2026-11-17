@@ -153,32 +153,22 @@ um handler novo nasça sem filtro e sem invariante correspondente.
 quando um arquivo importa `lib/supabase/admin` sem referenciar `organization_id`. Barato,
 determinístico, e transforma disciplina em gate.
 
-### T4 — Secret de convite com fallback conhecido 🟠 CONFIRMADO no código, mitigado na prática
+### T4 — Secret de convite com fallback conhecido ✅ RESOLVIDO em 2026-08-22
 
-`lib/auth/invite-token.ts:16`:
+A versão anterior de `lib/auth/invite-token.ts` resolvia
+`INVITE_TOKEN_SECRET → INTERNAL_SECRET → "dev-fallback"`. Como o payload contém
+`organization_id` e `role`, esse fallback público poderia permitir forjar convites e
+conceder acesso indevido.
 
-```
-INVITE_TOKEN_SECRET → INTERNAL_SECRET → "dev-fallback"
-```
+A correção removeu o literal público. A emissão e a verificação agora resolvem somente
+`INVITE_TOKEN_SECRET` ou `INTERNAL_SECRET` e lançam erro quando ambos estão ausentes.
+Assim, uma instalação mal configurada falha fechado: não cria nem aceita tokens assinados
+com um segredo conhecido. O `.env.example` documenta o segredo dedicado opcional.
 
-Se a cadeia chegar em `"dev-fallback"`, qualquer pessoa com o repo público forja um token
-de convite válido — payload inclui `organization_id` e `role`, ou seja: **admin em qualquer
-org**.
+O risco residual é operacional: sem segredo, o fluxo de convites fica indisponível até o
+operador corrigir a configuração. Isso é preferível a manter uma porta de falsificação
+aberta. O teste `lib/auth/invite-token.test.ts` fixa essa propriedade.
 
-**Mitigação existente:** `INTERNAL_SECRET` é `required()` em `lib/env.ts:47`, que em
-`NODE_ENV=production` **derruba o boot** se estiver vazio. Então numa instância de produção
-que subiu, o fallback é inalcançável (INFERIDO — depende de o self-host rodar com
-`NODE_ENV=production`, o que é o esperado com `next start`).
-
-**Residual:** (a) em dev a validação afrouxa e a var vira `""` — e string vazia é falsy,
-então cai no `"dev-fallback"`; (b) `invite-token.ts` lê `process.env` **cru**, contornando
-o Zod, então não herda garantia nenhuma; (c) `INVITE_TOKEN_SECRET` não existe em
-`lib/env.ts` nem em `.env.example`, só em docs de épico.
-Já está rastreado pelo projeto como risco **M4** em `docs/testing/user-journey-map.md` —
-crédito onde é devido.
-
-**Mitigação recomendada:** eliminar o literal. Falhar alto (`throw`) quando nenhum secret
-existe, em vez de degradar para um valor público.
 
 ### T5 — Secrets ausentes do `.env.example` 🟠 CONFIRMADO
 
@@ -265,7 +255,7 @@ Não avaliado por falta de execução/instância:
 | T1 | Sem rate limit em login/signup/convite/crons/MCP | 🔴 | baixo — infra já existe |
 | T2 | Rate limit degrada silenciosamente para memória | 🟠 | baixo |
 | T3 | Service role sem gate de escrita para handler novo | 🟠 | médio (lint rule) — invariantes já cobrem em CI |
-| T4 | `"dev-fallback"` como secret de convite | 🟠 | trivial |
+| T4 | fallback público de secret de convite | ✅ resolvido em 2026-08-22 | — |
 | T5 | 3 secrets fora do `.env.example` | 🟠 | trivial |
 | T7 | Sem scan de secret no CI + 116 PNGs de evidência sem revisão de PII | 🟡 | baixo |
 | T6 | Guard de SSRF existe; o E2E que o prova não roda no CI | 🟢 | baixo |

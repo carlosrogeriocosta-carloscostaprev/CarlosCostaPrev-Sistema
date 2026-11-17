@@ -79,6 +79,8 @@ interface Excecao {
  * linhas da OUTRA organização, não uma leitura como superusuário.
  */
 const PROVA_PROPRIA: readonly Excecao[] = [
+  // Camada CarlosCostaPrev (módulo previdenciário): prova própria, em arquivo nosso.
+  ...["previdenciario_case_stages", "previdenciario_cases", "previdenciario_case_pendencies", "previdenciario_case_deadlines", "previdenciario_case_documents", "previdenciario_case_events", "previdenciario_catalog_overrides"].map(tabela => ({ tabela, razao: "tests/invariants/previdenciario-isolamento-e-escrita.test.ts (migrations 8002/8003/8019) — dois tenants reais por JWT authenticated: o membro de A lê as linhas de A e ZERO das de B nos dois sentidos, escrita e INSERT cruzados recusados; o support_readonly lê e escreve 0, o full escreve." })),
   { tabela: "catalog_product_presentations", razao: "tests/invariants/catalogo-apresentacoes-isolamento.test.ts — duas organizações por JWT authenticated: manager nos dois sentidos e agent leem apenas a própria apresentação; UPDATE local de manager positivo, agent e manager vizinho sem efeito; CHECK de ownership do áudio com controle positivo e negativo." },
   {
     tabela: "ouvidoria_manifestacoes",

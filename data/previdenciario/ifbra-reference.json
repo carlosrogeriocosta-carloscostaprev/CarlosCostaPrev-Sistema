@@ -1,0 +1,617 @@
+{
+  "schemaVersion": "prev007-ifbra-reference-v1",
+  "sourceRepo": "sistemaprev",
+  "sourceCommit": "009b98f",
+  "sourcePath": "frontend/src/lib/ifbra-items.ts",
+  "instrumentVersion": "Portaria Conjunta MDS/INSS nº 2/2015",
+  "qualifiers": [
+    {
+      "value": 0,
+      "label": "Nenhuma deficiência/barreira",
+      "range": "0-4%"
+    },
+    {
+      "value": 1,
+      "label": "Deficiência/barreira leve",
+      "range": "5-24%"
+    },
+    {
+      "value": 2,
+      "label": "Deficiência/barreira moderada",
+      "range": "25-49%"
+    },
+    {
+      "value": 3,
+      "label": "Deficiência/barreira grave",
+      "range": "50-95%"
+    },
+    {
+      "value": 4,
+      "label": "Deficiência/barreira completa",
+      "range": "96-100%"
+    }
+  ],
+  "domains": [
+    {
+      "key": "bodyFunctions",
+      "label": "Funções do Corpo",
+      "description": "Funções fisiológicas dos sistemas orgânicos, incluindo funções mentais",
+      "items": [
+        {
+          "code": "b110",
+          "label": "Funções da consciência"
+        },
+        {
+          "code": "b114",
+          "label": "Funções da orientação"
+        },
+        {
+          "code": "b117",
+          "label": "Funções intelectuais"
+        },
+        {
+          "code": "b130",
+          "label": "Funções da energia e dos impulsos"
+        },
+        {
+          "code": "b134",
+          "label": "Funções do sono"
+        },
+        {
+          "code": "b140",
+          "label": "Funções da atenção"
+        },
+        {
+          "code": "b144",
+          "label": "Funções da memória"
+        },
+        {
+          "code": "b152",
+          "label": "Funções emocionais"
+        },
+        {
+          "code": "b156",
+          "label": "Funções da percepção"
+        },
+        {
+          "code": "b164",
+          "label": "Funções cognitivas superiores"
+        },
+        {
+          "code": "b167",
+          "label": "Funções mentais da linguagem"
+        },
+        {
+          "code": "b210",
+          "label": "Funções da visão"
+        },
+        {
+          "code": "b230",
+          "label": "Funções auditivas"
+        },
+        {
+          "code": "b235",
+          "label": "Funções vestibulares"
+        },
+        {
+          "code": "b280",
+          "label": "Sensação de dor"
+        },
+        {
+          "code": "b310",
+          "label": "Funções da voz"
+        },
+        {
+          "code": "b410",
+          "label": "Funções do coração"
+        },
+        {
+          "code": "b420",
+          "label": "Funções da pressão arterial"
+        },
+        {
+          "code": "b430",
+          "label": "Funções do sistema hematológico"
+        },
+        {
+          "code": "b440",
+          "label": "Funções da respiração"
+        },
+        {
+          "code": "b510",
+          "label": "Funções de ingestão"
+        },
+        {
+          "code": "b525",
+          "label": "Funções de defecação"
+        },
+        {
+          "code": "b530",
+          "label": "Funções de manutenção do peso"
+        },
+        {
+          "code": "b540",
+          "label": "Funções metabólicas gerais"
+        },
+        {
+          "code": "b550",
+          "label": "Funções termorregulação"
+        },
+        {
+          "code": "b610",
+          "label": "Funções urinárias excretoras"
+        },
+        {
+          "code": "b640",
+          "label": "Funções sexuais"
+        },
+        {
+          "code": "b710",
+          "label": "Funções da mobilidade das articulações"
+        },
+        {
+          "code": "b730",
+          "label": "Funções da força muscular"
+        },
+        {
+          "code": "b735",
+          "label": "Funções do tônus muscular"
+        },
+        {
+          "code": "b740",
+          "label": "Funções da resistência muscular"
+        },
+        {
+          "code": "b760",
+          "label": "Funções do controle de movimentos voluntários"
+        },
+        {
+          "code": "b770",
+          "label": "Funções relacionadas ao padrão de marcha"
+        },
+        {
+          "code": "b810",
+          "label": "Funções protetoras da pele"
+        }
+      ]
+    },
+    {
+      "key": "bodyStructures",
+      "label": "Estruturas do Corpo",
+      "description": "Partes anatômicas do corpo (órgãos, membros e seus componentes)",
+      "items": [
+        {
+          "code": "s110",
+          "label": "Estrutura do cérebro"
+        },
+        {
+          "code": "s120",
+          "label": "Medula espinhal e estruturas relacionadas"
+        },
+        {
+          "code": "s210",
+          "label": "Estrutura do olho"
+        },
+        {
+          "code": "s240",
+          "label": "Estrutura do ouvido externo"
+        },
+        {
+          "code": "s410",
+          "label": "Estrutura do sistema cardiovascular"
+        },
+        {
+          "code": "s430",
+          "label": "Estrutura do sistema respiratório"
+        },
+        {
+          "code": "s610",
+          "label": "Estrutura do sistema urinário"
+        },
+        {
+          "code": "s710",
+          "label": "Estrutura da região da cabeça e pescoço"
+        },
+        {
+          "code": "s720",
+          "label": "Estrutura da região do ombro"
+        },
+        {
+          "code": "s730",
+          "label": "Estrutura do membro superior"
+        },
+        {
+          "code": "s740",
+          "label": "Estrutura da região pélvica"
+        },
+        {
+          "code": "s750",
+          "label": "Estrutura do membro inferior"
+        },
+        {
+          "code": "s760",
+          "label": "Estrutura do tronco"
+        },
+        {
+          "code": "s810",
+          "label": "Estrutura das áreas da pele"
+        }
+      ]
+    },
+    {
+      "key": "activitiesParticipation",
+      "label": "Atividades e Participação",
+      "description": "Execução de tarefas e envolvimento em situações da vida",
+      "items": [
+        {
+          "code": "d110",
+          "label": "Observar (ver, ouvir)"
+        },
+        {
+          "code": "d115",
+          "label": "Ouvir"
+        },
+        {
+          "code": "d130",
+          "label": "Copiar, imitar"
+        },
+        {
+          "code": "d155",
+          "label": "Adquirir habilidades"
+        },
+        {
+          "code": "d160",
+          "label": "Concentrar a atenção"
+        },
+        {
+          "code": "d170",
+          "label": "Escrever"
+        },
+        {
+          "code": "d175",
+          "label": "Resolver problemas"
+        },
+        {
+          "code": "d210",
+          "label": "Realizar uma única tarefa"
+        },
+        {
+          "code": "d220",
+          "label": "Realizar tarefas múltiplas"
+        },
+        {
+          "code": "d230",
+          "label": "Realizar a rotina diária"
+        },
+        {
+          "code": "d310",
+          "label": "Comunicar e receber mensagens faladas"
+        },
+        {
+          "code": "d330",
+          "label": "Falar"
+        },
+        {
+          "code": "d350",
+          "label": "Conversação"
+        },
+        {
+          "code": "d410",
+          "label": "Mudar a posição básica do corpo"
+        },
+        {
+          "code": "d415",
+          "label": "Manter uma posição corporal"
+        },
+        {
+          "code": "d420",
+          "label": "Transferir a própria posição"
+        },
+        {
+          "code": "d430",
+          "label": "Levantar e carregar objetos"
+        },
+        {
+          "code": "d440",
+          "label": "Uso fino da mão"
+        },
+        {
+          "code": "d445",
+          "label": "Uso da mão e do braço"
+        },
+        {
+          "code": "d450",
+          "label": "Andar"
+        },
+        {
+          "code": "d455",
+          "label": "Deslocar-se"
+        },
+        {
+          "code": "d460",
+          "label": "Deslocar-se por diferentes locais"
+        },
+        {
+          "code": "d465",
+          "label": "Deslocar-se utilizando equipamentos"
+        },
+        {
+          "code": "d470",
+          "label": "Utilização de transporte"
+        },
+        {
+          "code": "d475",
+          "label": "Dirigir"
+        },
+        {
+          "code": "d510",
+          "label": "Lavar-se (banho, higiene)"
+        },
+        {
+          "code": "d520",
+          "label": "Cuidar de partes do corpo"
+        },
+        {
+          "code": "d530",
+          "label": "Cuidados relacionados aos processos de excreção"
+        },
+        {
+          "code": "d540",
+          "label": "Vestir-se"
+        },
+        {
+          "code": "d550",
+          "label": "Comer"
+        },
+        {
+          "code": "d560",
+          "label": "Beber"
+        },
+        {
+          "code": "d570",
+          "label": "Cuidar da própria saúde"
+        },
+        {
+          "code": "d620",
+          "label": "Aquisição de bens e serviços (compras)"
+        },
+        {
+          "code": "d630",
+          "label": "Preparar refeições"
+        },
+        {
+          "code": "d640",
+          "label": "Realizar as tarefas domésticas"
+        },
+        {
+          "code": "d660",
+          "label": "Ajudar os outros"
+        },
+        {
+          "code": "d710",
+          "label": "Interações interpessoais básicas"
+        },
+        {
+          "code": "d720",
+          "label": "Interações interpessoais complexas"
+        },
+        {
+          "code": "d730",
+          "label": "Relacionamento com estranhos"
+        },
+        {
+          "code": "d740",
+          "label": "Relacionamento formal"
+        },
+        {
+          "code": "d750",
+          "label": "Relacionamentos sociais informais"
+        },
+        {
+          "code": "d760",
+          "label": "Relacionamentos familiares"
+        },
+        {
+          "code": "d770",
+          "label": "Relacionamentos íntimos"
+        },
+        {
+          "code": "d810",
+          "label": "Educação informal"
+        },
+        {
+          "code": "d820",
+          "label": "Educação escolar"
+        },
+        {
+          "code": "d830",
+          "label": "Educação de nível superior"
+        },
+        {
+          "code": "d840",
+          "label": "Preparação para o trabalho"
+        },
+        {
+          "code": "d845",
+          "label": "Obter, manter e sair de um emprego"
+        },
+        {
+          "code": "d850",
+          "label": "Trabalho remunerado"
+        },
+        {
+          "code": "d855",
+          "label": "Trabalho não remunerado"
+        },
+        {
+          "code": "d860",
+          "label": "Transações econômicas básicas"
+        },
+        {
+          "code": "d870",
+          "label": "Autossuficiência econômica"
+        },
+        {
+          "code": "d910",
+          "label": "Vida comunitária"
+        },
+        {
+          "code": "d920",
+          "label": "Recreação e lazer"
+        },
+        {
+          "code": "d930",
+          "label": "Religião e espiritualidade"
+        },
+        {
+          "code": "d940",
+          "label": "Direitos humanos"
+        },
+        {
+          "code": "d950",
+          "label": "Vida política e cidadania"
+        }
+      ]
+    },
+    {
+      "key": "environmentalFactors",
+      "label": "Fatores Ambientais",
+      "description": "Ambiente físico, social e atitudinal em que a pessoa vive (facilitadores ou barreiras)",
+      "items": [
+        {
+          "code": "e110",
+          "label": "Produtos ou substâncias para consumo pessoal"
+        },
+        {
+          "code": "e115",
+          "label": "Produtos e tecnologia para uso pessoal na vida diária"
+        },
+        {
+          "code": "e120",
+          "label": "Produtos e tecnologia para mobilidade e transporte pessoal"
+        },
+        {
+          "code": "e125",
+          "label": "Produtos e tecnologia para comunicação"
+        },
+        {
+          "code": "e150",
+          "label": "Produtos e tecnologia usados em projeto, arquitetura e construção"
+        },
+        {
+          "code": "e155",
+          "label": "Produtos e tecnologia usados em projeto de edifícios públicos"
+        },
+        {
+          "code": "e210",
+          "label": "Geografia física"
+        },
+        {
+          "code": "e225",
+          "label": "Clima"
+        },
+        {
+          "code": "e240",
+          "label": "Luz"
+        },
+        {
+          "code": "e250",
+          "label": "Som"
+        },
+        {
+          "code": "e310",
+          "label": "Família imediata"
+        },
+        {
+          "code": "e315",
+          "label": "Família ampliada"
+        },
+        {
+          "code": "e320",
+          "label": "Amigos"
+        },
+        {
+          "code": "e325",
+          "label": "Conhecidos, pares, colegas, vizinhos e membros da comunidade"
+        },
+        {
+          "code": "e330",
+          "label": "Pessoas em posição de autoridade"
+        },
+        {
+          "code": "e340",
+          "label": "Cuidadores e assistentes pessoais"
+        },
+        {
+          "code": "e355",
+          "label": "Profissionais de saúde"
+        },
+        {
+          "code": "e410",
+          "label": "Atitudes individuais de membros da família imediata"
+        },
+        {
+          "code": "e420",
+          "label": "Atitudes individuais de amigos"
+        },
+        {
+          "code": "e440",
+          "label": "Atitudes individuais de cuidadores e assistentes pessoais"
+        },
+        {
+          "code": "e450",
+          "label": "Atitudes individuais de profissionais de saúde"
+        },
+        {
+          "code": "e460",
+          "label": "Atitudes sociais"
+        },
+        {
+          "code": "e465",
+          "label": "Normas, práticas e ideologias sociais"
+        },
+        {
+          "code": "e510",
+          "label": "Serviços, sistemas e políticas para produção de bens de consumo"
+        },
+        {
+          "code": "e525",
+          "label": "Serviços, sistemas e políticas de habitação"
+        },
+        {
+          "code": "e535",
+          "label": "Serviços, sistemas e políticas de comunicação"
+        },
+        {
+          "code": "e540",
+          "label": "Serviços, sistemas e políticas de transporte"
+        },
+        {
+          "code": "e550",
+          "label": "Serviços, sistemas e políticas legais"
+        },
+        {
+          "code": "e570",
+          "label": "Serviços, sistemas e políticas de previdência social"
+        },
+        {
+          "code": "e575",
+          "label": "Serviços, sistemas e políticas de suporte social geral"
+        },
+        {
+          "code": "e580",
+          "label": "Serviços, sistemas e políticas de saúde"
+        },
+        {
+          "code": "e585",
+          "label": "Serviços, sistemas e políticas de educação e treinamento"
+        },
+        {
+          "code": "e590",
+          "label": "Serviços, sistemas e políticas de trabalho e emprego"
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Catálogo de referência do instrumento; não calcula grau de deficiência nem substitui avaliação biopsicossocial."
+}

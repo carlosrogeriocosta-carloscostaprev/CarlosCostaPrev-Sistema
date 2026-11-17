@@ -38,5 +38,12 @@ export default defineConfig({
         "test-service-role-key-not-a-placeholder-1234567890-1234567890",
     },
   },
-  resolve: { alias: { "@": path.resolve(__dirname, ".") } },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "."),
+      // `server-only` explode fora do bundler RSC (C6: admin.ts importa o
+      // pacote). As suites de invariante tocam o grafo que chega nele.
+      "server-only": path.resolve(__dirname, "tests/stubs/server-only.ts"),
+    },
+  },
 });

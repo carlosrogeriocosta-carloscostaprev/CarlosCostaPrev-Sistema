@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "name": "carloscostaprev",
+      "dockerfile": "Dockerfile",
+      "title": "CarlosCostaPrev"
+    },
+    {
+      "name": "carloscostaprev-worker",
+      "dockerfile": "Dockerfile.worker",
+      "title": "CarlosCostaPrev worker"
+    },
+    {
+      "name": "carloscostaprev-scheduler",
+      "dockerfile": "Dockerfile.scheduler",
+      "title": "CarlosCostaPrev scheduler"
+    }
+  ],
+  "stableImages": [
+    "carloscostaprev",
+    "carloscostaprev-worker",
+    "carloscostaprev-scheduler"
+  ],
+  "backgroundJobs": [
+    "carloscostaprev-worker",
+    "carloscostaprev-scheduler"
+  ]
+}

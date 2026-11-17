@@ -5,6 +5,12 @@
  * manualmente, resolvido de fonte confiável (cookie, JWT validado, webhook
  * secret, path token) — NUNCA do request body.
  *
+ * `import "server-only"` (C6, auditoria B2): a auditoria mediu que NADA
+ * estrutural impediria um import deste arquivo num Client Component — só a
+ * convenção. Um descuido futuro colocaria a service role (bypass de RLS) no
+ * bundle do navegador. O pacote derruba o BUILD se isso acontecer, que é a
+ * diferença entre "regra escrita" e "regra imposta".
+ *
  * Uso permitido:
  *  - Webhook handlers (WAHA, Nuvemshop)
  *  - Cron / workers
@@ -15,6 +21,8 @@
  *  - Qualquer rota acionada por usuário final em fluxo normal
  *  - Substituir auth por conveniência
  */
+
+import "server-only";
 
 import { createClient as createSupabaseClient, type SupabaseClient } from "@supabase/supabase-js";
 import { env } from "@/lib/env";

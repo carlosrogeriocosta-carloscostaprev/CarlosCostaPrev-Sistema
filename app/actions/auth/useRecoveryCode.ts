@@ -10,6 +10,7 @@ import { ipDoCliente } from "@/lib/http/ip-do-cliente";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { audit, isServiceRoleConfigured } from "@/lib/audit";
 import { hashRecoveryCode, normalizeRecoveryCode } from "@/lib/auth/recovery-codes";
+import { authRateLimited, AUTH_LIMITS } from "@/lib/auth/rate-limit";
 import { esquecerDispositivosConfiaveis } from "@/lib/auth/dispositivo-confiavel";
 
 export type UseRecoveryCodeResult =
@@ -56,8 +57,24 @@ export async function useRecoveryCode(
     return { ok: false, error: "service_unavailable" };
   }
 
-  const admin = createAdminClient();
   const { email, code } = parsed.data;
+
+  // C4 (auditoria B2, 2026-08-31; restaurado na atualização para a matriz
+  // v1.109.0): este é o ÚNICO caminho público com service role — queimar um
+  // código apaga TODOS os fatores TOTP da conta. Sem teto de tentativas, um
+  // e-mail conhecido sofreria força bruta de 36^8 com custo quase zero.
+  // `recovery_code` no bucket por e-mail: 3/hora por conta, 10/hora por IP — o
+  // ataque distribuído morre no `id`, o flood de um lugar morre no `ip`. O check
+  // fica ANTES de criar o client admin: quem está barrado não deve custar nem a
+  // inicialização do privilégio máximo. Mesmo erro genérico de sempre: rate
+  // limit não pode vazar que o e-mail existe (o delay do miss mantém o timing
+  // indistinguível).
+  if (await authRateLimited("recovery_code", email, AUTH_LIMITS.recovery_code)) {
+    await delay(200);
+    return { ok: false, error: "invalid_or_used" };
+  }
+
+  const admin = createAdminClient();
 
   // 1) Resolve user by email via admin API. Generic error if missing.
   const { data: list, error: listErr } = await admin.auth.admin.listUsers({

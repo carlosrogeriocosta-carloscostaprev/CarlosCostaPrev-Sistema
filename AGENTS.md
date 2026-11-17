@@ -470,8 +470,9 @@ itens envelhecem em ritmos diferentes, e o cabeçalho passava a mentir por todos
   6, "incluindo 3 secrets"; os três (`IMPERSONATE_COOKIE_SECRET`, `INTERNAL_CRON_SECRET`,
   `LGPD_SIGNING_KEY`) estão lá. Se você adicionar env var, adicione nos dois lugares (item 9 do
   DoD) — a regra continua valendo, o que caiu foi a dívida.
-- `lib/auth/invite-token.ts` cai em `"dev-fallback"` como secret HMAC se nenhum secret existir
-  (inalcançável em produção, porque `INTERNAL_SECRET` é obrigatório e derruba o boot).
+- `lib/auth/invite-token.ts` resolve `INVITE_TOKEN_SECRET` ou `INTERNAL_SECRET` e falha fechado se
+  ambos estiverem ausentes; não existe mais fallback público de HMAC. O template `.env.example`
+  documenta o segredo dedicado opcional.
 - **Boa parte dos handlers de `app/api/**` usa service role** — reconte:
   `grep -rl createAdminClient app/api --include='route.ts' | wc -l` contra
   `git ls-files 'app/api/**/route.ts' | wc -l`. Não há gate automático para o filtro de

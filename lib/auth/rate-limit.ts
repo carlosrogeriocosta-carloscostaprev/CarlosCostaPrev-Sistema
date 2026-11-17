@@ -127,6 +127,12 @@ export const AUTH_LIMITS = {
   // folga para quem errou o nome duas vezes.
   org_recovery: { ip: 5, id: 3, windowSec: 3600 },
   mfa: { ip: 30, id: 3, windowSec: 60 },
+  // Camada CarlosCostaPrev (auditoria B2, C4; restaurado na atualização para a
+  // matriz v1.109.0, que não tem este teto): useRecoveryCode é o único endpoint
+  // público com service role — queimar o código de 8 chars apaga todos os
+  // fatores TOTP da conta. Sem teto por conta, era força bruta ilimitada com
+  // delay de 200ms por vez. Fixado por tests/unit/recovery-code-rate-limit.test.ts.
+  recovery_code: { ip: 10, id: 3, windowSec: 3600 },
 } satisfies Record<string, AuthRateLimits>;
 
 export const __LOGIN_IP_DEFAULT_PARA_TESTE = LOGIN_IP_DEFAULT;

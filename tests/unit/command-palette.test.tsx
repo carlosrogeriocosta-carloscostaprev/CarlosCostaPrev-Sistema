@@ -97,7 +97,7 @@ describe("CommandPalette", () => {
   it("Enter navega para o item destacado", async () => {
     const user = userEvent.setup();
     abrir();
-    await user.type(screen.getByRole("combobox"), "conhec");
+    await user.type(screen.getByRole("combobox"), "materiais");
     await user.keyboard("{Enter}");
     expect(push).toHaveBeenCalledWith("/app/ai/knowledge/sources");
   });

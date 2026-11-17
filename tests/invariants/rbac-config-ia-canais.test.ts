@@ -201,6 +201,10 @@ const DIVIDA_RBAC_CONHECIDA = new Set([
   "reentry_template_pointers", "reentry_template_versions", "send_ledger",
   "skill_activations", "skill_pointers", "skill_versions", "storage_redaction_queue",
   "user_recovery_codes",
+  // PREV-007: KB global; leitura autenticada e escrita editorial só por platform admin.
+  "previdenciario_ifbra_items", "previdenciario_ifbra_qualifiers",
+  "previdenciario_legal_crosswalk", "previdenciario_legal_sources",
+  "previdenciario_pathology_knowledge",
 ]);
 
 describe("0150 — a dívida de RBAC não cresce", () => {

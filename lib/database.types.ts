@@ -3,6 +3,935 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
+      previdenciario_case_deadlines: {
+        Row: {
+          case_id: string
+          completed_at: string | null
+          completed_by_user_id: string | null
+          created_at: string
+          due_at: string
+          id: string
+          kind: string
+          metadata: Json
+          organization_id: string
+          reference_at: string | null
+          responsible_user_id: string | null
+          rule_key: string
+          rule_version: string
+          source: string
+          status: string
+          timezone: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          case_id: string
+          completed_at?: string | null
+          completed_by_user_id?: string | null
+          created_at?: string
+          due_at: string
+          id?: string
+          kind: string
+          metadata?: Json
+          organization_id: string
+          reference_at?: string | null
+          responsible_user_id?: string | null
+          rule_key?: string
+          rule_version?: string
+          source?: string
+          status?: string
+          timezone?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          case_id?: string
+          completed_at?: string | null
+          completed_by_user_id?: string | null
+          created_at?: string
+          due_at?: string
+          id?: string
+          kind?: string
+          metadata?: Json
+          organization_id?: string
+          reference_at?: string | null
+          responsible_user_id?: string | null
+          rule_key?: string
+          rule_version?: string
+          source?: string
+          status?: string
+          timezone?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_case_deadlines_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_deadlines_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_case_documents: {
+        Row: {
+          case_id: string
+          contact_id: string
+          created_at: string
+          file_name: string
+          id: string
+          kind: string
+          metadata: Json
+          organization_id: string
+          review_status: string
+          reviewed_at: string | null
+          reviewed_by_user_id: string | null
+          sha256: string
+          source: string
+          storage_bucket: string
+          storage_path: string
+          updated_at: string
+          uploaded_at: string
+          version: number
+        }
+        Insert: {
+          case_id: string
+          contact_id: string
+          created_at?: string
+          file_name: string
+          id?: string
+          kind: string
+          metadata?: Json
+          organization_id: string
+          review_status?: string
+          reviewed_at?: string | null
+          reviewed_by_user_id?: string | null
+          sha256: string
+          source?: string
+          storage_bucket: string
+          storage_path: string
+          updated_at?: string
+          uploaded_at?: string
+          version?: number
+        }
+        Update: {
+          case_id?: string
+          contact_id?: string
+          created_at?: string
+          file_name?: string
+          id?: string
+          kind?: string
+          metadata?: Json
+          organization_id?: string
+          review_status?: string
+          reviewed_at?: string | null
+          reviewed_by_user_id?: string | null
+          sha256?: string
+          source?: string
+          storage_bucket?: string
+          storage_path?: string
+          updated_at?: string
+          uploaded_at?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_case_documents_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_documents_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_documents_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_case_events: {
+        Row: {
+          actor_kind: string
+          actor_user_id: string | null
+          body: string | null
+          case_id: string
+          created_at: string
+          from_stage_id: string | null
+          id: string
+          kind: string
+          metadata: Json
+          organization_id: string
+          source: string
+          to_stage_id: string | null
+        }
+        Insert: {
+          actor_kind: string
+          actor_user_id?: string | null
+          body?: string | null
+          case_id: string
+          created_at?: string
+          from_stage_id?: string | null
+          id?: string
+          kind: string
+          metadata?: Json
+          organization_id: string
+          source?: string
+          to_stage_id?: string | null
+        }
+        Update: {
+          actor_kind?: string
+          actor_user_id?: string | null
+          body?: string | null
+          case_id?: string
+          created_at?: string
+          from_stage_id?: string | null
+          id?: string
+          kind?: string
+          metadata?: Json
+          organization_id?: string
+          source?: string
+          to_stage_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_case_events_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_events_from_stage_id_fkey"
+            columns: ["from_stage_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_case_stages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_events_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_events_to_stage_id_fkey"
+            columns: ["to_stage_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_case_stages"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_case_pendencies: {
+        Row: {
+          action: string
+          case_id: string
+          created_at: string
+          description: string | null
+          due_at: string | null
+          id: string
+          kind: string
+          metadata: Json
+          organization_id: string
+          resolved_at: string | null
+          resolved_by_user_id: string | null
+          source: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          action?: string
+          case_id: string
+          created_at?: string
+          description?: string | null
+          due_at?: string | null
+          id?: string
+          kind: string
+          metadata?: Json
+          organization_id: string
+          resolved_at?: string | null
+          resolved_by_user_id?: string | null
+          source?: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          action?: string
+          case_id?: string
+          created_at?: string
+          description?: string | null
+          due_at?: string | null
+          id?: string
+          kind?: string
+          metadata?: Json
+          organization_id?: string
+          resolved_at?: string | null
+          resolved_by_user_id?: string | null
+          source?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_case_pendencies_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_case_pendencies_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_case_stages: {
+        Row: {
+          color: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          is_terminal: boolean
+          name: string
+          organization_id: string
+          position: number
+          stable_key: string
+          updated_at: string
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_terminal?: boolean
+          name: string
+          organization_id: string
+          position?: number
+          stable_key: string
+          updated_at?: string
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_terminal?: boolean
+          name?: string
+          organization_id?: string
+          position?: number
+          stable_key?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_case_stages_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_cases: {
+        Row: {
+          archived_at: string | null
+          benefit_catalog_item_id: string | null
+          completed_at: string | null
+          contact_id: string
+          created_at: string
+          created_by_user_id: string | null
+          id: string
+          lead_id: string | null
+          metadata: Json
+          opened_at: string
+          organization_id: string
+          protocol_number: string | null
+          responsible_user_id: string | null
+          service_catalog_item_id: string | null
+          source: string
+          stage_id: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          archived_at?: string | null
+          benefit_catalog_item_id?: string | null
+          completed_at?: string | null
+          contact_id: string
+          created_at?: string
+          created_by_user_id?: string | null
+          id?: string
+          lead_id?: string | null
+          metadata?: Json
+          opened_at?: string
+          organization_id: string
+          protocol_number?: string | null
+          responsible_user_id?: string | null
+          service_catalog_item_id?: string | null
+          source?: string
+          stage_id: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          archived_at?: string | null
+          benefit_catalog_item_id?: string | null
+          completed_at?: string | null
+          contact_id?: string
+          created_at?: string
+          created_by_user_id?: string | null
+          id?: string
+          lead_id?: string | null
+          metadata?: Json
+          opened_at?: string
+          organization_id?: string
+          protocol_number?: string | null
+          responsible_user_id?: string | null
+          service_catalog_item_id?: string | null
+          source?: string
+          stage_id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_cases_benefit_catalog_item_id_fkey"
+            columns: ["benefit_catalog_item_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_catalog_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_cases_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_cases_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "crm_leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_cases_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_cases_service_catalog_item_id_fkey"
+            columns: ["service_catalog_item_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_catalog_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_cases_stage_id_fkey"
+            columns: ["stage_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_case_stages"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_catalog_items: {
+        Row: {
+          created_at: string
+          display_name: string
+          id: string
+          is_active: boolean
+          kind: string
+          metadata: Json
+          official_codes: string[]
+          review_status: string
+          source_kind: string
+          source_ref: string | null
+          source_version: string | null
+          stable_key: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name: string
+          id?: string
+          is_active?: boolean
+          kind: string
+          metadata?: Json
+          official_codes?: string[]
+          review_status?: string
+          source_kind?: string
+          source_ref?: string | null
+          source_version?: string | null
+          stable_key: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          id?: string
+          is_active?: boolean
+          kind?: string
+          metadata?: Json
+          official_codes?: string[]
+          review_status?: string
+          source_kind?: string
+          source_ref?: string | null
+          source_version?: string | null
+          stable_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      },
+      previdenciario_catalog_overrides: {
+        Row: {
+          catalog_item_id: string
+          created_at: string
+          display_name: string | null
+          id: string
+          is_active: boolean
+          metadata: Json
+          organization_id: string
+          updated_at: string
+        }
+        Insert: {
+          catalog_item_id: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          is_active?: boolean
+          metadata?: Json
+          organization_id: string
+          updated_at?: string
+        }
+        Update: {
+          catalog_item_id?: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          is_active?: boolean
+          metadata?: Json
+          organization_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_catalog_overrides_catalog_item_id_fkey"
+            columns: ["catalog_item_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_catalog_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_catalog_overrides_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_ifbra_items: {
+        Row: {
+          code: string
+          created_at: string
+          domain_description: string
+          domain_key: string
+          domain_label: string
+          id: string
+          instrument_version: string
+          label: string
+          review_note: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewer_user_id: string | null
+          source_commit: string
+          source_path: string
+          source_repo: string
+          source_snapshot_sha256: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          domain_description: string
+          domain_key: string
+          domain_label: string
+          id?: string
+          instrument_version?: string
+          label: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_commit: string
+          source_path: string
+          source_repo?: string
+          source_snapshot_sha256: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          domain_description?: string
+          domain_key?: string
+          domain_label?: string
+          id?: string
+          instrument_version?: string
+          label?: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_commit?: string
+          source_path?: string
+          source_repo?: string
+          source_snapshot_sha256?: string
+          updated_at?: string
+        }
+        Relationships: []
+      },
+      previdenciario_ifbra_qualifiers: {
+        Row: {
+          created_at: string
+          label: string
+          range_label: string
+          review_note: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewer_user_id: string | null
+          source_commit: string
+          source_path: string
+          source_repo: string
+          source_snapshot_sha256: string
+          updated_at: string
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          label: string
+          range_label: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_commit: string
+          source_path: string
+          source_repo?: string
+          source_snapshot_sha256: string
+          updated_at?: string
+          value: number
+        }
+        Update: {
+          created_at?: string
+          label?: string
+          range_label?: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_commit?: string
+          source_path?: string
+          source_repo?: string
+          source_snapshot_sha256?: string
+          updated_at?: string
+          value?: number
+        }
+        Relationships: []
+      },
+      previdenciario_legal_crosswalk: {
+        Row: {
+          benefit_catalog_item_id: string
+          case_date_rule: string | null
+          confidence: string
+          created_at: string
+          id: string
+          legal_source_id: string
+          provision_ref: string
+          relation_type: string
+          review_note: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewer_user_id: string | null
+          summary: string
+          updated_at: string
+        }
+        Insert: {
+          benefit_catalog_item_id: string
+          case_date_rule?: string | null
+          confidence?: string
+          created_at?: string
+          id?: string
+          legal_source_id: string
+          provision_ref: string
+          relation_type: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          summary: string
+          updated_at?: string
+        }
+        Update: {
+          benefit_catalog_item_id?: string
+          case_date_rule?: string | null
+          confidence?: string
+          created_at?: string
+          id?: string
+          legal_source_id?: string
+          provision_ref?: string
+          relation_type?: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          summary?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_legal_crosswalk_benefit_catalog_item_id_fkey"
+            columns: ["benefit_catalog_item_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_catalog_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "previdenciario_legal_crosswalk_legal_source_id_fkey"
+            columns: ["legal_source_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_legal_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
+      previdenciario_legal_sources: {
+        Row: {
+          accessed_at: string
+          created_at: string
+          id: string
+          jurisdiction: string
+          official_url: string
+          review_note: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewer_user_id: string | null
+          source_key: string
+          source_snapshot_sha256: string | null
+          source_type: string
+          source_version: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          accessed_at: string
+          created_at?: string
+          id?: string
+          jurisdiction?: string
+          official_url: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_key: string
+          source_snapshot_sha256?: string | null
+          source_type: string
+          source_version?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          accessed_at?: string
+          created_at?: string
+          id?: string
+          jurisdiction?: string
+          official_url?: string
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          source_key?: string
+          source_snapshot_sha256?: string | null
+          source_type?: string
+          source_version?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      },
+      previdenciario_pathology_knowledge: {
+        Row: {
+          aliases: string[]
+          benefit_hypotheses: Json
+          category: string
+          cid10_codes: string[]
+          cid11_codes: string[]
+          cif_activities_participation: string[]
+          cif_body_functions: string[]
+          cif_body_structures: string[]
+          cif_environmental_factors: string[]
+          clinical_content: Json
+          created_at: string
+          display_name: string
+          id: string
+          ifbra_activities: string[]
+          ifbra_domains: string[]
+          ifbra_instrument_version: string | null
+          review_note: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewer_user_id: string | null
+          service_links: string[]
+          source_commit: string
+          source_line: number | null
+          source_path: string
+          source_repo: string
+          source_snapshot_sha256: string
+          stable_key: string
+          updated_at: string
+        }
+        Insert: {
+          aliases?: string[]
+          benefit_hypotheses?: Json
+          category: string
+          cid10_codes?: string[]
+          cid11_codes?: string[]
+          cif_activities_participation?: string[]
+          cif_body_functions?: string[]
+          cif_body_structures?: string[]
+          cif_environmental_factors?: string[]
+          clinical_content?: Json
+          created_at?: string
+          display_name: string
+          id?: string
+          ifbra_activities?: string[]
+          ifbra_domains?: string[]
+          ifbra_instrument_version?: string | null
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          service_links?: string[]
+          source_commit: string
+          source_line?: number | null
+          source_path: string
+          source_repo?: string
+          source_snapshot_sha256: string
+          stable_key: string
+          updated_at?: string
+        }
+        Update: {
+          aliases?: string[]
+          benefit_hypotheses?: Json
+          category?: string
+          cid10_codes?: string[]
+          cid11_codes?: string[]
+          cif_activities_participation?: string[]
+          cif_body_functions?: string[]
+          cif_body_structures?: string[]
+          cif_environmental_factors?: string[]
+          clinical_content?: Json
+          created_at?: string
+          display_name?: string
+          id?: string
+          ifbra_activities?: string[]
+          ifbra_domains?: string[]
+          ifbra_instrument_version?: string | null
+          review_note?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewer_user_id?: string | null
+          service_links?: string[]
+          source_commit?: string
+          source_line?: number | null
+          source_path?: string
+          source_repo?: string
+          source_snapshot_sha256?: string
+          stable_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      },
+      previdenciario_pathology_review_history: {
+        Row: {
+          benefit_hypotheses: Json
+          created_at: string
+          editorial_summary: string | null
+          id: string
+          next_status: string
+          pathology_knowledge_id: string
+          previous_status: string
+          request_id: string | null
+          review_note: string | null
+          reviewer_user_id: string | null
+        }
+        Insert: {
+          benefit_hypotheses?: Json
+          created_at?: string
+          editorial_summary?: string | null
+          id?: string
+          next_status: string
+          pathology_knowledge_id: string
+          previous_status: string
+          request_id?: string | null
+          review_note?: string | null
+          reviewer_user_id?: string | null
+        }
+        Update: {
+          benefit_hypotheses?: Json
+          created_at?: string
+          editorial_summary?: string | null
+          id?: string
+          next_status?: string
+          pathology_knowledge_id?: string
+          previous_status?: string
+          request_id?: string | null
+          review_note?: string | null
+          reviewer_user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "previdenciario_pathology_review_his_pathology_knowledge_id_fkey"
+            columns: ["pathology_knowledge_id"]
+            isOneToOne: false
+            referencedRelation: "previdenciario_pathology_knowledge"
+            referencedColumns: ["id"]
+          },
+        ]
+      },
       account_plans: {
         Row: {
           created_at: string;
@@ -15082,6 +16011,27 @@ export type Database = {
       };
     };
     Functions: {
+      fn_previdenciario_review_pathologies: {
+        Args: {
+          p_editorial_summary: string
+          p_next_status: string
+          p_request_id: string
+          p_review_note: string
+          p_stable_keys: string[]
+        }
+        Returns: Json
+      },
+      fn_previdenciario_review_pathology: {
+        Args: {
+          p_benefit_hypotheses: Json
+          p_editorial_summary: string
+          p_next_status: string
+          p_request_id: string
+          p_review_note: string
+          p_stable_key: string
+        }
+        Returns: Json
+      },
       fn_create_contact_for_lead: {
         Args: { p_organization_id: string; p_lead_id: string; p_contact: Json };
         Returns: Json;

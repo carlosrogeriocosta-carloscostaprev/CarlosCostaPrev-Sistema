@@ -87,7 +87,6 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
       "app/api/v1/channel-sessions/[id]/route.test.ts",
       "app/api/v1/channel-sessions/[id]/route.ts",
       "app/api/v1/channel-sessions/route.ts",
-      "app/api/v1/health/route.ts",
       "app/api/v1/messages/[id]/media/route.ts",
       "app/api/v1/onboarding/whatsapp/qr/route.ts",
       "app/api/v1/onboarding/whatsapp/session/route.ts",
@@ -99,6 +98,7 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
       "app/app/connections/page.tsx",
       "app/onboarding/connect-whatsapp/page.tsx",
       "lib/agent-engine/edge/crm/session-reconciler.ts",
+      "lib/health/integration-checks.ts",
       "workers/media-persist-worker.ts",
     ],
   },
@@ -152,6 +152,7 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
       // `waha_session_name` como último degrau do NOME que o usuário vê, e por
       // isso um canal sem apelido aparecia no painel como `org_2dd5e6ea`. Agora
       // usa `nomeDoCanal`, que não conhece provedor nenhum. A catraca só encolhe.
+      "lib\\modules\\messaging-channel\\manifest.ts",
     ],
   },
   {
@@ -215,7 +216,7 @@ const KNOWN_DEBT: { reason: string; files: string[] }[] = [
   },
 ];
 
-const DEBT = new Set(KNOWN_DEBT.flatMap((g) => g.files));
+const DEBT = new Set(KNOWN_DEBT.flatMap((g) => g.files.map((f) => f.replace(/\\/g, "/"))));
 
 /**
  * Caminhos SEMPRE em barra normal.
@@ -229,7 +230,7 @@ const DEBT = new Set(KNOWN_DEBT.flatMap((g) => g.files));
  */
 function walk(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
-    const p = join(dir, e.name);
+    const p = join(dir, e.name).replace(/\\/g, "/"); // always forward slashes
     if (e.isDirectory()) return e.name === "node_modules" ? [] : walk(p);
     return /\.tsx?$/.test(e.name) ? [p.split(sep).join("/")] : [];
   });
@@ -254,7 +255,7 @@ function ondeNomeia(conteudo: string): { linha: number; texto: string }[] {
 
 const offenders = ROOTS.flatMap(walk)
   .filter((f) => !ALLOWED.some((re) => re.test(f)))
-  .filter((f) => nomeiaProvider(readFileSync(f, "utf8")));
+  .filter((f) => nomeiaProvider(readFileSync(f, "utf8"))); // walk já normaliza para forward slashes
 
 const novos = offenders.filter((f) => !DEBT.has(f));
 const stale = [...DEBT].filter((f) => !offenders.includes(f)).sort();

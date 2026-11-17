@@ -364,6 +364,17 @@ const DECISOES: Record<string, Decisao> = {
     razao:
       "O RELATO é o documento da manifestação (#3611): ele responde ao protocolo que já foi entregue a quem reclamou, e a ouvidoria precisa do texto para apurar — redigir apagaria a própria manifestação que a empresa tem de responder, e o prazo de resposta é sobre ela. A identificação do manifestante sai junto com o contato: `contact_id` é `on delete set null`, então apagar/anonimizar a pessoa desliga o vínculo e a linha continua legível só para os administradores (RLS da 9040). Redigir o TEXTO é decisão de produto da fatia de gestão (retenção e resposta), registrada aqui para não ser tomada por acidente.",
   },
+  // ── Camada CarlosCostaPrev: dossiê previdenciário, mantido por decisão do dono (16/11/2026) ──
+  previdenciario_cases: {
+    decidida: "manter",
+    razao:
+      "Guarda do dossiê do cliente por dever do escritório (decisão do dono em 16/11/2026, camada CarlosCostaPrev). O caso previdenciário e seus documentos são o registro do atendimento e do que se pediu ao INSS ou em juízo; apagá-los na anonimização destruiria prova do serviço prestado e a defesa do escritório. Base LGPD: art. 7º VI (exercício regular de direitos em processo) e art. 16, I (obrigação legal ou regulatória) — a confirmar com o advogado responsável, que também fixa o prazo de guarda. O contato em `contacts` É anonimizado pela cascata (vira 'Cliente Anonimizado #N'); a resposta ao titular deve dizer que o dossiê do caso foi mantido e por quê.",
+  },
+  previdenciario_case_documents: {
+    decidida: "manter",
+    razao:
+      "Documentos do caso (CNIS, laudos, PPP etc.): mesma decisão e mesma base de previdenciario_cases — guarda do dossiê por dever do escritório (16/11/2026). O arquivo mora no Storage e a linha guarda só nome, caminho e hash; quando o prazo de guarda vencer, a política de retenção deve apagar linha e arquivo juntos, e a decisão volta a ser `redigir`.",
+  },
   send_ledger: {
     decidida: "manter",
     razao: "body_hash é IRREVERSÍVEL (a própria doutrina do invariante irmão manda `_hash` ficar de fora) e last_error/status são código; é a prova de que a mensagem saiu, sem guardar o que ela dizia.",
