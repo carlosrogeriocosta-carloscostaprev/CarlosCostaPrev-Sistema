@@ -11,12 +11,16 @@
  * "só mais um dado" e o copilot sugere o import que já existe. O build passa,
  * o preview passa, e a chave sai no JS público com a suíte verde.
  *
- * O que este teste guarda, em duas frentes:
- *   1. `admin.ts` carrega `import "server-only"` — o Next derruba o BUILD se o
- *      arquivo entrar no grafo de um Client Component.
- *   2. Nenhum arquivo com `"use client"` importa o admin DIRETAMENTE — a rede
- *      de segurança estática para quem desviar da barreira 1 (ex.: alguém
- *      remove a linha para "destravar um build").
+ * O que este teste guarda: nenhum arquivo com `"use client"` importa o admin
+ * DIRETAMENTE (varredura estática).
+ *
+ * ATUALIZAÇÃO de 17/11/2026 (atualização para a matriz v1.109.0): a primeira
+ * frente, que exigia `import "server-only"` em `admin.ts`, SAIU. O worker do
+ * `event_log` carrega o admin sob `tsx`, que não resolve `server-only` (o pacote
+ * nem é dependência), e `drain-loop-carrega-deps-sob-tsx.test.ts`, da matriz,
+ * reprovou. Ficou só a varredura estática, que não depende do pacote. A barreira
+ * de build pode voltar por uma regra de lint (`no-restricted-imports`), sem tocar
+ * no worker. Registro: docs/CAMADA-CARLOSCOSTAPREV.md.
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -50,15 +54,6 @@ const IMPORT_ADMIN = /from\s+["']@\/lib\/supabase\/admin["']/;
 const USE_CLIENT = /^["']use client["']/m;
 
 describe("o client de service role nunca chega ao navegador", () => {
-  it("admin.ts carrega a barreira `server-only` (o build morre se ela sair)", () => {
-    const admin = readFileSync(join(RAIZ, "lib", "supabase", "admin.ts"), "utf8");
-    expect(
-      /import\s+["']server-only["']/.test(admin),
-      "lib/supabase/admin.ts perdeu o `import \"server-only\"` — a barreira de " +
-        "build que impede a service role de entrar num Client Component sumiu.",
-    ).toBe(true);
-  });
-
   it("nenhum arquivo 'use client' importa o admin diretamente", () => {
     const infratores: string[] = [];
     for (const alvo of ALVOS) {

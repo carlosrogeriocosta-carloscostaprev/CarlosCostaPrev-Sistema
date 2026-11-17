@@ -63,6 +63,9 @@ jobs:
         run: pnpm build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          # Heap do build: com a camada CarlosCostaPrev o `next build` estoura o default do Node (~2GB)
+          # no passo 'Running TypeScript' (OOM medido no CI, 17/11/2026). O Dockerfile já usa 4096.
+          NODE_OPTIONS: --max-old-space-size=4096
           SENTRY_DSN: "off"
       - name: O standalone leva o mysql2 completo?
         run: node scripts/verificar-standalone-mysql.mjs

@@ -152,7 +152,7 @@ export function PrevidenciarioCaseDetailClient({ caseId }: { caseId: string }) {
       <section className="grid gap-3 sm:grid-cols-3" aria-label={t("Resumo do caso")}>
         <Card className="p-4"><p className="text-xs uppercase tracking-wide text-muted-foreground">{t("Completude")}</p><p className="mt-1 text-lg font-semibold">{data.completeness.is_complete ? t("Pronto para revisão") : t("Ações necessárias")}</p><p className="mt-1 text-xs text-muted-foreground">{data.completeness.missing.length ? data.completeness.missing.join(" · ") : t("Nenhum campo crítico pendente")}</p></Card>
         <Card className="p-4"><p className="text-xs uppercase tracking-wide text-muted-foreground">{t("Pendências")}</p><p className="mt-1 text-lg font-semibold">{data.pendencies.filter((item) => item.status === "open").length} {t("abertas")}</p><p className="mt-1 text-xs text-muted-foreground">{data.pendencies.length} {t("registradas no total")}</p></Card>
-        <Card className="p-4"><p className="text-xs uppercase tracking-wide text-muted-foreground">{t("Protocolo")}</p><p className="mt-1 truncate text-lg font-semibold">{data.protocol_number ?? t("Não informado")}</p><p className="mt-1 text-xs text-muted-foreground">{t("Responsável:")} {data.responsible_user_id ? t("definido") : t("pendente")}</p></Card>
+        <Card className="p-4"><p className="text-xs uppercase tracking-wide text-muted-foreground">{t("Protocolo")}</p><p className="mt-1 truncate text-lg font-semibold">{data.protocol_number ?? t("Não informado")}</p><p className="mt-1 text-xs text-muted-foreground">{t("Responsável")}: {data.responsible_user_id ? t("definido") : t("pendente")}</p></Card>
       </section>
 
       <div className="grid gap-4 xl:grid-cols-2">
