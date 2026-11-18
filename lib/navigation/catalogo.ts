@@ -21,7 +21,6 @@ import type { CapacidadeDaOrganizacao } from "@/lib/organizacao/capacidades";
 export type NavGroupId =
   | "atendimento"
   | "crm"
-  | "previdenciario"
   | "ia"
   | "canais"
   | "analise"
@@ -99,9 +98,6 @@ export interface NavMetadata {
 export const NAV_GROUPS: NavGroup[] = [
   { id: "atendimento", label: "Atendimento" },
   { id: "crm", label: "CRM", hub: { href: "/app/crm", label: "Ver tudo em CRM" } },
-  // Camada CarlosCostaPrev: o grupo do módulo previdenciário. Sem hub — são só
-  // duas portas, e as duas moram no sidebar.
-  { id: "previdenciario", label: "Previdenciário" },
   { id: "ia", label: "Agente de IA", hub: { href: "/app/ai", label: "Ver tudo em IA" } },
   { id: "canais", label: "Canais" },
   { id: "analise", label: "Análise", hub: { href: "/app/analise", label: "Ver tudo em Análise" } },
@@ -1298,21 +1294,25 @@ export const NAV_CATALOG = [
     // no registro antigo (`registry.ts`) e se perderam quando a matriz moveu o
     // menu para este catálogo — as telas continuaram de pé, sem por onde serem
     // achadas (item 14 da Definition of Done; o gate `navegacao-completude`
-    // acusou). `sidebar: true`: casos são uso diário.
+    // acusou).
+    //
+    // 17/11/2026: moram no hub do CRM ("Ver tudo em CRM"), na seção Previdenciário, e NÃO no
+    // sidebar. Duas portas e um cabeçalho de grupo faziam o menu rolar 56px em 1280x900 (medido), e a
+    // regra da casa é hub, não densidade raspada (ver o comentário de densidade do `Sidebar.tsx`).
     href: "/app/previdenciario",
     label: "Casos previdenciários",
     description: "Casos, pendências, prazos e documentos do atendimento previdenciário.",
     icon: "ScalesSimple",
-    group: "previdenciario",
-    sidebar: true,
+    group: "crm",
+    section: "Previdenciário",
   },
   {
     href: "/app/previdenciario/conhecimento",
     label: "Base de conhecimento",
     description: "Patologias, CIF, IFBrA e fontes legislativas para apoiar a revisão profissional.",
     icon: "BookOpen",
-    group: "previdenciario",
-    sidebar: true,
+    group: "crm",
+    section: "Previdenciário",
   },
   {
     // A porta da ajuda dentro do produto (issue #3567, fatia F1). Fica por

@@ -179,20 +179,15 @@ describe("a organização não consegue se trancar do lado de fora", () => {
 });
 
 describe("medição da folga (pergunta de aceite da issue #1341)", () => {
-  // CAMADA CarlosCostaPrev (17/11/2026): a matriz mede 15 itens (folga 0 na dobra a 1280x900). O grupo
-  // "Previdenciário" acrescenta 2 portas (Casos e Base de conhecimento), então o menu COMPLETO tem 17.
-  // Decisão do produto: aceitar a rolagem do menu lateral no preset completo; o simplificado (6) não muda.
-  const ITENS_COMPLETO = 17;
-
   /**
    * Baseline: a configuração de HOJE — nenhuma escolha, nem da empresa nem do
    * vínculo. É o número que o issue publica (15 itens: atendimento 4, CRM 3,
    * IA 3, canais 2, análise 3), medido aqui pelo módulo que alimenta o menu.
    */
-  it("hoje: 17 itens no menu lateral (15 da matriz + 2 previdenciárias)", () => {
-    expect(itensNoMenuLateral(INTERFACE_COMPLETA)).toBe(ITENS_COMPLETO);
+  it("hoje: 15 itens no menu lateral, folga 0 (é o teto da dobra a 1280x900)", () => {
+    expect(itensNoMenuLateral(INTERFACE_COMPLETA)).toBe(15);
     // `undefined` é o caminho de quem não tem escolha nenhuma gravada
-    expect(itensNoMenuLateral(undefined)).toBe(ITENS_COMPLETO);
+    expect(itensNoMenuLateral(undefined)).toBe(15);
   });
 
   /**
@@ -200,22 +195,22 @@ describe("medição da folga (pergunta de aceite da issue #1341)", () => {
    * A escolha da empresa é interseção, então o menu só ENCOLHE — a mudança não
    * tem como empurrar o instrumento de tela para o vermelho.
    */
-  it("configuração COMPLETA (ninguém escolheu): 17 itens — igual a hoje", () => {
-    expect(itensNoMenuLateral(combinarInterfaces(completa, completa))).toBe(ITENS_COMPLETO);
+  it("configuração COMPLETA (ninguém escolheu): 15 itens, folga 0 — igual a hoje", () => {
+    expect(itensNoMenuLateral(combinarInterfaces(completa, completa))).toBe(15);
   });
 
-  it("configuração SIMPLIFICADA (empresa escolhe o preset): 6 itens, folga 11", () => {
+  it("configuração SIMPLIFICADA (empresa escolhe o preset): 6 itens, folga 9", () => {
     const itens = itensNoMenuLateral(combinarInterfaces(simplificada, completa));
     expect(itens).toBe(6);
-    expect(ITENS_COMPLETO - itens).toBe(11);
+    expect(15 - itens).toBe(9);
   });
 
-  it("configuração MÍNIMA (empresa escolhe 1 porta): 1 item, folga 16", () => {
+  it("configuração MÍNIMA (empresa escolhe 1 porta): 1 item, folga 14", () => {
     const minima = combinarInterfaces({ preset: "completa", destinos: ["/app/inbox"] }, completa);
     expect(interfaceTemDestino(minima, "admin")).toBe(true); // a guarda exige ≥1 porta
     const itens = itensNoMenuLateral(minima);
     expect(itens).toBe(1);
-    expect(ITENS_COMPLETO - itens).toBe(16);
+    expect(15 - itens).toBe(14);
   });
 
   it("nenhuma escolha da empresa pode AUMENTAR o menu (é interseção, não soma)", () => {
@@ -227,7 +222,7 @@ describe("medição da folga (pergunta de aceite da issue #1341)", () => {
     ];
     for (const daEmpresa of casos) {
       for (const doVinculo of [completa, simplificada, undefined]) {
-        expect(itensNoMenuLateral(combinarInterfaces(daEmpresa, doVinculo))).toBeLessThanOrEqual(ITENS_COMPLETO);
+        expect(itensNoMenuLateral(combinarInterfaces(daEmpresa, doVinculo))).toBeLessThanOrEqual(15);
       }
     }
   });
