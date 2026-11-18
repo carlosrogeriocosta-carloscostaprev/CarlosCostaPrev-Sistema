@@ -200,6 +200,9 @@ const SITES: { arquivo: string; fronteira: string; papel?: "gerador" | "validado
   { arquivo: "lib/agent-engine/agent/inbound-turn.ts", fronteira: "storage.chave-de-objeto" },
   { arquivo: "app/api/v1/settings/sons/route.ts", fronteira: "storage.chave-de-objeto" },
   { arquivo: "app/api/v1/marca/logo/route.ts", fronteira: "storage.chave-de-objeto" },
+  // CAMADA CarlosCostaPrev: documento do caso previdenciário. Chave `{org}/{caso}/{uuid}.{ext}`, com org e caso
+  // UUID da própria rota e extensão de lista fechada (pdf, jpeg, png, webp): nada do nome do arquivo entra.
+  { arquivo: "app/api/v1/previdenciario/cases/[id]/documentos/route.ts", fronteira: "storage.chave-de-objeto" },
   { arquivo: "app/api/v1/conversations/[id]/media/route.ts", fronteira: "storage.chave-de-objeto" },
   // O anexo da nota interna (#1863, F3): MESMO molde de chave da rota irmã
   // (`{org}/{conversa}/note-{uuid}.{ext}`), bucket próprio `internal-media`.
@@ -223,6 +226,8 @@ const SITES: { arquivo: string; fronteira: string; papel?: "gerador" | "validado
   { arquivo: "hooks/ai/useSkills.ts", fronteira: "api.idempotency-key", papel: "gerador" },
   { arquivo: "hooks/contacts/useImportContacts.ts", fronteira: "api.idempotency-key", papel: "gerador" },
   { arquivo: "hooks/contacts/useSyncPhoneContacts.ts", fronteira: "api.idempotency-key", papel: "gerador" },
+  // CAMADA CarlosCostaPrev: o hook dos casos previdenciários manda o requestId (UUID de `randomId()`).
+  { arquivo: "hooks/previdenciario/usePrevidenciarioCases.ts", fronteira: "api.idempotency-key", papel: "gerador" },
   { arquivo: "lib/api/client.ts", fronteira: "api.idempotency-key", papel: "gerador" },
   { arquivo: "lib/api/idempotency.ts", fronteira: "api.idempotency-key", papel: "validador" },
   { arquivo: "lib/extensions/http.ts", fronteira: "api.idempotency-key", papel: "validador" },
