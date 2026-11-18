@@ -62,9 +62,9 @@ nada na tela**: é normal.
 Já dentro da VPS:
 
 ```bash
-git clone https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema.git
+git clone https://github.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema.git
 cd CarlosCostaPrev-Sistema
-REPO_URL=https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema.git bash hostgator-setup-kit/install.sh
+REPO_URL=https://github.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema.git bash hostgator-setup-kit/install.sh
 ```
 
 Você **não instala Node nem pnpm e não compila nada**: a imagem do app já vem pronta. Se faltar Docker,
@@ -162,7 +162,7 @@ Ela confere se há versão nova, **faz backup do banco antes de qualquer mudanç
 Requisitos: Node 22, pnpm e Docker.
 
 ```bash
-git clone https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema.git
+git clone https://github.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema.git
 cd CarlosCostaPrev-Sistema
 
 nvm use                     # Node 22

@@ -13,11 +13,9 @@
 #
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/prevprocesso-maker/CarlosCostaPrev.git}"
-# Link de parceria com a HostGator. Mesma URL e mesmo rótulo do README: uma
-# promessa só, num lugar só — duas redações da mesma oferta viram duas ofertas.
-VPS_URL="https://www.hostgator.com.br/52708-141-3-52.html"
-COMUNIDADE_URL="https://lp-comunidade.automatiklabs.com.br"
+REPO_URL="${REPO_URL:-https://github.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema.git}"
+# Página da HostGator para contratar uma VPS (sem link de parceria: o do projeto original saiu).
+VPS_URL="https://www.hostgator.com.br/"
 
 # ── Aparência ───────────────────────────────────────────────────────────────
 # Gêmeas das do install.sh (que por sua vez é standalone porque roda antes do
@@ -233,9 +231,6 @@ done
 cat <<FIM
   ─── Quando travar ────────────────────────────────────────
 
-  Tem gente rodando exatamente este CRM na comunidade, e é lá que saem os
-  avisos de versão nova:
-
-       ${COMUNIDADE_URL}
+  Guarde a mensagem de erro inteira e envie a quem mantém este sistema.
 
 FIM
