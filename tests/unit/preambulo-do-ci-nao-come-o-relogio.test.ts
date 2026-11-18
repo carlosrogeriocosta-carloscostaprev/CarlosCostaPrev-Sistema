@@ -62,9 +62,9 @@ const TETOS: Record<string, { minutos: number; razao: string }> = {
   //     orçamento para 12. Medido antes da divisão, num verde do #1190: job
   //     866 s, `Unit tests` 649 s — cada parte roda metade.
   "ci.yml::verify-parte": {
-    minutos: 30,
+    minutos: 45,
     razao:
-      "CAMADA CarlosCostaPrev (17/11/2026): 30 e não 15 — no ubuntu-latest as partes levaram 13 a 15 min com a camada nossa. " +
+      "CAMADA CarlosCostaPrev (18/11/2026): 45 e não 15 — no ubuntu-latest as partes levaram de 13 a 26 min com a camada nossa. " +
       "a suíte foi repartida em partes (#1185 via #1190; três de unit desde 22/09/2026, e uma quarta só de cercas+kit desde 08/10/2026); cada parte roda uma fatia de uma suíte " +
       "que custava 649s de unit num verde. 15 é guarda de travamento; quem denuncia crescimento " +
       "é o passo `Orçamento de tempo do verify-parte` (12 min por parte, medido em 19/09)",
@@ -106,9 +106,9 @@ const ORCAMENTOS: Record<string, { minutos: number; razao: string }> = {
   // Que o passo não fique preso a uma delas é o que o caso
   // "o orçamento vale para TODAS as partes" abaixo guarda.
   "ci.yml::verify-parte": {
-    minutos: 25,
+    minutos: 35,
     razao:
-      "CAMADA CarlosCostaPrev (17/11/2026): 25 e não 12 — o 12 da matriz foi medido no runner dela; no ubuntu-latest, com a camada nossa, as partes levaram 13 a 15 min. " +
+      "CAMADA CarlosCostaPrev (18/11/2026): 35 e não 12 — o 12 da matriz foi medido no runner dela; no ubuntu-latest, com a camada nossa, as partes levaram de 13 a 26 min. " +
       "MEDIDO em 19/09/2026 sobre todos os jobs `verify-parte` das 240 rodadas completas de " +
       "ci.yml criadas depois de as partes entrarem na main (18/09 18:37Z): n=286 que EXECUTARAM " +
       "(260 success + 26 failure) — min 0,9 · mediana 7,2 · p90 8,6 · p95 8,8 · MÁX 9,6; ZERO " +

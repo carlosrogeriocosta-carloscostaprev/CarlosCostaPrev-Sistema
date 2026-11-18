@@ -185,9 +185,9 @@ jobs:
     # Guarda de travamento. O DETECTOR de crescimento é o passo `Orçamento de
     # tempo` no fim de cada parte; a medição que justifica o número está em
     # `TETOS`, em tests/unit/preambulo-do-ci-nao-come-o-relogio.test.ts.
-    timeout-minutes: 30
-    # CAMADA CarlosCostaPrev (17/11/2026): 30, não 15. No `ubuntu-latest` as partes levaram 13 a 15 min
-    # com a camada nossa e eram cortadas no teto da matriz (medido no CI do repositório novo).
+    timeout-minutes: 45
+    # CAMADA CarlosCostaPrev (18/11/2026): 45, não 15. No `ubuntu-latest` as partes levaram de 13 a 26 min
+    # com a camada nossa (a parte 1 chegou a 26) e eram cortadas no teto da matriz (medido no CI do repositório novo).
     # Executor próprio para trabalho nosso quando EXECUTOR_PROPRIO=ligado; o
     # porquê e a guarda contra fork: comentário do e2e-parte no e2e.yml.
     runs-on: ${{ vars.EXECUTOR_PROPRIO == 'ligado' && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && 'deskcomm-proprio' || 'ubuntu-latest' }}
@@ -531,8 +531,8 @@ jobs:
           #
           # A catraca que impede este número de subir sem razão escrita está em
           # tests/unit/preambulo-do-ci-nao-come-o-relogio.test.ts (`ORCAMENTOS`).
-          # CAMADA CarlosCostaPrev: 25 (a matriz usa 12, medido no runner dela). Ver o teto acima.
-          ORCAMENTO_MIN: "25"
+          # CAMADA CarlosCostaPrev: 35 (a matriz usa 12, medido no runner dela). Ver o teto acima.
+          ORCAMENTO_MIN: "35"
         run: |
           set -euo pipefail
           if [ -z "${VERIFY_INICIO:-}" ]; then
