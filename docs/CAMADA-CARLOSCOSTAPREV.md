@@ -81,6 +81,7 @@ o motivo de cada uma **não foi revisado linha a linha** nesta etapa. Lista: `.e
 | Migration `8012` (convites, modelo antigo) | Declarada em `MIGRATIONS_QUE_NAO_RODAM` de `baseline-e-cadeia-chegam-ao-mesmo-schema.test.ts` (**teste da matriz editado**): sobre o baseline falha com `column "declined_at" does not exist`; a `8017` converte |
 | Migration `8020` | Refaz a varredura C7 (policies `TO authenticated`) no fim da cadeia: as migrations da matriz posteriores à `8015` recriam policies sem `TO`, e baseline e cadeia divergiam em 324 objetos |
 | Menu lateral | `interface-por-empresa.test.ts` (**da matriz, editado**) passou de 15 para 17 itens: o grupo Previdenciário traz 2 portas. Aceita-se a rolagem do menu no preset completo |
+| Menu lateral (`Sidebar.tsx`) | Espaço entre itens e entre grupos de `space-y-1` para `space-y-0.5`, para o grupo Previdenciário (2 portas) caber em 1280x900. **Não provado ainda**: só o e2e `navegacao.spec.ts` (e a medição no sistema local) diz. Se não bastar, a saída da matriz é um HUB (guardar Previdenciário dentro de `/app/crm`), não mais densidade |
 | `lint-channels.ts` | `health/route.ts` volta à dívida conhecida (rota da matriz); sai a entrada do manifesto do SOS |
 
 ## D. Órfãos (ninguém importa; **apagar só com ok explícito**)
