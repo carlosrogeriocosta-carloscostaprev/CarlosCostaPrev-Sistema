@@ -177,7 +177,7 @@ describe("hubSections", () => {
     // dia contra o que se define uma vez. Lista EXATA: `toContain` deixaria uma
     // tela nova entrar sem que ninguém decidisse de que lado dela ela cai.
     const secoes = hubSections("crm", true, null);
-    expect(secoes.map((s) => s.section)).toEqual(["O dia a dia da venda", "Preparar a venda", "Fechar a venda"]);
+    expect(secoes.map((s) => s.section)).toEqual(["O dia a dia da venda", "Preparar a venda", "Fechar a venda", "Previdenciário"]); // CAMADA CarlosCostaPrev: seção Previdenciário
     expect(secoes.flatMap((s) => s.items.map((i) => i.href))).toEqual([
       "/app/prospecting",
       // Doc 208 (A): a fila de espera da agenda. Só com o módulo instalado.
@@ -203,6 +203,9 @@ describe("hubSections", () => {
       "/app/imports",
       "/app/settings/tenant/pipelines",
       "/app/proposals",
+      // CAMADA CarlosCostaPrev: as duas portas do módulo previdenciário (seção própria, no fim)
+      "/app/previdenciario",
+      "/app/previdenciario/conhecimento",
     ]);
   });
 

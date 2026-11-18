@@ -82858,6 +82858,39 @@ create trigger trg_contacts_fusao_e_anonimizacao_so_pelo_servidor_ao_criar
 revoke all on table public.storage_redaction_queue from authenticated;
 grant select on table public.storage_redaction_queue to authenticated;
 
+-- ---- previdenciário: gatilho que semeia as etapas na criação da organização (migration 8021, parte 1) ----
+-- Função: fica ANTES da varredura de anon (nenhuma função nasce depois dela).
+create or replace function public.fn_previdenciario_semear_etapas()
+  returns trigger
+  language plpgsql
+  security definer
+  set search_path = public, pg_temp
+as $$
+begin
+  insert into public.previdenciario_case_stages
+    (organization_id, stable_key, name, position, color, is_terminal)
+  values
+    (new.id, 'intake', 'Entrada', 100::numeric, '#64748B', false),
+    (new.id, 'triage', 'Triagem', 200::numeric, '#2563EB', false),
+    (new.id, 'documents', 'Documentos', 300::numeric, '#7C3AED', false),
+    (new.id, 'in_progress', 'Em andamento', 400::numeric, '#0891B2', false),
+    (new.id, 'awaiting_client', 'Aguardando cliente', 500::numeric, '#D97706', false),
+    (new.id, 'awaiting_external', 'Aguardando órgão externo', 600::numeric, '#EA580C', false),
+    (new.id, 'review', 'Revisão profissional', 700::numeric, '#DB2777', false),
+    (new.id, 'completed', 'Concluído', 800::numeric, '#16A34A', true),
+    (new.id, 'archived', 'Arquivado', 900::numeric, '#475569', true)
+  on conflict (organization_id, stable_key) do nothing;
+  return new;
+end;
+$$;
+
+revoke execute on function public.fn_previdenciario_semear_etapas() from public, anon, authenticated;
+
+drop trigger if exists trg_organizations_previdenciario_etapas on public.organizations;
+create trigger trg_organizations_previdenciario_etapas
+  after insert on public.organizations
+  for each row execute function public.fn_previdenciario_semear_etapas();
+
 -- ---- VARREDURA anon: função nova nasce exposta em quem ATUALIZA (migration 0116) ----
 --
 -- ⚠️ DE PROPÓSITO, NENHUMA FUNÇÃO É CRIADA DEPOIS DESTE BLOCO. Apêndice que cria
@@ -88701,39 +88734,14 @@ begin
   end if;
 end $f$;
 
--- ---- previdenciário: etapas do quadro nascem com a organização (migration 8021) ----
--- Antes, as etapas só existiam para organizações que já existiam quando o baseline era aplicado; numa
--- instalação nova o quadro de casos ficava vazio. Ver supabase/migrations/20261112033900_8021_*.sql.
-create or replace function public.fn_previdenciario_semear_etapas()
-  returns trigger
-  language plpgsql
-  security definer
-  set search_path = public, pg_temp
-as $$
-begin
-  insert into public.previdenciario_case_stages
-    (organization_id, stable_key, name, position, color, is_terminal)
-  values
-    (new.id, 'intake', 'Entrada', 100::numeric, '#64748B', false),
-    (new.id, 'triage', 'Triagem', 200::numeric, '#2563EB', false),
-    (new.id, 'documents', 'Documentos', 300::numeric, '#7C3AED', false),
-    (new.id, 'in_progress', 'Em andamento', 400::numeric, '#0891B2', false),
-    (new.id, 'awaiting_client', 'Aguardando cliente', 500::numeric, '#D97706', false),
-    (new.id, 'awaiting_external', 'Aguardando órgão externo', 600::numeric, '#EA580C', false),
-    (new.id, 'review', 'Revisão profissional', 700::numeric, '#DB2777', false),
-    (new.id, 'completed', 'Concluído', 800::numeric, '#16A34A', true),
-    (new.id, 'archived', 'Arquivado', 900::numeric, '#475569', true)
-  on conflict (organization_id, stable_key) do nothing;
-  return new;
-end;
-$$;
-
-revoke execute on function public.fn_previdenciario_semear_etapas() from public, anon, authenticated;
-
-drop trigger if exists trg_organizations_previdenciario_etapas on public.organizations;
-create trigger trg_organizations_previdenciario_etapas
-  after insert on public.organizations
-  for each row execute function public.fn_previdenciario_semear_etapas();
+-- ---- previdenciário: auditoria das etapas e etapas das organizações que já existem (migration 8021, parte 2) ----
+-- O seed das etapas não é ação de usuário: a auditoria das etapas passa a cobrir só mudança e exclusão
+-- (nenhuma rota cria etapa; só o seed). Sem isso, criar uma organização sob uma sessão de teste com usuário
+-- fictício falhava na chave estrangeira de api_audit_log.
+drop trigger if exists trg_previdenciario_case_stages_audit on public.previdenciario_case_stages;
+create trigger trg_previdenciario_case_stages_audit
+  after update or delete on public.previdenciario_case_stages
+  for each row execute function public.fn_audit_log_row();
 
 -- Organizações que já existem sem etapa (instalação feita antes deste conserto): mesmo seed, idempotente.
 insert into public.previdenciario_case_stages

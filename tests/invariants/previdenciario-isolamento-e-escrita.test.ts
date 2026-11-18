@@ -53,8 +53,9 @@ beforeAll(() => {
   const semear = (lado: "a" | "b", org: string) => `
     insert into public.contacts (id, organization_id, display_name)
       values ('${CONTATO[lado]}', '${org}', 'Contato 8019 ${lado}');
-    insert into public.previdenciario_case_stages (id, organization_id, stable_key, name)
-      values ('${ETAPA[lado]}', '${org}', 'intake', 'Entrada');
+    -- a etapa 'intake' já nasce com a organização (gatilho da 8021); só fixa o id que o teste usa
+    update public.previdenciario_case_stages set id = '${ETAPA[lado]}'
+      where organization_id = '${org}' and stable_key = 'intake';
     insert into public.previdenciario_cases (id, organization_id, contact_id, stage_id, title)
       values ('${CASO[lado]}', '${org}', '${CONTATO[lado]}', '${ETAPA[lado]}', 'Caso 8019 ${lado}');
     insert into public.previdenciario_case_pendencies (id, organization_id, case_id, kind, title)

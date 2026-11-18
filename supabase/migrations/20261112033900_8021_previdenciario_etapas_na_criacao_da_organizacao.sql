@@ -42,6 +42,14 @@ create trigger trg_organizations_previdenciario_etapas
   after insert on public.organizations
   for each row execute function public.fn_previdenciario_semear_etapas();
 
+-- O seed das etapas não é ação de usuário: a auditoria das etapas passa a cobrir só mudança e exclusão
+-- (nenhuma rota cria etapa; só o seed). Sem isso, criar uma organização sob uma sessão de teste com usuário
+-- fictício falhava na chave estrangeira de api_audit_log.
+drop trigger if exists trg_previdenciario_case_stages_audit on public.previdenciario_case_stages;
+create trigger trg_previdenciario_case_stages_audit
+  after update or delete on public.previdenciario_case_stages
+  for each row execute function public.fn_audit_log_row();
+
 -- Organizações que já existem sem etapa (instalação feita antes deste conserto): mesmo seed, idempotente.
 insert into public.previdenciario_case_stages
   (organization_id, stable_key, name, position, color, is_terminal)
