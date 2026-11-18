@@ -4,7 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 5
+    # PAUSADO (17/11/2026): cada PR do Dependabot roda o CI inteiro e queimou a cota de minutos durante a
+    # verificação da atualização para a matriz. 0 = nenhum PR de versão. Voltar a 5 depois da verificação.
+    open-pull-requests-limit: 0
     groups:
       minor-and-patch:
         update-types: ["minor", "patch"]
@@ -20,3 +22,4 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 0   # PAUSADO, ver acima
