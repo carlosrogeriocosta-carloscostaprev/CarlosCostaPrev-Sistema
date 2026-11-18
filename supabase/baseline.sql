@@ -82026,6 +82026,39 @@ comment on column public.conversations.campaign_entry_agent_id is
 -- ---- anonimizar alcança as fichas fundidas: a cascata (migration 9243) ----
 -- Espelho de supabase/migrations/20261107120001_9243_anonimizar_alcanca_fichas_fundidas.sql.
 -- O bloco de dados está no fim do arquivo: precisa de todos os gatilhos de anonimização criados.
+-- ---- previdenciário: gatilho que semeia as etapas na criação da organização (migration 8021, parte 1) ----
+-- Função: fica ANTES da varredura de anon (nenhuma função nasce depois dela).
+create or replace function public.fn_previdenciario_semear_etapas()
+  returns trigger
+  language plpgsql
+  security definer
+  set search_path = public, pg_temp
+as $$
+begin
+  insert into public.previdenciario_case_stages
+    (organization_id, stable_key, name, position, color, is_terminal)
+  values
+    (new.id, 'intake', 'Entrada', 100::numeric, '#64748B', false),
+    (new.id, 'triage', 'Triagem', 200::numeric, '#2563EB', false),
+    (new.id, 'documents', 'Documentos', 300::numeric, '#7C3AED', false),
+    (new.id, 'in_progress', 'Em andamento', 400::numeric, '#0891B2', false),
+    (new.id, 'awaiting_client', 'Aguardando cliente', 500::numeric, '#D97706', false),
+    (new.id, 'awaiting_external', 'Aguardando órgão externo', 600::numeric, '#EA580C', false),
+    (new.id, 'review', 'Revisão profissional', 700::numeric, '#DB2777', false),
+    (new.id, 'completed', 'Concluído', 800::numeric, '#16A34A', true),
+    (new.id, 'archived', 'Arquivado', 900::numeric, '#475569', true)
+  on conflict (organization_id, stable_key) do nothing;
+  return new;
+end;
+$$;
+
+revoke execute on function public.fn_previdenciario_semear_etapas() from public, anon, authenticated;
+
+drop trigger if exists trg_organizations_previdenciario_etapas on public.organizations;
+create trigger trg_organizations_previdenciario_etapas
+  after insert on public.organizations
+  for each row execute function public.fn_previdenciario_semear_etapas();
+
 -- Põe um arquivo na fila de remoção. Quem chama já provou pela forma do caminho que
 -- ele é desta organização, então a linha que exista com o mesmo caminho passa a ser
 -- dela, pendente: sem isso o ponteiro sairia e o arquivo ficaria.
@@ -82857,39 +82890,6 @@ create trigger trg_contacts_fusao_e_anonimizacao_so_pelo_servidor_ao_criar
 -- Todo escritor da fila de remoção de arquivos é do servidor: a sessão só lê.
 revoke all on table public.storage_redaction_queue from authenticated;
 grant select on table public.storage_redaction_queue to authenticated;
-
--- ---- previdenciário: gatilho que semeia as etapas na criação da organização (migration 8021, parte 1) ----
--- Função: fica ANTES da varredura de anon (nenhuma função nasce depois dela).
-create or replace function public.fn_previdenciario_semear_etapas()
-  returns trigger
-  language plpgsql
-  security definer
-  set search_path = public, pg_temp
-as $$
-begin
-  insert into public.previdenciario_case_stages
-    (organization_id, stable_key, name, position, color, is_terminal)
-  values
-    (new.id, 'intake', 'Entrada', 100::numeric, '#64748B', false),
-    (new.id, 'triage', 'Triagem', 200::numeric, '#2563EB', false),
-    (new.id, 'documents', 'Documentos', 300::numeric, '#7C3AED', false),
-    (new.id, 'in_progress', 'Em andamento', 400::numeric, '#0891B2', false),
-    (new.id, 'awaiting_client', 'Aguardando cliente', 500::numeric, '#D97706', false),
-    (new.id, 'awaiting_external', 'Aguardando órgão externo', 600::numeric, '#EA580C', false),
-    (new.id, 'review', 'Revisão profissional', 700::numeric, '#DB2777', false),
-    (new.id, 'completed', 'Concluído', 800::numeric, '#16A34A', true),
-    (new.id, 'archived', 'Arquivado', 900::numeric, '#475569', true)
-  on conflict (organization_id, stable_key) do nothing;
-  return new;
-end;
-$$;
-
-revoke execute on function public.fn_previdenciario_semear_etapas() from public, anon, authenticated;
-
-drop trigger if exists trg_organizations_previdenciario_etapas on public.organizations;
-create trigger trg_organizations_previdenciario_etapas
-  after insert on public.organizations
-  for each row execute function public.fn_previdenciario_semear_etapas();
 
 -- ---- VARREDURA anon: função nova nasce exposta em quem ATUALIZA (migration 0116) ----
 --
