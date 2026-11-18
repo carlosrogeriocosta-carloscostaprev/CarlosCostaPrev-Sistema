@@ -156,17 +156,42 @@ Ela confere se há versão nova, **faz backup do banco antes de qualquer mudanç
 
 ## Desenvolvimento local
 
+> Se você quer **usar** o sistema, não é aqui: use o [instalador da VPS](#instalar-na-sua-vps).
+> Esta seção é para quem vai mexer no código.
+
 Requisitos: Node 22, pnpm e Docker.
 
 ```bash
-pnpm install
-cp .env.example .env.local   # preencher
-docker compose up -d         # WhatsApp (WAHA) local
-pnpm dev                     # http://localhost:3000
-pnpm worker                  # agent-worker, em outro terminal
+git clone https://github.com/prevprocesso-maker/CarlosCostaPrev-Sistema.git
+cd CarlosCostaPrev-Sistema
+
+nvm use                     # Node 22
+npm install -g pnpm && pnpm install
+
+cp .env.example .env.local  # guia completo em docs/SETUP.md
+
+docker compose up -d        # WAHA local (opcional em dev sem WhatsApp)
+
+# Schema: aplique o baseline, NÃO as migrations.
+# As migrations 0001-0009 e 0013 são stubs `SELECT 1;` — a cadeia não sobe do zero.
+# O schema real vive no baseline.sql, o mesmo que o install.sh aplica na VPS.
+# `supabase db push` "passa" e deixa o banco vazio.
+supabase link --project-ref <seu-ref>
+
+# Num projeto Supabase NOVO, habilite antes as extensões que o schema usa —
+# sem elas o baseline para em `type public.vector does not exist`.
+psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -c \
+  'create extension if not exists vector with schema public;
+   create extension if not exists citext with schema public;
+   create extension if not exists pg_trgm with schema public;'
+
+psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -f supabase/baseline.sql
+
+pnpm dev                    # http://localhost:3000
+pnpm worker                 # agent-worker, em outro terminal
 ```
 
-O schema vem do `supabase/baseline.sql` (não das migrations: a cadeia não sobe do zero). Testes:
+Health check: <http://localhost:3000/api/v1/health>. Testes:
 
 ```bash
 pnpm typecheck
