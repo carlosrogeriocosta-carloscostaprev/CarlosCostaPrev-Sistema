@@ -120,6 +120,32 @@ Abra `https://<seu-domínio>` (o cadeado leva cerca de 1 minuto), entre com o ad
 escaneie o QR code com o WhatsApp do número. A verificação em duas etapas é **opcional** e fica em
 Configurações › Segurança.
 
+### Prefere que uma IA instale para você?
+
+O repositório traz **guias do assistente** que carregam sozinhos no Claude Code, Codex, Cursor, OpenCode ou
+Antigravity: instalar, configurar um cliente por nicho, analisar métricas, afinar o prompt do agente e
+contribuir. Para tê-los em **qualquer pasta**, inclusive antes de clonar, rode uma vez (o repositório é
+privado: o `curl` precisa de acesso, ou use o script que já está no clone):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema/main/scripts/instalar-guias.sh | bash
+```
+
+Depois abra uma sessão nova do seu assistente e diga *"quero instalar o sistema na minha VPS"*: pedir o
+assunto em português aciona o guia certo em qualquer um dos cinco. Para chamar um guia pelo nome, cada um tem o
+seu jeito: `/deskcomm-instalar` no Claude Code, no Cursor e no Antigravity; `$deskcomm-instalar` no Codex; no
+OpenCode, peça pelo nome, em linguagem natural.
+
+Os guias **não** se atualizam sozinhos: rodar o mesmo comando de novo traz a versão nova. Para desfazer:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/carlosrogeriocosta-carloscostaprev/CarlosCostaPrev-Sistema/main/scripts/instalar-guias.sh | bash -s -- --remover
+```
+
+Com o repositório já clonado, os guias vêm dentro dele (`.agents/skills/`) e nem isso é preciso. Se você rodou o
+comando mesmo assim, saiba que no Claude Code o guia instalado vale mais que o do clone, e fica na versão do dia
+em que rodou, até rodar de novo (ou desfazer).
+
 ---
 
 ## Atualizar
