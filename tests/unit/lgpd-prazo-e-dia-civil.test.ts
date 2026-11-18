@@ -860,6 +860,8 @@ const REPASSA_O_VALOR: readonly string[] = [
   "app/api/v1/webhooks/nuvemshop/customer-data-request/route.ts",
   "hooks/useLgpdRequests.ts",
   "hooks/useAdminLGPDRequests.ts",
+  // CAMADA CarlosCostaPrev: prazo do caso previdenciário (`due_at` do caso, não de pedido LGPD); só repassa o valor.
+  "hooks/previdenciario/usePrevidenciarioCases.ts",
   "app/api/v1/admin/lgpd/requests/[id]/route.ts",
   "app/api/v1/cron/lgpd-sla-watcher/route.ts",
 ];

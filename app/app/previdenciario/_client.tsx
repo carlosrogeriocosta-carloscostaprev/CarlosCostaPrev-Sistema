@@ -99,7 +99,7 @@ function CaseCard({
           value={item.stage_id}
           disabled={moving}
           onChange={(event) => onMove(item.id, event.target.value)}
-          className="max-w-[8.5rem] rounded border border-border bg-background px-1.5 py-1 text-[11px] text-muted-foreground outline-none focus:ring-2 focus:ring-ring"
+          className="max-w-[8.5rem] rounded-md border border-border bg-background px-1.5 py-1 text-[11px] text-muted-foreground outline-hidden focus:ring-2 focus:ring-ring"
         >
           {stages.map((stage) => (
             <option key={stage.id} value={stage.id}>
@@ -149,7 +149,7 @@ function NewCaseDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o
         </DialogHeader>
         <form onSubmit={submit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="space-y-1.5 text-sm sm:col-span-2">
+            <label className="block space-y-1.5 text-sm sm:col-span-2">
               <span className="font-medium">{t("ID do contato")}</span>
               <Input required value={contactId} onChange={(event) => setContactId(event.target.value)} placeholder={t("UUID do contato em Contatos")} />
               <span className="text-xs text-muted-foreground">{t("O caso é sempre vinculado a um contato existente e nunca cria uma pessoa duplicada.")}</span>
@@ -166,7 +166,7 @@ function NewCaseDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o
               <span className="font-medium">{t("Stable key do serviço")}</span>
               <Input value={serviceKey} onChange={(event) => setServiceKey(event.target.value)} placeholder="Ex.: extrato_cnis" />
             </label>
-            <label className="space-y-1.5 text-sm sm:col-span-2">
+            <label className="block space-y-1.5 text-sm sm:col-span-2">
               <span className="font-medium">{t("Protocolo (opcional)")}</span>
               <Input value={protocol} onChange={(event) => setProtocol(event.target.value)} placeholder={t("Número do protocolo ou requerimento")} />
             </label>

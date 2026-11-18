@@ -95,6 +95,9 @@ const cliente = createSupabaseJs("http://banco.teste", "chave-de-servico", {
 });
 
 vi.mock("next/navigation", () => ({ redirect: vi.fn() }));
+// CAMADA CarlosCostaPrev: o teto de tentativas do código de recuperação (3/h por e-mail, C4) é provado em
+// recovery-code-rate-limit.test.ts; aqui a mesma conta de teste usa o código várias vezes.
+vi.mock("@/lib/auth/rate-limit", async (orig) => ({ ...(await orig<typeof import("@/lib/auth/rate-limit")>()), authRateLimited: async () => false }));
 vi.mock("next/headers", () => ({ headers: vi.fn(async () => ({ get: () => null })) }));
 vi.mock("@/lib/audit", () => ({ audit: vi.fn(async () => undefined), isServiceRoleConfigured: () => true }));
 vi.mock("@/lib/auth/server", () => ({ sessionAal: async () => "aal2" }));

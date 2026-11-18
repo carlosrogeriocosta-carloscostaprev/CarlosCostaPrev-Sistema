@@ -65,6 +65,9 @@ const A_CAMADA_DE_DATA = new Set([
 const FORA_DE_INTERFACE: Record<string, string> = {
   "app/api/v1/admin/dashboard/kpis/route.ts":
     "monta o texto do aviso no momento em que ele nasce — é conteúdo gravado, não interface",
+  // CAMADA CarlosCostaPrev: o handler grava a descrição do alerta judicial no momento em que ele nasce.
+  "lib/previdenciario/compartilhado/automacoes/handlers/admin-para-judicial.ts":
+    "grava a descrição do alerta no momento em que ele nasce — é conteúdo gravado, não interface",
 
   // ─── E-mail: sai do produto e não tem provider de idioma ───
   //

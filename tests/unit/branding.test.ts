@@ -862,6 +862,12 @@ type CategoriaDeHost =
 type EntradaDeHost = { categoria: CategoriaDeHost; motivo: string };
 
 const HOSTS_DECLARADOS: Record<string, EntradaDeHost> = {
+  // ── CAMADA CarlosCostaPrev ──
+  "api-publica.datajud.cnj.jus.br": {
+    categoria: "FORNECEDOR",
+    motivo:
+      "API pública DataJud do CNJ: o cliente judicial do módulo previdenciário (`lib/previdenciario/judicial/integracoes/datajud-client.ts`) consulta processos por ela. É destino de chamada do código, não marca de ninguém.",
+  },
   // ── amostra de FORMATO: chega à tela como prévia, não é destino de chamada ──
   "loja.exemplo": {
     categoria: "AMOSTRA",

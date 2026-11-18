@@ -111,8 +111,8 @@ export const legalCrosswalkLinkSchema = z.strictObject({
 export type LegalCrosswalkLink = z.infer<typeof legalCrosswalkLinkSchema>;
 
 export const classificationSystems = {
-  cid10: { key: 'cid10' as const, label: 'CID-10', purpose: 'classificação médica' },
-  cid11: { key: 'cid11' as const, label: 'CID-11', purpose: 'classificação médica' },
-  cif: { key: 'cif' as const, label: 'CIF', purpose: 'funcionalidade, deficiência e fatores ambientais' },
-  ifbra: { key: 'ifbra' as const, label: 'IFBrA', purpose: 'instrumento específico de avaliação da pessoa com deficiência' },
-} satisfies Record<typeof classificationSystemSchema['_output'] | typeof functionalSystemSchema['_output'], { key: string; label: string; purpose: string }>;
+  cid10: { key: 'cid10' as const, label: 'CID-10', finalidade: 'classificação médica' },
+  cid11: { key: 'cid11' as const, label: 'CID-11', finalidade: 'classificação médica' },
+  cif: { key: 'cif' as const, label: 'CIF', finalidade: 'funcionalidade, deficiência e fatores ambientais' },
+  ifbra: { key: 'ifbra' as const, label: 'IFBrA', finalidade: 'instrumento específico de avaliação da pessoa com deficiência' },
+} satisfies Record<typeof classificationSystemSchema['_output'] | typeof functionalSystemSchema['_output'], { key: string; label: string; finalidade: string }>;
