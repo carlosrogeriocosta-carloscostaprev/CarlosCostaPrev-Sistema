@@ -39,8 +39,8 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: "1"
           # Heap do build: com a camada CarlosCostaPrev o `next build` estoura o default do Node (~2GB)
-          # no passo 'Running TypeScript' (OOM medido no CI, 17/11/2026). O Dockerfile já usa 4096.
-          NODE_OPTIONS: --max-old-space-size=4096
+          # no passo 'Running TypeScript' (OOM medido no CI, 17/11/2026). O Dockerfile usa 4096; a matriz cresceu e o build do mysql-integracao estourou 4096 na v1.117.0 (OOM medido em 18/11/2026).
+          NODE_OPTIONS: --max-old-space-size=6144
           # "off", não vazio: vazio seleciona o Sentry DA COMUNIDADE
           # (lib/sentry/dsn.ts:8-10). A intenção aqui sempre foi desligar, e
           # com aspas vazias ela não era alcançada — o build seguia com o DSN
