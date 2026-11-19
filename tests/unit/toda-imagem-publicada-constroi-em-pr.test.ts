@@ -138,10 +138,14 @@ describe("toda imagem publicada é construída em PR", () => {
     ).toEqual([]);
   });
 
-  it("o agente de voz é iniciado nos dois runners nativos, não somente construído", () => {
+  // CAMADA CarlosCostaPrev: publicamos só amd64 (o build do app em runner ARM estoura a memória e as
+  // VPS alvo são amd64). ARCHS é a única lista a mudar para voltar a publicar ARM.
+  const ARCHS = ["amd64"];
+
+  it("o agente de voz é iniciado no runner nativo, não somente construído", () => {
     const fundo = recorteDoJob(yml, "imagens-de-fundo-sobem").job;
-    expect(fundo).toContain("arch: amd64");
-    expect(fundo).toContain("arch: arm64");
+    for (const a of ARCHS) expect(fundo).toContain(`arch: ${a}`);
+    if (!ARCHS.includes("arm64")) expect(fundo).not.toContain("arch: arm64");
     expect(fundo).toContain("bash scripts/sonda-voice-agent-na-imagem.sh deskcomm-voice-agent:pr");
   });
 
@@ -150,15 +154,22 @@ describe("toda imagem publicada é construída em PR", () => {
     const promover = recorteDoJob(yml, "promover-stable").job;
     expect(juntar).toContain("source hostgator-setup-kit/_manifestos.sh");
     expect(juntar).toContain('manifesto_tem_plataforma "$tag" linux/amd64');
-    expect(juntar).toContain('manifesto_tem_plataforma "$tag" linux/arm64');
     expect(promover).toContain("juntar-manifestos");
-    expect(promover).toContain('manifesto_tem_plataforma "${REGISTRY}/${dono}/${img}:${numero}" linux/arm64');
+    for (const a of ARCHS) {
+      expect(juntar).toContain(`manifesto_tem_plataforma "$tag" linux/${a}`);
+      expect(promover).toContain(`manifesto_tem_plataforma "\${REGISTRY}/\${dono}/\${img}:\${numero}" linux/${a}`);
+    }
+    // E nenhuma conferência de uma arquitetura que não publicamos (ela reprovaria a promoção do `stable`).
+    if (!ARCHS.includes("arm64")) {
+      expect(juntar).not.toContain("linux/arm64");
+      expect(promover).not.toContain("linux/arm64");
+    }
   });
 
   it("a matriz gera um job por receita E por arquitetura — nenhum item do include engole o anterior", () => {
     const jobs = jobsDaMatriz();
     const pares = new Set(jobs.map((j) => `${j.dockerfile ?? "?"} ${j.arch ?? "?"}`));
-    const esperado = receitasPublicadas().flatMap((r) => ["amd64", "arm64"].map((a) => `${r} ${a}`));
+    const esperado = receitasPublicadas().flatMap((r) => ARCHS.map((a) => `${r} ${a}`));
     expect(
       [...pares].sort(),
       "A matriz de build-and-push não gera todas as combinações imagem × arquitetura. Declare `name` e\n" +
@@ -182,7 +193,9 @@ describe("toda imagem publicada é construída em PR", () => {
     const sabotado = yml.replace(/^ {8}name: \[[^\n]*\]\n/m, "");
     expect(sabotado).not.toBe(yml);
     const jobs = jobsDaMatriz(sabotado);
-    expect(jobs).toHaveLength(2);
+    // Um job por arquitetura (cada item do include sobrescreve o anterior): sobra UMA imagem só.
+    expect(jobs).toHaveLength(ARCHS.length);
     expect(new Set(jobs.map((j) => j.name)).size).toBe(1);
+    expect(receitasPublicadas().length).toBeGreaterThan(jobs.length);
   });
 });
