@@ -14,6 +14,10 @@ services:
       dockerfile: Dockerfile
       args:
         APP_VERSION: ${APP_VERSION:-local}
+        # O type check do `next build` passa de 4 GB (o padrão do Dockerfile) e estoura com
+        # "JavaScript heap out of memory". O CI já usa 6144 (publish-image.yml). Quem tem pouca
+        # memória pode baixar com NODE_HEAP_MB no ambiente, sabendo que o build pode falhar.
+        NODE_HEAP_MB: ${NODE_HEAP_MB:-6144}
     image: deskcomm-app:local
     pull_policy: never
     restart: unless-stopped
