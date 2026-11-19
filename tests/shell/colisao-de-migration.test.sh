@@ -124,6 +124,9 @@ GH
 chmod +x "$TMP/bin/gh"
 export PATH="$TMP/bin:$PATH"
 unset FAKE_GH_PRS FAKE_GH_PRS_FECHADOS FAKE_GH_PAI FAKE_GH_SEM_NUMERO
+# CAMADA CarlosCostaPrev: no CI de um PR o GITHUB_REF (refs/pull/N/merge) vaza para o script e o numero do PR real
+# colide com os numeros ficticios destes cenarios (#7, #8, #9). O teste monta o proprio ambiente.
+unset GITHUB_REF
 
 # ── um "repositório principal" mínimo, com duas migrations já aplicadas ──────────────
 principal="$TMP/principal"; mkdir -p "$principal/supabase/migrations"

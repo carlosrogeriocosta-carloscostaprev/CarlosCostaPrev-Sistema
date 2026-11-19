@@ -99,7 +99,7 @@ const GATILHO_ESPERADO: Record<string, { condicao: string | null; efeito: string
   "publish-image.yml::juntar-manifestos": {
     condicao: "github.event_name != 'pull_request'",
     efeito:
-      "Este job junta os builds nativos AMD64 e ARM64 em cada tag que o cliente puxa. " +
+      "Este job monta o índice (hoje só AMD64) de cada tag que o cliente puxa. " +
       "Desligá-lo deixa as tags finais sem um manifesto multi-arquitetura utilizável.",
   },
   // A condição só é falsa em pull_request que não alcança imagem nenhuma

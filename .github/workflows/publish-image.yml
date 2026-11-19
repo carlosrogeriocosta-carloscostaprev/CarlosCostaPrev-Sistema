@@ -205,7 +205,12 @@ jobs:
             dockerfile: Dockerfile.voice-agent
             title: DeskcommCRM voice agent
         name: [deskcommcrm, deskcomm-worker, deskcomm-scheduler, deskcomm-voice-agent]
-        arch: [amd64, arm64]
+        # CAMADA CarlosCostaPrev: só amd64. O build do app em ubuntu-24.04-arm estoura
+        # a memória ("cannot allocate memory") e as VPS alvo (HostGator, Hostinger) são
+        # amd64. Para voltar a publicar ARM: `arch: [amd64, arm64]` aqui, as duas linhas
+        # `arm64` das matrizes de `imagem-do-app-sobe` e `imagens-de-fundo-sobem`, e as
+        # conferências de `linux/arm64` (juntar-manifestos e promover-stable).
+        arch: [amd64]
 
     steps:
       - uses: actions/checkout@v7
@@ -338,7 +343,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest,enable=${{ github.ref_type == 'branch' && github.ref_name == 'main' }}
 
-      - name: Unir AMD64 e ARM64 em cada tag
+      - name: Montar o índice de cada tag (só AMD64)
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
         run: |
@@ -348,10 +353,8 @@ jobs:
             [ -n "$tag" ] || continue
             docker buildx imagetools create \
               --tag "$tag" \
-              "${tag}-amd64" \
-              "${tag}-arm64"
+              "${tag}-amd64"
             manifesto_tem_plataforma "$tag" linux/amd64
-            manifesto_tem_plataforma "$tag" linux/arm64
           done <<< "$TAGS"
 
   # A imagem do app CONSTRÓI e MORRE ao subir? Este job existe porque isso
@@ -383,8 +386,6 @@ jobs:
         include:
           - arch: amd64
             platform: linux/amd64
-          - arch: arm64
-            platform: linux/arm64
     concurrency:
       group: ${{ github.workflow }}-imagem-do-app-sobe-${{ matrix.arch }}-${{ github.event.pull_request.number || github.ref }}${{ github.event_name == 'pull_request' && github.run_attempt != '1' && format('-reentrada-{0}', github.event.pull_request.head.sha) || '' }}
       cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
@@ -562,7 +563,6 @@ jobs:
           # worker já em `stable` — o canal dividido da #488.
           for img in deskcommcrm deskcomm-worker deskcomm-scheduler deskcomm-voice-agent; do
             manifesto_tem_plataforma "${REGISTRY}/${dono}/${img}:${numero}" linux/amd64
-            manifesto_tem_plataforma "${REGISTRY}/${dono}/${img}:${numero}" linux/arm64
           done
           for img in deskcommcrm deskcomm-worker deskcomm-scheduler deskcomm-voice-agent; do
             echo "::group::${img}"
@@ -621,8 +621,6 @@ jobs:
         include:
           - arch: amd64
             platform: linux/amd64
-          - arch: arm64
-            platform: linux/arm64
     concurrency:
       group: ${{ github.workflow }}-imagens-de-fundo-sobem-${{ matrix.arch }}-${{ github.event.pull_request.number || github.ref }}${{ github.event_name == 'pull_request' && github.run_attempt != '1' && format('-reentrada-{0}', github.event.pull_request.head.sha) || '' }}
       cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
